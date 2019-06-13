@@ -1,0 +1,24 @@
+<ion-content padding >
+  <br>
+  <br>
+  <ion-text class="one">Register</ion-text>
+  <br>
+  <br>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">MSU ID</ion-label>
+    <ion-input [(ngModel)]="musername"></ion-input>
+  </ion-item>
+  <br>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <br>
+  <br>
+  <br>
+  <ion-fab>
+    <ion-fab-button class="ion-fab-button" color="test" (click)="Ok()">OK</ion-fab-button>
+  </ion-fab>
+</ion-content>
