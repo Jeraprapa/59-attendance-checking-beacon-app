@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {DatapassService} from '../datapass.service';
 
 @Component({
   selector: 'app-showprofile',
@@ -7,10 +8,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./showprofile.page.scss'],
 })
 export class ShowprofilePage implements OnInit {
-
-  constructor(private roter: Router) { }
+  myname;
+  constructor(private roter: Router , private datapass: DatapassService) { }
 
   ngOnInit() {
+    this.myname = this.datapass.name;
   }
 
     myprofile() {

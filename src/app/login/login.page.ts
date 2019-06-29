@@ -19,20 +19,15 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    // let found = false;
-    // let result;
     this.http.post('http://acb.msuproject.net/webservice/login',
         {  email : this.username, password : this.password}, {}).then(value => {
       let jsondata = JSON.parse(value.data);
-      // alert(JSON.stringify(value.data));
       this.database = jsondata;
-      // JSON.stringify(jsondata);
       this.datapass.uname = this.username;
       this.datapass.pwd = this.password;
-      // this.datapass.database = this.database;
+      this.datapass.name = this.database.name;
       alert(JSON.stringify(this.database));
-      // <div>tel: {{database[0].tel}}</div>
-      // this.router.navigateByUrl('home');
+      this.roter.navigateByUrl('home');
     }).catch(reason => {
       alert('no');
     });

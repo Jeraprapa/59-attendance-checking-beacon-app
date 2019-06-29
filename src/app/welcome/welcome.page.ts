@@ -24,4 +24,8 @@ export class WelcomePage implements OnInit {
     beacon() {
       this.roter.navigateByUrl('attend');
     }
+
+    check() {
+      this.roter.navigateByUrl('detail-event-list');
+    }
 }
