@@ -13,17 +13,20 @@ export class GeneralRegister2Page implements OnInit {
   name;
   surname;
   phone;
-  img;
+  img = '';
   data;
-  msuid;
+  msuid = '';
   password;
+  database;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
 
   ngOnInit() {
   }
 
   register() {
-    this.http.post('http://acb.msuproject.net/webservice/login',
+    console.log(this.name + ' ' + this.password + ' ' + this.email + ' ' + this.surname + ' ' + this.msuid + ' ' + this.phone
+        + ' ' + this.img);
+    this.http.post('http://acb.msuproject.net/webservice/register',
         {name : this.name, surname : this.surname, image : this.img, email : this.email, tel : this.phone,
           password : this.password, msuid : this.msuid}, {}).then(value => {
       alert(JSON.stringify(value.data));

@@ -26,6 +26,10 @@ export class LoginPage implements OnInit {
       this.datapass.uname = this.username;
       this.datapass.pwd = this.password;
       this.datapass.name = this.database[0].name;
+      this.datapass.surname = this.database[0].surname;
+      this.datapass.tel = this.database[0].tel;
+      this.datapass.msu = this.database[0].MSU_ID;
+      this.datapass.img = this.database[0].image;
       alert(JSON.stringify(this.database));
       this.roter.navigateByUrl('home');
     }).catch(reason => {

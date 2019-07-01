@@ -9,10 +9,18 @@ import {DatapassService} from '../datapass.service';
 })
 export class ShowprofilePage implements OnInit {
   myname;
+  mytel;
+  myimg;
+  mysur;
+  mymsuid;
   constructor(private roter: Router , private datapass: DatapassService) { }
 
   ngOnInit() {
     this.myname = this.datapass.name;
+    this.mysur = this.datapass.surname;
+    this.mytel = this.datapass.tel;
+    this.myimg = this.datapass.img;
+    this.mymsuid = this.datapass.msu;
   }
 
     myprofile() {

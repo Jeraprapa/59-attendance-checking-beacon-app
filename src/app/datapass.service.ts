@@ -9,7 +9,7 @@ export class DatapassService {
   public pwd;
   public uid;
   public name;
-  public sername;
+  public surname;
   public img;
   public tel;
   public msu;
