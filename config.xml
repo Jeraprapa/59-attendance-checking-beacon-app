@@ -3,7 +3,7 @@
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.2.152:8100" />
+    <content original-src="index.html" src="http://192.168.0.111:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -85,6 +85,6 @@
     <plugin name="com.unarin.cordova.beacon" spec="~3.7.0" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.9" />
     <allow-navigation href="http://192.168.0.101:8100" sessionid="bbf3efe9" />
-    <allow-navigation href="http://192.168.2.152:8100" sessionid="e91e5b00" />
+    <allow-navigation href="http://192.168.0.111:8100" sessionid="2964edb9" />
     <engine name="android" spec="7.1.4" />
 </widget>

@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
       this.database = jsondata;
       this.datapass.uname = this.username;
       this.datapass.pwd = this.password;
-      this.datapass.name = this.database.name;
+      this.datapass.name = this.database[0].name;
       alert(JSON.stringify(this.database));
       this.roter.navigateByUrl('home');
     }).catch(reason => {
