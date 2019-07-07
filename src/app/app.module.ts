@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { IBeacon } from '@ionic-native/ibeacon/ngx';
 import {HTTP} from '@ionic-native/http/ngx';
 import {DatapassService} from './datapass.service';
+import { Camera } from '@ionic-native/camera/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,7 @@ import {DatapassService} from './datapass.service';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, IBeacon, HTTP,
-      DatapassService
+      DatapassService, Camera
   ],
   bootstrap: [AppComponent]
 })

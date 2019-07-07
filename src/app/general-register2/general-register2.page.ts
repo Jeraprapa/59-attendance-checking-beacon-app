@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-general-register2',
@@ -18,7 +19,7 @@ export class GeneralRegister2Page implements OnInit {
   msuid = '';
   password;
   database;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera) { }
 
   ngOnInit() {
   }
@@ -33,6 +34,20 @@ export class GeneralRegister2Page implements OnInit {
        this.roter.navigateByUrl('login');
     }).catch(reason => {
         alert('no');
+    });
+  }
+
+  photo() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+    this.camera.getPicture(options).then(value => {
+      this.img = 'data:image/jpeg;base64,' + value;
+    }).catch(reason => {
+
     });
   }
 }
