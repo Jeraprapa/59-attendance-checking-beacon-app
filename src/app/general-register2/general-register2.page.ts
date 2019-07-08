@@ -46,6 +46,7 @@ export class GeneralRegister2Page implements OnInit {
     };
     this.camera.getPicture(options).then(value => {
       this.img = 'data:image/jpeg;base64,' + value;
+
     }).catch(reason => {
 
     });
