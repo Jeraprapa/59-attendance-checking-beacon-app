@@ -30,7 +30,8 @@ export class GeneralRegister2Page implements OnInit {
     this.http.post('http://acb.msuproject.net/webservice/register',
         {name : this.name, surname : this.surname, image : this.img, email : this.email, tel : this.phone,
           password : this.password, msuid : this.msuid}, {}).then(value => {
-      alert(JSON.stringify(value.data));
+            console.log(JSON.stringify(value.data));
+      // alert(JSON.stringify(value.data));
        this.roter.navigateByUrl('login');
     }).catch(reason => {
         alert('no');
@@ -39,9 +40,11 @@ export class GeneralRegister2Page implements OnInit {
 
   photo() {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 75,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
+      targetWidth: 80,
+      targetHeight: 80,
       mediaType: this.camera.MediaType.PICTURE
     };
     this.camera.getPicture(options).then(value => {
