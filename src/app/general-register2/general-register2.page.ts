@@ -41,6 +41,26 @@ export class GeneralRegister2Page implements OnInit {
   photo() {
     const options: CameraOptions = {
       quality: 75,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetWidth: 80,
+      targetHeight: 80,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+    this.camera.getPicture(options).then(value => {
+      console.log(value);
+      this.img = 'data:image/jpeg;base64,' + value;
+
+    }).catch(reason => {
+
+    });
+  }
+
+  clibary() {
+    const options: CameraOptions = {
+      quality: 75,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       targetWidth: 80,

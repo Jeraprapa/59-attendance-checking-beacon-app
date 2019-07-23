@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DatapassService} from '../datapass.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-profile.page.scss'],
 })
 export class EditProfilePage implements OnInit {
-
-  constructor() { }
+img;
+  constructor( private datapass: DatapassService) { }
 
   ngOnInit() {
+    this.img = this.datapass.img;
   }
 
   change() {
