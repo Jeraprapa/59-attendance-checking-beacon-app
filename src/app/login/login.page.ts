@@ -12,7 +12,7 @@ export class LoginPage implements OnInit {
   username;
   password;
   database;
-  url = 'http://acb.msuproject.net/webservice/login';
+  // url = 'http://acb.msuproject.net/webservice/login';
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
 
   ngOnInit() {
