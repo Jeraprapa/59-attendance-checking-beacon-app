@@ -18,7 +18,6 @@ export class AttendPage implements OnInit {
       this.ibeacon.requestAlwaysAuthorization();
 // create a new delegate and register it with the native layer
       let delegate = this.ibeacon.Delegate();
-
 // Subscribe to some of the delegate's event handlers
       delegate.didRangeBeaconsInRegion()
           .subscribe(
@@ -36,9 +35,8 @@ export class AttendPage implements OnInit {
                 console.log('didEnterRegion: ', data);
               }
           );
-
-      let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon', '12345678-0000-1234-0000-000000000000' , 0 , 0 , false);
-
+      let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon',
+          '12345678-0000-1234-0000-000000000000' , 0 , 0 , false);
       this.ibeacon.startAdvertising(beaconRegion)
           .then(
               () => console.log('Native layer received the request to monitoring'),
@@ -70,7 +68,8 @@ export class AttendPage implements OnInit {
             }
         );
 
-    let beaconRegion1 = this.ibeacon.BeaconRegion('deskBeacon', '12345678-0000-0000-0000-000000000000' , 0 , 0 , false);
+    let beaconRegion1 = this.ibeacon.BeaconRegion('deskBeacon',
+        '12345678-0000-0000-0000-000000000000' , 0 , 0 , false);
 
     this.ibeacon.stopAdvertising(beaconRegion1)
         .then(

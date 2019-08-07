@@ -8,12 +8,11 @@ import {DatapassService} from '../datapass.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-    img;
+    myimg;
 
     constructor(private roter: Router, private datapass: DatapassService) { }
     ngOnInit() {
-        this.img = this.datapass.img;
-
+        this.myimg = this.datapass.img;
     }
     profile() {
          this.roter.navigateByUrl('showprofile');
@@ -34,4 +33,7 @@ export class HomePage implements OnInit {
 
     }
 
+    logout() {
+        this.roter.navigateByUrl('login');
+    }
 }

@@ -26,4 +26,8 @@ export class ShowprofilePage implements OnInit {
     myprofile() {
       this.roter.navigateByUrl('edit-profile');
     }
+
+  ok() {
+    this.roter.navigateByUrl('home');
+  }
 }

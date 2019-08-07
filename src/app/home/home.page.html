@@ -4,7 +4,7 @@
   <br>
   <ion-text class="ion-text" >Welcome</ion-text>
   <ion-avatar class="ion-avatar" >
-    <img src="img" (click)="profile()">
+    <img src="{{myimg}}" (click)="profile()">
   </ion-avatar>
   <ion-row>
     <ion-col width-10>
@@ -22,4 +22,5 @@
       <ion-button expand="block" color="warning" class="ion-button1" (click)="Report()">Report</ion-button>
     </ion-col>
   </ion-row>
+  <ion-button expand="block" class="underline" (click)="logout()">logout</ion-button>
 </ion-content>

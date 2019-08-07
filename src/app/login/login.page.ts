@@ -39,6 +39,7 @@ export class LoginPage implements OnInit {
 
   Register() {
     this.roter.navigateByUrl('register');
+
   }
 
   re() {

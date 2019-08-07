@@ -40,7 +40,7 @@ export class GeneralRegister2Page implements OnInit {
 
   photo() {
     const options: CameraOptions = {
-      quality: 75,
+      quality: 80,
       sourceType: this.camera.PictureSourceType.CAMERA,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
