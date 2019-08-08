@@ -69,7 +69,7 @@ export class AttendPage implements OnInit {
         );
 
     let beaconRegion1 = this.ibeacon.BeaconRegion('deskBeacon',
-        '12345678-0000-0000-0000-000000000000' , 0 , 0 , false);
+        '12345678-0000-1234-0000-000000000000' , 0 , 0 , false);
 
     this.ibeacon.stopAdvertising(beaconRegion1)
         .then(
