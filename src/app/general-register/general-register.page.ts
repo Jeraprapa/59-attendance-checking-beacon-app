@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-general-register',
@@ -8,13 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class GeneralRegisterPage implements OnInit {
     password;
     musername;
-  constructor() { }
+  constructor(private roter: Router) { }
 
   ngOnInit() {
   }
 
   Ok() {
-
+      this.roter.navigateByUrl('msu-register');
   }
 
 }

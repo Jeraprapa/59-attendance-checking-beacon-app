@@ -26,6 +26,6 @@ export class WelcomePage implements OnInit {
     }
 
   test() {
-    this.roter.navigateByUrl('new-event');
+    this.roter.navigateByUrl('general-register');
   }
 }

@@ -16,6 +16,6 @@ export class CodeEventPage implements OnInit {
   }
 
   ok() {
-    this.roter.navigateByUrl('welcome');
+    this.roter.navigateByUrl('home');
   }
 }
