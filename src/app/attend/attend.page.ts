@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IBeacon } from '@ionic-native/ibeacon/ngx';
+import {
+    BarcodeScannerOptions,
+    BarcodeScanner
+} from '@ionic-native/barcode-scanner/ngx';
+import {DatapassService} from '../datapass.service';
 
 @Component({
   selector: 'app-attend',
@@ -7,8 +12,8 @@ import { IBeacon } from '@ionic-native/ibeacon/ngx';
   styleUrls: ['./attend.page.scss'],
 })
 export class AttendPage implements OnInit {
-
-  constructor(private ibeacon: IBeacon) { }
+    beaconRegion;
+  constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner, private datapass: DatapassService) { }
 
   ngOnInit() {
   }
@@ -35,13 +40,14 @@ export class AttendPage implements OnInit {
                 console.log('didEnterRegion: ', data);
               }
           );
-      let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon',
-          '12345678-0000-1234-0000-000000000000' , 0 , 0 , false);
-      this.ibeacon.startAdvertising(beaconRegion)
+      this.beaconRegion = this.ibeacon.BeaconRegion('deskBeacon',
+          '12345678-0001-1234-0000-000000000000' , 0 , 0 , false);
+      this.ibeacon.startAdvertising(this.beaconRegion)
           .then(
-              () => console.log('Native layer received the request to monitoring'),
+              () => alert(this.beaconRegion.uuid),
               error => console.error('Native layer failed to begin monitoring: ', error)
           );
+
     }
 
   stopbeacon() {
@@ -69,7 +75,7 @@ export class AttendPage implements OnInit {
         );
 
     let beaconRegion1 = this.ibeacon.BeaconRegion('deskBeacon',
-        '12345678-0000-1234-0000-000000000000' , 0 , 0 , false);
+        '12345678-0001-1234-0000-000000000000' , 0 , 0 , false);
 
     this.ibeacon.stopAdvertising(beaconRegion1)
         .then(

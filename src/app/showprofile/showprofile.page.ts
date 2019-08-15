@@ -13,6 +13,7 @@ export class ShowprofilePage implements OnInit {
   myimg;
   mysur;
   mymsuid;
+  myid;
   constructor(private roter: Router , private datapass: DatapassService) { }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class ShowprofilePage implements OnInit {
     this.mytel = this.datapass.tel;
     this.myimg = this.datapass.img;
     this.mymsuid = this.datapass.msu;
+    this.myid = this.datapass.uid;
   }
 
     myprofile() {

@@ -14,5 +14,7 @@ export class DatapassService {
   public tel;
   public msu;
   public database;
+  public event_name;
+ public event_id;
   constructor() { }
 }

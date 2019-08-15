@@ -49,9 +49,7 @@ export class GeneralRegister2Page implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     };
     this.camera.getPicture(options).then(value => {
-      console.log(value);
       this.img = 'data:image/jpeg;base64,' + value;
-
     }).catch(reason => {
 
     });
@@ -59,7 +57,7 @@ export class GeneralRegister2Page implements OnInit {
 
   clibary() {
     const options: CameraOptions = {
-      quality: 75,
+      quality: 80,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,

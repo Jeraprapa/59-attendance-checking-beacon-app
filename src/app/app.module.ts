@@ -12,6 +12,7 @@ import { IBeacon } from '@ionic-native/ibeacon/ngx';
 import {HTTP} from '@ionic-native/http/ngx';
 import {DatapassService} from './datapass.service';
 import { Camera } from '@ionic-native/camera/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { Camera } from '@ionic-native/camera/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, IBeacon, HTTP,
       DatapassService, Camera
   ],

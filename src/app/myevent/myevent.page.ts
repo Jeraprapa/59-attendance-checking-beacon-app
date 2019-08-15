@@ -12,4 +12,7 @@ export class MyeventPage implements OnInit {
   ngOnInit() {
   }
 
+    elist() {
+
+    }
 }

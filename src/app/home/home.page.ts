@@ -22,11 +22,11 @@ export class HomePage implements OnInit {
     }
 
     NewEvent() {
-
+        this.roter.navigateByUrl('new-event');
     }
 
     MyEvent() {
-
+        this.roter.navigateByUrl('myevent');
     }
 
     Report() {
@@ -36,4 +36,10 @@ export class HomePage implements OnInit {
     logout() {
         this.roter.navigateByUrl('login');
     }
+
+    welcome() {
+        this.roter.navigateByUrl('welcome');
+    }
+
+
 }

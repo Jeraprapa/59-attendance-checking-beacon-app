@@ -25,7 +25,7 @@ export class WelcomePage implements OnInit {
       this.roter.navigateByUrl('attend');
     }
 
-    check() {
-      this.roter.navigateByUrl('detail-event-list');
-    }
+  test() {
+    this.roter.navigateByUrl('new-event');
+  }
 }
