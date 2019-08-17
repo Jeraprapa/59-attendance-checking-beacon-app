@@ -16,5 +16,9 @@ export class DatapassService {
   public dataevent;
   public event_name;
  public event_id;
+ public cpid;
+ public cpname;
+ public cpdate;
+ public cptime;
   constructor() { }
 }

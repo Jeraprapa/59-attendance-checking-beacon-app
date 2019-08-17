@@ -13,8 +13,8 @@ import {DatapassService} from '../datapass.service';
 })
 export class AttendPage implements OnInit {
     beaconRegion;
-  constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner, private datapass: DatapassService) { }
-
+  constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner, private datapass: DatapassService) {
+  }
   ngOnInit() {
   }
 
@@ -42,6 +42,7 @@ export class AttendPage implements OnInit {
           );
       this.beaconRegion = this.ibeacon.BeaconRegion('deskBeacon',
           '12345678-0001-1234-0000-000000000000' , 0 , 0 , false);
+      this.datapass.cpid = this.beaconRegion.uuid;
       this.ibeacon.startAdvertising(this.beaconRegion)
           .then(
               () => alert(this.beaconRegion.uuid),

@@ -21,6 +21,8 @@ export class NewCheckpointPage implements OnInit {
 
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
       this.eid = this.datapass.event_id;
+      this.cpid = this.datapass.cpid;
+      this.timestop = this.timestart + this.duration ;
   }
   ngOnInit() {
   }
@@ -37,9 +39,6 @@ export class NewCheckpointPage implements OnInit {
                     Episode_name : this.name}, {}).then(value => {
              let jsondata = JSON.parse(value.data);
              this.datacp = jsondata;
-            // this.datapass.event_name = this.database[0].name;
-            // this.datapass.event_id = this.database[0].eventID;
-            // // console.log(JSON.stringify(value.data));
               alert(JSON.stringify(this.datacp));
              this.roter.navigateByUrl('checkpoint');
         }).catch(reason => {

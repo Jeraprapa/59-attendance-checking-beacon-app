@@ -4,25 +4,30 @@
   <ion-text class="one">New Check point</ion-text>
   <br><br>
   <br><br>
-  {{eid}}
   <ion-item>
     <ion-label position="floating" class="text">Name</ion-label>
     <ion-input [(ngModel)] ="name"></ion-input>
   </ion-item>
   <br>
   <ion-item>
-    <ion-label position="floating" class="text">Date</ion-label>
-    <ion-input  [(ngModel)]="date"></ion-input>
+    <ion-label position="floating" class="text">Date Stop</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="date"></ion-datetime>
   </ion-item>
   <br>
   <ion-item>
     <ion-label position="floating" class="text">Time Start</ion-label>
-    <ion-input  [(ngModel)]="timestart"></ion-input>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestart"></ion-datetime>
   </ion-item>
   <br>
   <ion-item>
     <ion-label position="floating" class="text">Time Stop</ion-label>
-    <ion-input  [(ngModel)]="timestop"></ion-input>
+    <!--<ion-input  [(ngModel)]="timestop"></ion-input>-->
+    <ion-input>{{timestop}}</ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">duration</ion-label>
+    <ion-datetime displayFormat="mm" [(ngModel)]="duration"></ion-datetime>
   </ion-item>
   <br>
   <ion-item>

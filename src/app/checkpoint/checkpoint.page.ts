@@ -10,12 +10,37 @@ import {HTTP} from '@ionic-native/http/ngx';
 })
 export class CheckpointPage implements OnInit {
 
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
+  datacplist;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
+    this.cplist();
+  }
 
   ngOnInit() {
   }
 
+  cplist() {
+    this.http.get('http://acb.msuproject.net/webservice/listCheckpoint/' + this.datapass.event_id,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.datapass.dataevent = jsondata;
+      this.datacplist = jsondata;
+      // this.datapass.event_name = this.database[0].name;
+      // this.datapass.event_id = this.database[0].eventID;
+      console.log(JSON.stringify(jsondata));
+      // alert(JSON.stringify(jsondata));
+      // alert(JSON.stringify(this.database[0].name));
+      // console.log(this.database[0].eventInof[1].name);
+      // this.roter.navigateByUrl('event-list');
+    }).catch(reason => {
+      // alert('no...');
+      console.log(reason);
+    });
+  }
   addcp() {
     this.roter.navigateByUrl('new-checkpoint');
+  }
+
+  cpdetail() {
+    this.roter.navigateByUrl('checkpoint-detail');
   }
 }

@@ -12,16 +12,18 @@
 
   <br><br>
 
-  <form>
-    <table border="0">
-      <tr align="center">
-        <td  bgcolor="#6495ed" width="400" height="45" >Check point</td>
-        <td  bgcolor="#6495ed" width="400" height="45" >Date</td>
-        <td  bgcolor="#6495ed" width="400" height="45" >Time</td>
-      </tr>
-    </table>
-  </form>
-
+  <!--<form>-->
+    <!--<table border="0">-->
+      <!--<tr align="center">-->
+        <!--<td  bgcolor="#6495ed" width="400" height="45" >Check point</td>-->
+        <!--<td  bgcolor="#6495ed" width="400" height="45" >Date</td>-->
+        <!--<td  bgcolor="#6495ed" width="400" height="45" >Time</td>-->
+      <!--</tr>-->
+    <!--</table>-->
+  <!--</form>-->
+  <ion-item *ngFor="let n of datacplist">
+    <ion-label (click)="cpdetail()">{{n.Episode_name}}{{n.Date_start}}</ion-label>
+  </ion-item>
 
 </ion-content>
 
