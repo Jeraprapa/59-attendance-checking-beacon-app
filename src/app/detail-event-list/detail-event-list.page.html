@@ -1,12 +1,51 @@
-<ion-content padding>
-  <ion-text>detail-event-list</ion-text>
+<br>
+<ion-content padding >
   <br>
-  <ion-text>event name</ion-text>
+  <form>
+    <table align="right" border="0" >
+      <tr align="left">
+        <td ></td><td width="60" height="30">Date </td><td>Start</td><td>|</td><td>End</td>
+      </tr>
+      <tr align="left">
+        <td ></td><td width="60" height="30">Time </td><td>Start</td><td>|</td><td>End</td>
+      </tr>
+      <tr align="left">
+        <td ><td width="60" height="30">Status </td><td>Public</td><td>|</td><td>Private</td>
+      </tr>
+    </table>
+  </form>
+
+  <p align="left">
+    <ion-text class="one">  Event 1</ion-text>
+  </p>
   <br>
-  <ion-text>Date</ion-text>
+
+  <p align="left">
+    <ion-item>
+      <ion-label position="floating" class="text">Detail</ion-label>
+      <ion-input [(ngModel)] ="Detail"></ion-input>
+    </ion-item>
+  </p>
   <br>
-  <ion-text>time</ion-text>
   <br>
-  <ion-text>status</ion-text>
   <br>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="warning" (click)="cp()">Check point</ion-button>
+    </ion-col>
+  </ion-row>
+  <br>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="warning" >Member</ion-button>
+    </ion-col>
+  </ion-row>
+  <br>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="warning" >Waiting for approval<br>(Optional)</ion-button>
+    </ion-col>
+  </ion-row>
+
 </ion-content>
+

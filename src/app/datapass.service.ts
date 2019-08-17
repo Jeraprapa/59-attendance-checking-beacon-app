@@ -13,7 +13,7 @@ export class DatapassService {
   public img;
   public tel;
   public msu;
-  public database;
+  public data;
   public event_name;
  public event_id;
   constructor() { }

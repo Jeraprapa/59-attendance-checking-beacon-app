@@ -1,9 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>edit-event</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
-
+  <ion-title class="location">Edit Event</ion-title>
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Date Start</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestart"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Time Start</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestart"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Date Stop</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestop"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Time Stop</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestop"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea [(ngModel)]="des"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>Status</ion-label>
+    <ion-select interface="popover" placeholder="Select One" [(ngModel)]="e">
+      <ion-select-option value="public">public</ion-select-option>
+      <ion-select-option value="private">private</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-label class="location">Info(Option)</ion-label>
+  <ion-item>
+    <ion-input position="floating">คำถาม1</ion-input>
+    <ion-input [(ngModel)]="q1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input position="floating">คำถาม2</ion-input>
+    <ion-input [(ngModel)]="q2"></ion-input>
+  </ion-item>
+  <!--<ion-avatar class="location">-->
+  <!--<img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/arrow-forward-512.png" >-->
+  <!--</ion-avatar>-->
+  <ion-button expand="block" color="medium" (click)="ok()">ok</ion-button>
 </ion-content>

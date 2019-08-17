@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-checkpoint.page.scss'],
 })
 export class EditCheckpointPage implements OnInit {
+    Name;
+  Date;
+  Area;
 
   constructor() { }
 

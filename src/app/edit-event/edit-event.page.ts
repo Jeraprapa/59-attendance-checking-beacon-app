@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-event.page.scss'],
 })
 export class EditEventPage implements OnInit {
+    name;
+  datestart;
+  timestart;
+  datestop;
+  timestop;
+  des;
+  e;
+  q1;
+  q2;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  ok() {
+
+  }
 }

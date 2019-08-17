@@ -1,9 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>new-checkpoint</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-
+<ion-content padding >
+  <br>
+  <br>
+  <ion-text class="one">New Check point</ion-text>
+  <br><br>
+  <br><br>
+  <ion-item>
+    <ion-label position="floating" class="text">Name</ion-label>
+    <ion-input [(ngModel)] ="Name"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Date</ion-label>
+    <ion-input  [(ngModel)]="Date"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Area</ion-label>
+    <ion-input  [(ngModel)]="Area"></ion-input>
+  </ion-item>
+  <br>
+  <br>
+  <ion-text class="two">หมายเหตุ: near 10-19 m, mediam 20-30 m, far 30-50 m</ion-text>
+  <br><br><br><br>
+  <ion-row>
+    <ion-col width-5>
+      <ion-button expand="block" color="medium" >OK</ion-button>
+    </ion-col>
+  </ion-row>
+  <!--<br>-->
+  <!--<ion-button expand="block" color="medium" (click)="re()">re</ion-button>-->
 </ion-content>
