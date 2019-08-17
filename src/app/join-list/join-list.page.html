@@ -1,9 +1,7 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>join-list</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content padding>
-
+  <ion-item *ngFor="let n of data">
+    <ion-label (click)="jl()" >{{n.eventName.name}}</ion-label>
+  </ion-item>
+  <ion-button (click)="ok()">ok</ion-button>
 </ion-content>

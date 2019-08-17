@@ -11,6 +11,7 @@ import {HTTP} from '@ionic-native/http/ngx';
 export class CheckpointPage implements OnInit {
 
   datacplist;
+  cpids;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.cplist();
   }
@@ -25,6 +26,7 @@ export class CheckpointPage implements OnInit {
       this.datapass.dataevent = jsondata;
       this.datacplist = jsondata;
       // this.datapass.event_name = this.database[0].name;
+      // this.datapass.cpuid = this.datacplist[0].cpID;
       // this.datapass.event_id = this.database[0].eventID;
       console.log(JSON.stringify(jsondata));
       // alert(JSON.stringify(jsondata));
@@ -37,10 +39,13 @@ export class CheckpointPage implements OnInit {
     });
   }
   addcp() {
+
     this.roter.navigateByUrl('new-checkpoint');
   }
 
-  cpdetail() {
+  cpdetail(parameters: { cpids: number }) {
+    this.cpids = parameters.cpids;
+    this.datapass.cpuid = this.cpids;
     this.roter.navigateByUrl('checkpoint-detail');
   }
 }

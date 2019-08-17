@@ -20,5 +20,7 @@ export class DatapassService {
  public cpname;
  public cpdate;
  public cptime;
+ public cpuid;
+ public datajoin;
   constructor() { }
 }

@@ -9,13 +9,14 @@ import {HTTP} from '@ionic-native/http/ngx';
   styleUrls: ['./checkpoint-detail.page.scss'],
 })
 export class CheckpointDetailPage implements OnInit {
-
+  uid;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
 
   ngOnInit() {
   }
 
   st() {
+    // this.uid = this.datapass.cpuid;
     this.roter.navigateByUrl('attend');
   }
 }

@@ -7,7 +7,7 @@
   <ion-text class="one">Checkpoint</ion-text>
   <br><br>
   <p align="right">
-    <ion-text class="one" (click)="addcp()">Add + </ion-text>
+    <ion-text class="one" (click)="addcp({})">Add + </ion-text>
   </p>
 
   <br><br>
@@ -22,7 +22,7 @@
     <!--</table>-->
   <!--</form>-->
   <ion-item *ngFor="let n of datacplist">
-    <ion-label (click)="cpdetail()">{{n.Episode_name}}{{n.Date_start}}</ion-label>
+    <ion-label (click)="cpdetail({cpids: n.cpID})">{{n.Episode_name}}{{n.Date_start}}{{n.Time_start}}</ion-label>
   </ion-item>
 
 </ion-content>

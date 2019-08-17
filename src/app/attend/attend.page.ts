@@ -5,6 +5,7 @@ import {
     BarcodeScanner
 } from '@ionic-native/barcode-scanner/ngx';
 import {DatapassService} from '../datapass.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-attend',
@@ -13,7 +14,7 @@ import {DatapassService} from '../datapass.service';
 })
 export class AttendPage implements OnInit {
     beaconRegion;
-  constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner, private datapass: DatapassService) {
+  constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner, private datapass: DatapassService, private roter: Router) {
   }
   ngOnInit() {
   }
@@ -84,4 +85,8 @@ export class AttendPage implements OnInit {
             error => console.error('Native layer failed to begin monitoring: ', error)
         );
   }
+
+    home() {
+        this.roter.navigateByUrl('home');
+    }
 }

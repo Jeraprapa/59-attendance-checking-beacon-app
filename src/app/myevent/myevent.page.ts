@@ -13,6 +13,7 @@ export class MyeventPage implements OnInit {
 
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
   database;
+  datab;
   ngOnInit() {
   }
 
@@ -36,6 +37,23 @@ export class MyeventPage implements OnInit {
     }
 
   joine() {
-    this.roter.navigateByUrl('welcome');
+    this.http.get('http://acb.msuproject.net/webservice/listJoin/' + this.datapass.uid,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.datapass.datajoin = jsondata;
+       this.datab = jsondata;
+      // this.datapass.event_name = this.database[0].name;
+      // this.datapass.event_id = this.database[0].eventID;
+      console.log(this.datapass.uid);
+      console.log(JSON.stringify(jsondata));
+      // alert(JSON.stringify(jsondata));
+      // alert(JSON.stringify(this.database[0].name));
+      // console.log(this.database[0].eventInof[1].name);
+      this.roter.navigateByUrl('join-list');
+    }).catch(reason => {
+      // alert('no...');
+      console.log(reason);
+    });
+    // this.roter.navigateByUrl('welcome');
   }
 }

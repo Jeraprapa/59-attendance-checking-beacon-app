@@ -40,6 +40,7 @@ export class NewCheckpointPage implements OnInit {
              let jsondata = JSON.parse(value.data);
              this.datacp = jsondata;
               alert(JSON.stringify(this.datacp));
+            this.timestop = this.timestart + this.duration ;
              this.roter.navigateByUrl('checkpoint');
         }).catch(reason => {
             alert('no');
