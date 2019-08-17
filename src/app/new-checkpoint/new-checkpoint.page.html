@@ -4,19 +4,30 @@
   <ion-text class="one">New Check point</ion-text>
   <br><br>
   <br><br>
+  {{eid}}
   <ion-item>
     <ion-label position="floating" class="text">Name</ion-label>
-    <ion-input [(ngModel)] ="Name"></ion-input>
+    <ion-input [(ngModel)] ="name"></ion-input>
   </ion-item>
   <br>
   <ion-item>
     <ion-label position="floating" class="text">Date</ion-label>
-    <ion-input  [(ngModel)]="Date"></ion-input>
+    <ion-input  [(ngModel)]="date"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Time Start</ion-label>
+    <ion-input  [(ngModel)]="timestart"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Time Stop</ion-label>
+    <ion-input  [(ngModel)]="timestop"></ion-input>
   </ion-item>
   <br>
   <ion-item>
     <ion-label position="floating" class="text">Area</ion-label>
-    <ion-input  [(ngModel)]="Area"></ion-input>
+    <ion-input  [(ngModel)]="area"></ion-input>
   </ion-item>
   <br>
   <br>
@@ -24,9 +35,7 @@
   <br><br><br><br>
   <ion-row>
     <ion-col width-5>
-      <ion-button expand="block" color="medium" >OK</ion-button>
+      <ion-button expand="block" color="medium" (click)="newcp()">OK</ion-button>
     </ion-col>
   </ion-row>
-  <!--<br>-->
-  <!--<ion-button expand="block" color="medium" (click)="re()">re</ion-button>-->
 </ion-content>

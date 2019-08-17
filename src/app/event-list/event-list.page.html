@@ -1,7 +1,7 @@
 
 <ion-content padding>
 <ion-item *ngFor="let n of data">
-  <ion-label (click)="cp()">{{n.eventInfo.name}}</ion-label>
+  <ion-label (click)="cp({eventIDs : n.eventInfo.eventID})" >{{n.eventInfo.name}}{{n.eventInfo.eventID}}</ion-label>
 </ion-item>
   <ion-button (click)="ok()">ok</ion-button>
 </ion-content>
