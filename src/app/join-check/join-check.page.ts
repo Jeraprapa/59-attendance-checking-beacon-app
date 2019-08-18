@@ -13,6 +13,7 @@ import {Platform} from '@ionic/angular';
 export class JoinCheckPage implements OnInit {
  cpidcheck;
  jid;
+ i = 0;
   constructor(private roter: Router, private datapass: DatapassService,
               private  http: HTTP, private ibeacon: IBeacon, private platform: Platform) {
     this.cpidcheck = this.datapass.cpcheck;
@@ -37,9 +38,12 @@ export class JoinCheckPage implements OnInit {
 
                 if (data.beacons.length > 0 ) {
                   alert(JSON.stringify(data));
-                  this.check();
-                  this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
-
+                  this.i++;
+                  if (this.i === 1) {
+                    this.check();
+                  } else {
+                    this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
+                  }
                 }
               },
               error => console.error()

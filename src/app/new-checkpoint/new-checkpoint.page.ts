@@ -22,7 +22,7 @@ export class NewCheckpointPage implements OnInit {
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
       this.eid = this.datapass.event_id;
       this.cpid = this.datapass.cpid;
-      this.timestop = this.timestart + this.duration ;
+      // this.timestop = this.timestart + this.duration ;
   }
   ngOnInit() {
   }
@@ -33,7 +33,7 @@ export class NewCheckpointPage implements OnInit {
                     eventID : this.eid,
                     Date_start : this.date,
                     Time_start : this.timestart,
-                    Time_stop : this.timestop,
+                    Time_stop : this.timestart + this.duration,
                     distance : this.area,
                     duration : this.duration,
                     Episode_name : this.name}, {}).then(value => {
