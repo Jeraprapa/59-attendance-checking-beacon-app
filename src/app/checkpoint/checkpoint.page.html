@@ -1,6 +1,3 @@
-<br>
-<br>
-<br>
 <ion-content padding >
   <br>
   <br>
@@ -12,17 +9,23 @@
 
   <br><br>
 
-  <!--<form>-->
-    <!--<table border="0">-->
-      <!--<tr align="center">-->
-        <!--<td  bgcolor="#6495ed" width="400" height="45" >Check point</td>-->
-        <!--<td  bgcolor="#6495ed" width="400" height="45" >Date</td>-->
-        <!--<td  bgcolor="#6495ed" width="400" height="45" >Time</td>-->
-      <!--</tr>-->
-    <!--</table>-->
-  <!--</form>-->
+  <form>
+    <table border="0">
+      <tr align="center">
+        <td  bgcolor="#6495ed" width="400" height="45" >Check point</td>
+        <td  bgcolor="#6495ed" width="400" height="45" >Date</td>
+        <td  bgcolor="#6495ed" width="400" height="45" >Time</td>
+      </tr>
+    </table>
+  </form>
+
   <ion-item *ngFor="let n of datacplist">
-    <ion-label (click)="cpdetail({cpids: n.cpID})">{{n.Episode_name}}{{n.Date_start}}{{n.Time_start}}</ion-label>
+    <tr align="center">
+      <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Episode_name}}</td>
+      <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Date_start}}</td>
+      <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Date_start}}</td>
+    </tr>
+    <!--<ion-label (click)="cpdetail({cpids: n.cpID})">{{n.Episode_name}}{{n.Date_start}}{{n.Time_start}}</ion-label>-->
   </ion-item>
 
 </ion-content>

@@ -1,7 +1,24 @@
+<ion-content padding >
+  <br>
+  <br>
+  <ion-text align="center">Event list</ion-text>
+  <br><br>
+  <br><br>
+  <form>
+    <table border="1">
+      <tr align="center">
+        <td  bgcolor="#6495ed" width="400" height="45" >Event name</td>
+        <td  bgcolor="#6495ed" width="400" height="45" >Status</td>
+      </tr>
+    </table>
+  </form>
+  <ion-item *ngFor="let n of data">
+    <tr align="center">
+      <td width="400" height="30" (click)="cp({eventIDs : n.eventInfo.eventID})">{{n.eventInfo.name}}</td>
+      <td width="400" height="30" (click)="cp({eventIDs : n.eventInfo.eventID})">{{n.eventInfo.status}}</td>
+    </tr>
+    <!--<ion-label (click)="cp({eventIDs : n.eventInfo.eventID})" >{{n.eventInfo.name}}{{n.eventInfo.status}}</ion-label>-->
+  </ion-item>
+  <ion-button align="center" class="centerb" (click)="ok()">ok</ion-button>
 
-<ion-content padding>
-<ion-item *ngFor="let n of data">
-  <ion-label (click)="cp({eventIDs : n.eventInfo.eventID})" >{{n.eventInfo.name}}{{n.eventInfo.eventID}}</ion-label>
-</ion-item>
-  <ion-button (click)="ok()">ok</ion-button>
 </ion-content>

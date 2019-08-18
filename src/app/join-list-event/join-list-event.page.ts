@@ -13,9 +13,18 @@ export class JoinListEventPage implements OnInit {
   joinIDs;
   cplist;
   cpid;
+  eventdata;
+  ename;
+  dstart;
+  dstop;
+  tstart;
+  tstop;
+  status;
+  detail;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.joinIDs = this.datapass.join_id;
   this.showcplist();
+  this.showdataevent();
   }
 
   ngOnInit() {
@@ -50,5 +59,31 @@ export class JoinListEventPage implements OnInit {
     // this.joinIDs = parameters.joinIDs;
     // this.datapass.join_id = this.joinIDs;
     this.roter.navigateByUrl('join-check');
+  }
+
+  showdataevent() {
+    this.http.get('http://acb.msuproject.net/webservice/event/' + this.datapass.eid,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      // this.datapass.dataevent = jsondata;
+      this.eventdata = jsondata;
+      this.ename = this.eventdata[0].name;
+      this.dstart = this.eventdata[0].Date_start;
+      this.dstop = this.eventdata[0].Date_stop;
+      this.tstart = this.eventdata[0].Time_start;
+      this.tstop = this.eventdata[0].Time_stop;
+      this.status = this.eventdata[0].status;
+      this.detail = this.eventdata[0].detail;
+      // this.datapass.event_name = this.database[0].name;
+      // this.datapass.event_id = this.database[0].eventID;
+      console.log(JSON.stringify(jsondata));
+      // alert(JSON.stringify(jsondata));
+      // alert(JSON.stringify(this.database[0].name));
+      // console.log(this.database[0].eventInof[1].name);
+      // this.roter.navigateByUrl('event-list');
+    }).catch(reason => {
+      // alert('no...');
+      console.log(reason);
+    });
   }
 }

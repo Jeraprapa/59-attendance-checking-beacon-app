@@ -1,39 +1,34 @@
-<br>
 <ion-content padding >
   <br>
   <form>
     <table align="right" border="0" >
       <tr align="left">
-        <td ></td><td width="60" height="30">Date </td><td>Start</td><td>|</td><td>End</td>
+        <td ></td><td width="60" height="30">Date </td><td>{{dstart}}</td>
       </tr>
       <tr align="left">
-        <td ></td><td width="60" height="30">Time </td><td>Start</td><td>|</td><td>End</td>
+        <td ></td><td width="60" height="30">Time </td><td>{{tstart}}</td><td>|</td><td>{{tstop}}</td>
       </tr>
       <tr align="left">
-        <td ><td width="60" height="30">Status </td><td>Public</td><td>|</td><td>Private</td>
+        <td ><td width="60" height="30">area </td><td>{{area}}</td>
       </tr>
     </table>
   </form>
 
   <p align="left">
-    <ion-text class="one">Check point name</ion-text>
+    <ion-text class="one">{{cpname}}</ion-text>
   </p>
   <br>
 
-  <p align="left">
-    <ion-item>
-      <ion-label position="floating" class="text">Event name</ion-label>
-      <ion-input ></ion-input>
-    </ion-item>
-  </p>
-  <br>
+  <!--<p align="left">-->
+    <!--<ion-item>-->
+      <!--<ion-label>{{ename}}</ion-label>-->
+    <!--</ion-item>-->
+  <!--</p>-->
+  <!--<br>-->
 
   <ion-item>
     <ion-label>Time for check</ion-label>
-    <ion-select>
-      <ion-select-option value="15">15.00</ion-select-option>
-      <ion-select-option value="17">17.00</ion-select-option>
-    </ion-select>
+    <ion-label>{{duration}}</ion-label>
   </ion-item>
   <br><br><br>
   <form>
@@ -42,7 +37,7 @@
         <td bgcolor="#6495ed" width="400" height="40" >ผู้เช็คชื่อ</td>
       </tr>
       <tr align="center">
-        <td width="60" height="30">คนเช็คชื่อคนที่ 1</td>
+        <!--<td width="60" height="30">คนเช็คชื่อคนที่ 1</td>-->
       </tr>
     </table>
   </form>

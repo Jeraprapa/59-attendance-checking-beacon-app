@@ -1,7 +1,27 @@
+<ion-content padding >
+  <br>
+  <br>
+  <ion-text class="one">Join list</ion-text>
+  <br><br>
 
-<ion-content padding>
+  <form>
+    <table border="1">
+      <tr align="center">
+        <td  bgcolor="#6495ed" width="400" height="45" >Event name</td>
+        <td  bgcolor="#6495ed" width="400" height="45" >Date</td>
+        <td  bgcolor="#6495ed" width="400" height="45" >Time</td>
+      </tr>
+    </table>
+  </form>
   <ion-item *ngFor="let n of data">
-    <ion-label (click)="jl({eid : n.eventID,joinIDs : n.joinID})" >{{n.name}} {{n.Date_start}} {{n.eventID}}</ion-label>
+    <tr align="center">
+      <td width="400" height="30" (click)="jl({eid : n.eventID,joinIDs : n.joinID})">{{n.name}}</td>
+      <td width="400" height="30" (click)="jl({eid : n.eventID,joinIDs : n.joinID})">{{n.Date_start}}</td>
+      <td width="400" height="30" (click)="jl({eid : n.eventID,joinIDs : n.joinID})">{{n.eventID}}</td>
+    </tr>
+    <!--<ion-label (click)="jl({eid : n.eventID,joinIDs : n.joinID})" >{{n.name}} {{n.Date_start}} {{n.eventID}}</ion-label>-->
   </ion-item>
+
   <ion-button (click)="ok()">ok</ion-button>
 </ion-content>
+

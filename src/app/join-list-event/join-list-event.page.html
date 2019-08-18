@@ -4,32 +4,32 @@
   <form>
     <table align="right" border="0" >
       <tr align="left">
-        <td ></td><td width="60" height="30">Date </td><td>Start</td><td>|</td><td>End</td>
+        <td ></td><td width="60" height="30">Date </td><td>{{dstart}}</td><td>|</td><td>{{dstop}}</td>
       </tr>
       <tr align="left">
-        <td ></td><td width="60" height="30">Time </td><td>Start</td><td>|</td><td>End</td>
+        <td ></td><td width="60" height="30">Time </td><td>{{tstart}}</td><td>|</td><td>{{tstop}}</td>
       </tr>
       <tr align="left">
-        <td ><td width="60" height="30">Status </td><td>Public</td><td>|</td><td>Private</td>
+        <td ><td width="60" height="30">Status </td><td>{{status}}</td>
       </tr>
     </table>
   </form>
 
   <p align="left">
-    <ion-text class="one">  Event 1</ion-text>
+    <ion-text class="one">{{ename}}</ion-text>
   </p>
   <br>
 
   <p align="left">
     <ion-item>
       <ion-label position="floating" class="text">Detail</ion-label>
-      <ion-input [(ngModel)] ="Detail"></ion-input>
+      <ion-text>{{detail}}</ion-text>
     </ion-item>
   </p>
   <br>
   <br>
   <ion-item *ngFor="let n of cplist">
-    <ion-label (click)="cpuuid({cpid: n.cpID})">{{n.name}}{{n.Time_start}}</ion-label>
+    <ion-label (click)="cpuuid({cpid: n.cpID})">{{n.name}} {{n.Time_start}}</ion-label>
   </ion-item>
   <!--{{joinIDs}}-->
   <br>

@@ -1,31 +1,30 @@
-<br>
 <ion-content padding >
   <br>
   <form>
     <table align="right" border="0" >
       <tr align="left">
-        <td ></td><td width="60" height="30">Date </td><td>Start</td><td>|</td><td>End</td>
+        <td ></td><td width="60" height="30">Date </td><td>{{dstart}}</td><td>|</td><td>{{dstop}}</td>
       </tr>
       <tr align="left">
-        <td ></td><td width="60" height="30">Time </td><td>Start</td><td>|</td><td>End</td>
+        <td ></td><td width="60" height="30">Time </td><td>{{tstart}}</td><td>|</td><td>{{tstop}}</td>
       </tr>
       <tr align="left">
-        <td ><td width="60" height="30">Status </td><td>Public</td><td>|</td><td>Private</td>
+        <td ><td width="60" height="30">Status </td><td>{{status}}</td><td>
       </tr>
     </table>
   </form>
 
   <p align="left">
-    <ion-text class="one">  Event 1</ion-text>
+    <ion-text class="one">{{name}}</ion-text>
   </p>
   <br>
 
-  <p align="left">
-    <ion-item>
-      <ion-label position="floating" class="text">Detail</ion-label>
-      <ion-input [(ngModel)] ="Detail"></ion-input>
-    </ion-item>
-  </p>
+  <!--<p align="left">-->
+    <!---->
+      <!--<ion-label position="floating" class="text">Detail</ion-label>-->
+      <!--<ion-label position="floating" class="text">{{detail}}</ion-label>-->
+
+  <!--</p>-->
   <br>
   <br>
   <br>
