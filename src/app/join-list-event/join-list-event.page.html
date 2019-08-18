@@ -1,9 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>join-list-event</ion-title>
-  </ion-toolbar>
-</ion-header>
+<br>
+<ion-content padding >
+  <br>
+  <form>
+    <table align="right" border="0" >
+      <tr align="left">
+        <td ></td><td width="60" height="30">Date </td><td>Start</td><td>|</td><td>End</td>
+      </tr>
+      <tr align="left">
+        <td ></td><td width="60" height="30">Time </td><td>Start</td><td>|</td><td>End</td>
+      </tr>
+      <tr align="left">
+        <td ><td width="60" height="30">Status </td><td>Public</td><td>|</td><td>Private</td>
+      </tr>
+    </table>
+  </form>
 
-<ion-content padding>
+  <p align="left">
+    <ion-text class="one">  Event 1</ion-text>
+  </p>
+  <br>
+
+  <p align="left">
+    <ion-item>
+      <ion-label position="floating" class="text">Detail</ion-label>
+      <ion-input [(ngModel)] ="Detail"></ion-input>
+    </ion-item>
+  </p>
+  <br>
+  <br>
+  <ion-item *ngFor="let n of cplist">
+    <ion-label (click)="cpuuid({cpid: n.cpID})">{{n.name}}{{n.Time_start}}</ion-label>
+  </ion-item>
+  <!--{{joinIDs}}-->
+  <br>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="warning" (click)="check()">Check point</ion-button>
+    </ion-col>
+  </ion-row>
+
 
 </ion-content>

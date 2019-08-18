@@ -10,6 +10,8 @@ import {HTTP} from '@ionic-native/http/ngx';
 })
 export class JoinListPage implements OnInit {
   data;
+  joinIDs;
+  eid;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.data = this.datapass.datajoin;
     console.log(this.data);
@@ -23,7 +25,11 @@ export class JoinListPage implements OnInit {
     this.roter.navigateByUrl('home');
   }
 
-  jl() {
-
+  jl(parameters: { eid: number, joinIDs: number}) {
+    this.joinIDs = parameters.joinIDs;
+    this.eid = parameters.eid;
+    this.datapass.eid = this.eid;
+    this.datapass.join_id = this.joinIDs;
+    this.roter.navigateByUrl('join-list-event');
   }
 }

@@ -22,5 +22,9 @@ export class DatapassService {
  public cptime;
  public cpuid;
  public datajoin;
+ public join_id;
+ public eid;
+ public cplistid;
+ public cpcheck;
   constructor() { }
 }
