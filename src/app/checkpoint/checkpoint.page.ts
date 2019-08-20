@@ -30,11 +30,8 @@ export class CheckpointPage implements OnInit {
       // this.datapass.event_id = this.database[0].eventID;
       console.log(JSON.stringify(jsondata));
       // alert(JSON.stringify(jsondata));
-      // alert(JSON.stringify(this.database[0].name));
-      // console.log(this.database[0].eventInof[1].name);
       // this.roter.navigateByUrl('event-list');
     }).catch(reason => {
-      // alert('no...');
       console.log(reason);
     });
   }

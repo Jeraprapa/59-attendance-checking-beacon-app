@@ -32,7 +32,7 @@ export class NewCheckpointPage implements OnInit {
 
     newcp() {
         // this.timestop = new Date(this.timestart.getTime() + (1000 * this.duration * 60 ));
-         this.timestop  =  moment(this.timestart, 'HH:mm').add(this.duration , 'minutes').format('HH:mm:ss');
+        this.timestop  =  moment(this.timestart, 'HH:mm').add(this.duration , 'minutes').format('HH:mm:ss');
         this.timestart  =  moment(this.timestart, 'HH:mm').format('HH:mm:ss');
         this.date  =  moment(this.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
         console.log(this.duration );

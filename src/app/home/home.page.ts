@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
          this.roter.navigateByUrl('showprofile');
     }
     JoinEvent() {
-
+        this.roter.navigateByUrl('join-event');
     }
 
     NewEvent() {
@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
     }
 
     Report() {
-
+        this.roter.navigateByUrl('report');
     }
 
     logout() {

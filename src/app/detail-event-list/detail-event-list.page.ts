@@ -17,6 +17,7 @@ export class DetailEventListPage implements OnInit {
     tstart;
     tstop;
     status;
+    codeid;
 
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.edetail();
@@ -41,6 +42,7 @@ export class DetailEventListPage implements OnInit {
       this.tstop = this.datae[0].Time_stop;
       this.status = this.datae[0].status;
       this.name = this.datae[0].name;
+      this.codeid =  this.datapass.event_id;
       // this.datapass.event_name = this.database[0].name;
       // this.datapass.event_id = this.database[0].eventID;
       console.log(JSON.stringify(jsondata));

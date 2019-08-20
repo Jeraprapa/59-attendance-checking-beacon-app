@@ -21,7 +21,7 @@ export class JoinListPage implements OnInit {
   }
 
   ok() {
-    alert(this.data);
+    // alert(this.data);
     this.roter.navigateByUrl('home');
   }
 

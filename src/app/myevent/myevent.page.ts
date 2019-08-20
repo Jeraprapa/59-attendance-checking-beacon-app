@@ -23,15 +23,9 @@ export class MyeventPage implements OnInit {
          let jsondata = JSON.parse(value.data);
          this.datapass.dataevent = jsondata;
          this.database = jsondata;
-          // this.datapass.event_name = this.database[0].name;
-          // this.datapass.event_id = this.database[0].eventID;
           console.log(JSON.stringify(jsondata));
-         // alert(JSON.stringify(jsondata));
-         // alert(JSON.stringify(this.database[0].name));
-        // console.log(this.database[0].eventInof[1].name);
         this.roter.navigateByUrl('event-list');
       }).catch(reason => {
-        // alert('no...');
         console.log(reason);
       });
     }
@@ -42,18 +36,11 @@ export class MyeventPage implements OnInit {
       let jsondata = JSON.parse(value.data);
       this.datapass.datajoin = jsondata;
        this.datab = jsondata;
-      // this.datapass.event_name = this.database[0].name;
-      // this.datapass.event_id = this.database[0].eventID;
       console.log(this.datapass.uid);
       console.log(JSON.stringify(jsondata));
-      // alert(JSON.stringify(jsondata));
-      // alert(JSON.stringify(this.database[0].name));
-      // console.log(this.database[0].eventInof[1].name);
       this.roter.navigateByUrl('join-list');
     }).catch(reason => {
-      // alert('no...');
       console.log(reason);
     });
-    // this.roter.navigateByUrl('welcome');
   }
 }

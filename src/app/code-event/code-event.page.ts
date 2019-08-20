@@ -9,7 +9,9 @@ import {DatapassService} from '../datapass.service';
 })
 export class CodeEventPage implements OnInit {
  eid;
-  constructor(private roter: Router, private datapass: DatapassService) { }
+  constructor(private roter: Router, private datapass: DatapassService) {
+      this.eid = this.datapass.event_id;
+  }
 
   ngOnInit() {
     // this.eid = this.datapass.event_id;

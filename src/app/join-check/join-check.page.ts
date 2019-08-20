@@ -41,6 +41,7 @@ export class JoinCheckPage implements OnInit {
                   this.i++;
                   if (this.i === 1) {
                     this.check();
+                    alert('check');
                   } else {
                     this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
                   }
@@ -87,7 +88,7 @@ export class JoinCheckPage implements OnInit {
       // this.datapass.event_name = this.database[0].name;
       // this.datapass.event_id = this.database[0].eventID;
        console.log(JSON.stringify(jsondata));
-      alert(JSON.stringify(jsondata));
+      // alert(JSON.stringify(jsondata));
     }).catch(reason => {
       alert('no');
     });

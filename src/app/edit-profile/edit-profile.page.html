@@ -6,17 +6,21 @@
   </ion-avatar>
   <ion-item>
     <ion-label position="floating" >Password</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="password">{{oldpassword}}</ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating" >Name-Surname</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating" >Name</ion-label>
+    <ion-input [(ngModel)]="name">{{oldname}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" >Surname</ion-label>
+    <ion-input [(ngModel)]="surname">{{oldsurname}}</ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating" >Phone</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="tel">{{oldtel}}</ion-input>
   </ion-item>
   <ion-fab>
-    <ion-fab-button class="ion-fab-button" color="test">OK</ion-fab-button>
+    <ion-fab-button class="ion-fab-button" color="test" (click)="editprofile()">OK</ion-fab-button>
   </ion-fab>
 </ion-content>

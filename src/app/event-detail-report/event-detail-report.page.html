@@ -1,9 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>event-detail-report</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
+  <br>
+  <form>
+    <table align="right" border="0" >
+      <tr align="left">
+        <td ></td><td width="60" height="30">Date </td><td>{{dstart}}</td><td>|</td><td>{{dstop}}</td>
+      </tr>
+      <tr align="left">
+        <td ></td><td width="60" height="30">Time </td><td>{{tstart}}</td><td>|</td><td>{{tstop}}</td>
+      </tr>
+      <tr align="left">
+        <td ><td width="60" height="30">Status </td><td>{{status}}</td><td>
+      </tr>
+    </table>
+  </form>
 
+  <p align="left">
+    <ion-text class="one">{{name}}</ion-text>
+  </p>
+  <br>
+  <ion-item *ngFor="let n of datacplist">
+    <tr align="center">
+      <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Episode_name}}</td>
+      <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Date_start}}</td>
+      <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Time_start}}</td>
+    </tr>
+    <!--<ion-label (click)="cpdetail({cpids: n.cpID})">{{n.Episode_name}}{{n.Date_start}}{{n.Time_start}}</ion-label>-->
+  </ion-item>
 </ion-content>

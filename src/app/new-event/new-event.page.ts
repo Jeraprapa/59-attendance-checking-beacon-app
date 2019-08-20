@@ -44,7 +44,7 @@ export class NewEventPage implements OnInit {
       // this.datapass.event_id = this.database[0].eventID;
       // // console.log(JSON.stringify(value.data));
       //  alert(JSON.stringify(jsondata));
-      this.roter.navigateByUrl('code-event');
+      this.roter.navigateByUrl('home');
     }).catch(reason => {
       alert('no');
     });

@@ -1,9 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>join-event</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
+  <ion-text class="itext">Join Event</ion-text>
+  <br>
+  <br>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Event Code</ion-label>
+    <ion-input [(ngModel)]="ecode"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" class="text">A1(ถ้ามี)</ion-label>
+    <ion-input [(ngModel)]="a1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" class="text">A2(ถ้ามี)</ion-label>
+    <ion-input [(ngModel)]="a2"></ion-input>
+  </ion-item>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <ion-button (click)="join()" class="ibutton">join</ion-button>
+
+
 
 </ion-content>
+
