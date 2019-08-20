@@ -47,6 +47,7 @@ export class CheckpointDetailPage implements OnInit {
       this.cpname = this.datacpdetail[0].Episode_name;
       // this.datapass.event_name = this.database[0].name;
       // this.datapass.event_id = this.database[0].eventID;
+      this.datapass.cpuuid = this.cpid;
       console.log(JSON.stringify(jsondata));
       // alert(JSON.stringify(jsondata));
       // alert(JSON.stringify(this.database[0].name));

@@ -6,6 +6,7 @@ import {
 } from '@ionic-native/barcode-scanner/ngx';
 import {DatapassService} from '../datapass.service';
 import {Router} from '@angular/router';
+import uuidv1 from 'uuid/v1';
 
 @Component({
   selector: 'app-attend',
@@ -14,7 +15,9 @@ import {Router} from '@angular/router';
 })
 export class AttendPage implements OnInit {
     beaconRegion;
+    uid;
   constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner, private datapass: DatapassService, private roter: Router) {
+  this.uid = this.datapass.cpuuid;
   }
   ngOnInit() {
   }
@@ -42,11 +45,11 @@ export class AttendPage implements OnInit {
               }
           );
       this.beaconRegion = this.ibeacon.BeaconRegion('deskBeacon',
-          '12345678-0001-1234-0000-000000000000' , 0 , 0 , false);
+          this.uid , 0 , 0 , false);
       this.datapass.cpid = this.beaconRegion.uuid;
       this.ibeacon.startAdvertising(this.beaconRegion)
           .then(
-              () => alert(this.beaconRegion.uuid),
+              () => console.log(this.beaconRegion.uuid),
               error => console.error('Native layer failed to begin monitoring: ', error)
           );
 
@@ -77,7 +80,7 @@ export class AttendPage implements OnInit {
         );
 
     let beaconRegion1 = this.ibeacon.BeaconRegion('deskBeacon',
-        '12345678-0001-1234-0000-000000000000' , 0 , 0 , false);
+        this.uid , 0 , 0 , false);
 
     this.ibeacon.stopAdvertising(beaconRegion1)
         .then(

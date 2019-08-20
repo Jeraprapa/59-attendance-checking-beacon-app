@@ -26,5 +26,6 @@ export class DatapassService {
  public eid;
  public cplistid;
  public cpcheck;
+ public cpuuid;
   constructor() { }
 }

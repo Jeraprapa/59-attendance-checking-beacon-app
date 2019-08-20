@@ -25,10 +25,15 @@
     <ion-input>{{timestart + duration}}</ion-input>
   </ion-item>
   <br>
-  <ion-item>
-    <ion-label position="floating" class="text">duration</ion-label>
-    <ion-datetime displayFormat="mm" [(ngModel)]="duration"></ion-datetime>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating" class="text">duration</ion-label>
+      <ion-select interface="popover"  [(ngModel)]="duration">
+        <ion-select-option value=5 >5</ion-select-option>
+        <ion-select-option value=10 >10</ion-select-option>
+        <ion-select-option value=15 >15</ion-select-option>
+        <ion-select-option value=20 >20</ion-select-option>
+      </ion-select>
+    </ion-item>
   <br>
   <ion-item>
     <ion-label position="floating" class="text">Area</ion-label>
