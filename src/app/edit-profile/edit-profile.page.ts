@@ -13,7 +13,6 @@ export class EditProfilePage implements OnInit {
   img;
   name;
   surname;
-  imgc;
   tel;
   password;
   msuid;
