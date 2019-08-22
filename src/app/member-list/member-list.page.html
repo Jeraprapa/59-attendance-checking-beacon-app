@@ -8,15 +8,21 @@
     <table border="1">
       <tr align="center">
         <td  bgcolor="#6495ed" width="400" height="45" >Member</td>
-        <td  bgcolor="#6495ed" width="400" height="45" >select</td>
       </tr>
     </table>
   </form>
-  <ion-item *ngFor="let n of data">
+  <ion-item *ngFor="let n of datamemberlist">
     <tr align="center">
-      <td width="400" height="30" >{{n.eventInfo.name}}</td>
-      <td width="400" height="30" >{{n.eventInfo.status}}</td>
+      <td width="400" height="30" >{{n.name}}</td>
+      <!--<ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()" (click)="checkerid({memberid : n.userID})"></ion-toggle>-->
+      <!--<ion-radio slot="start" color="success" value="apple" (click)="checkerid({memberIDs : n.userID})"></ion-radio>-->
     </tr>
     <!--<ion-label (click)="cp({eventIDs : n.eventInfo.eventID})" >{{n.eventInfo.name}}{{n.eventInfo.status}}</ion-label>-->
   </ion-item>
+
+  <!--<ion-item>-->
+    <!--<ion-label>Blackberry</ion-label>-->
+    <!--&lt;!&ndash;<ion-toggle slot="start" name="blackberry" color="dark" [(ngModel)]="pepperoni"></ion-toggle>&ndash;&gt;-->
+    <!--<ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()" (click)="checkerid()"></ion-toggle>-->
+  <!--</ion-item>-->
 </ion-content>

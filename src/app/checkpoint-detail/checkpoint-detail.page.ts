@@ -19,6 +19,7 @@ export class CheckpointDetailPage implements OnInit {
   tstop;
   duration;
   cpname;
+  datachecker;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.cpdetail();
   }
@@ -57,5 +58,19 @@ export class CheckpointDetailPage implements OnInit {
       // alert('no...');
       console.log(reason);
     });
+  }
+
+  checker () {
+    this.http.get('http://acb.msuproject.net/webservice/listChecker/' + this.datapass.event_id,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.datachecker = jsondata;
+      console.log(JSON.stringify(jsondata));
+      // this.roter.navigateByUrl('event-list');
+    }).catch(reason => {
+      // alert('no...');
+      console.log(reason);
+    });
+
   }
 }

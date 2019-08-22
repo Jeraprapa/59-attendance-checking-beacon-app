@@ -36,9 +36,12 @@
       <tr align="center">
         <td bgcolor="#6495ed" width="400" height="40" >ผู้เช็คชื่อ</td>
       </tr>
-      <tr align="center">
-        <!--<td width="60" height="30">คนเช็คชื่อคนที่ 1</td>-->
-      </tr>
+      <ion-item *ngFor="let n of datachecker">
+        <tr align="center">
+          <td width="400" height="30" >{{n.name}}</td>
+        </tr>
+        <!--<ion-label (click)="cp({eventIDs : n.eventInfo.eventID})" >{{n.eventInfo.name}}{{n.eventInfo.status}}</ion-label>-->
+      </ion-item>
     </table>
   </form>
 

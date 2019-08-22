@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {DatapassService} from '../datapass.service';
+import {HTTP} from '@ionic-native/http/ngx';
 
 @Component({
   selector: 'app-approve',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./approve.page.scss'],
 })
 export class ApprovePage implements OnInit {
-
-  constructor() { }
+  public isToggled: boolean;
+  value;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
+    // this.myValue();
+    this.isToggled = false;
+  }
 
   ngOnInit() {
   }
+  public notify() {
+    console.log(this.isToggled);
+  }
 
+  checker () {
+
+
+  }
 }

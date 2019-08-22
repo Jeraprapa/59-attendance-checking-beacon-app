@@ -40,6 +40,7 @@ const routes: Routes = [
   { path: 'edit-event', loadChildren: './edit-event/edit-event.module#EditEventPageModule' },
   { path: 'edit-event2', loadChildren: './edit-event2/edit-event2.module#EditEvent2PageModule' },
   { path: 'regist', loadChildren: './regist/regist.module#RegistPageModule' },
+  { path: 'add-checker', loadChildren: './add-checker/add-checker.module#AddCheckerPageModule' },
 ];
 
 @NgModule({
