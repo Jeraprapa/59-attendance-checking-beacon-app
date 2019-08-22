@@ -21,18 +21,19 @@ export class JoinListEventPage implements OnInit {
   tstop;
   status;
   detail;
+  datachecker;
+  checkerid;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.joinIDs = this.datapass.join_id;
   this.showcplist();
   this.showdataevent();
+  this.checker();
   }
 
   ngOnInit() {
   }
 
-  check() {
-    // this.roter.navigateByUrl('join-check');
-  }
+
   showcplist() {
     this.http.get('http://acb.msuproject.net/webservice/listCheckpoint/' + this.datapass.eid,
         { }, {}).then(value => {
@@ -58,7 +59,13 @@ export class JoinListEventPage implements OnInit {
     this.datapass.cpcheck = this.cpid;
     // this.joinIDs = parameters.joinIDs;
     // this.datapass.join_id = this.joinIDs;
-    this.roter.navigateByUrl('join-check');
+    // this.roter.navigateByUrl('join-check');
+    if (this.checkerid === this.datapass.uid) {
+      // alert('checker');
+      this.roter.navigateByUrl('attend');
+    } else {
+      this.roter.navigateByUrl('join-check');
+    }
   }
 
   showdataevent() {
@@ -81,6 +88,38 @@ export class JoinListEventPage implements OnInit {
       // alert(JSON.stringify(this.database[0].name));
       // console.log(this.database[0].eventInof[1].name);
       // this.roter.navigateByUrl('event-list');
+    }).catch(reason => {
+      // alert('no...');
+      console.log(reason);
+    });
+  }
+
+  checker () {
+    this.http.get('http://acb.msuproject.net/webservice/listChecker/' + this.datapass.eid,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.datachecker = jsondata;
+      this.checkerid = this.datachecker[0].userID;
+      console.log(JSON.stringify(jsondata));
+      // this.roter.navigateByUrl('event-list');
+    }).catch(reason => {
+      // alert('no...');
+      console.log(reason);
+    });
+
+  }
+  check() {
+    // this.roter.navigateByUrl('join-check');
+  }
+
+  delete() {
+    this.http.get('http://acb.msuproject.net/webservice/joinDel/' + this.joinIDs,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      // this.datachecker = jsondata;
+      // console.log(JSON.stringify(jsondata));
+      // this.roter.navigateByUrl('event-list');
+      alert('delete checkpoint');
     }).catch(reason => {
       // alert('no...');
       console.log(reason);

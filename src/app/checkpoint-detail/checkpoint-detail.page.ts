@@ -20,8 +20,13 @@ export class CheckpointDetailPage implements OnInit {
   duration;
   cpname;
   datachecker;
+  checkeruid;
+  c_ID;
+  i;
+  name;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.cpdetail();
+    this.checker();
   }
 
   ngOnInit() {
@@ -29,7 +34,10 @@ export class CheckpointDetailPage implements OnInit {
 
   st() {
     // this.uid = this.datapass.cpuid;
-    this.roter.navigateByUrl('attend');
+     this.roter.navigateByUrl('attend');
+    // if (this.checkername === this.datapass.uid) {
+    //   alert('checker');
+    // }
   }
 
   cpdetail() {
@@ -65,6 +73,8 @@ export class CheckpointDetailPage implements OnInit {
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.datachecker = jsondata;
+      this.checkeruid = this.datachecker[0].userID;
+      this.c_ID = this.datachecker[0].c_ID;
       console.log(JSON.stringify(jsondata));
       // this.roter.navigateByUrl('event-list');
     }).catch(reason => {
@@ -72,5 +82,39 @@ export class CheckpointDetailPage implements OnInit {
       console.log(reason);
     });
 
+  }
+
+  add() {
+
+     this.roter.navigateByUrl('add-checker');
+  }
+
+    delete() {
+      this.http.get('http://acb.msuproject.net/webservice/cpDel/' + this.datapass.cpuid,
+          { }, {}).then(value => {
+        let jsondata = JSON.parse(value.data);
+        // this.datachecker = jsondata;
+        // console.log(JSON.stringify(jsondata));
+        // this.roter.navigateByUrl('event-list');
+        alert('delete checkpoint');
+      }).catch(reason => {
+        // alert('no...');
+        console.log(reason);
+      });
+    }
+
+  del(parameters: { c_ID: number }) {
+    this.c_ID = parameters.c_ID;
+    this.http.get('http://acb.msuproject.net/webservice/ckDel/' + this.c_ID,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      // this.datachecker = jsondata;
+      // console.log(JSON.stringify(jsondata));
+      // this.roter.navigateByUrl('event-list');
+      alert('delete checker');
+    }).catch(reason => {
+      // alert('no...');
+      console.log(reason);
+    });
   }
 }

@@ -63,4 +63,18 @@ export class DetailEventListPage implements OnInit {
     approval() {
         this.roter.navigateByUrl('approve');
     }
+
+    delete() {
+        this.http.get('http://acb.msuproject.net/webservice/eventDel/' + this.datapass.event_id,
+            { }, {}).then(value => {
+            let jsondata = JSON.parse(value.data);
+            // this.datachecker = jsondata;
+            // console.log(JSON.stringify(jsondata));
+            // this.roter.navigateByUrl('event-list');
+            alert('delete event');
+        }).catch(reason => {
+            // alert('no...');
+            console.log(reason);
+        });
+    }
 }
