@@ -55,4 +55,12 @@ export class DetailEventListPage implements OnInit {
       console.log(reason);
     });
   }
+
+    showmember() {
+        this.roter.navigateByUrl('member-list');
+    }
+
+    approval() {
+        this.roter.navigateByUrl('approve');
+    }
 }

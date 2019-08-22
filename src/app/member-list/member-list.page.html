@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>member-list</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
-
+<h1>
+  <ion-text>Member</ion-text>
+</h1>
+  <br><br>
+  <br><br>
+  <form>
+    <table border="1">
+      <tr align="center">
+        <td  bgcolor="#6495ed" width="400" height="45" >Member</td>
+        <td  bgcolor="#6495ed" width="400" height="45" >select</td>
+      </tr>
+    </table>
+  </form>
+  <ion-item *ngFor="let n of data">
+    <tr align="center">
+      <td width="400" height="30" >{{n.eventInfo.name}}</td>
+      <td width="400" height="30" >{{n.eventInfo.status}}</td>
+    </tr>
+    <!--<ion-label (click)="cp({eventIDs : n.eventInfo.eventID})" >{{n.eventInfo.name}}{{n.eventInfo.status}}</ion-label>-->
+  </ion-item>
 </ion-content>
