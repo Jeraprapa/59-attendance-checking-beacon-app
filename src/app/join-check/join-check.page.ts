@@ -49,6 +49,7 @@ export class JoinCheckPage implements OnInit {
                       if (this.i === 1) {
                           this.check();
                           alert('check');
+                          this.roter.navigateByUrl('join-list-event');
                       } else {
                           this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
                       }
@@ -77,9 +78,8 @@ export class JoinCheckPage implements OnInit {
           this.cpidcheck , 0 , 0 , false);
 
       this.ibeacon.startRangingBeaconsInRegion(beaconRegion).then(value => {
-        alert('ok....');
+        alert('Search....');
       }).catch(reason => {
-
         alert(reason);
       });
     }).catch(reason => {
