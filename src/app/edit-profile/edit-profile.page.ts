@@ -15,16 +15,6 @@ export class EditProfilePage implements OnInit {
   surname;
   tel;
   password;
-  msuid;
-  email;
-  oldimg;
-  oldname;
-  oldsurname;
-  imgnew;
-  oldtel;
-  oldpassword;
-  oldmsuid;
-  oldemail;
   databaseshow;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera) {
     this.show();
@@ -32,6 +22,10 @@ export class EditProfilePage implements OnInit {
 
   ngOnInit() {
     this.img = this.datapass.img;
+    this.name = this.datapass.name;
+    this.surname = this.datapass.surname;
+    this.tel = this.datapass.tel;
+    this.password = this.datapass.pwd;
   }
 
   change() {
@@ -58,15 +52,10 @@ export class EditProfilePage implements OnInit {
           name: this.name,
           surname : this.surname,
           image : this.img,
-          email : this.datapass.uname,
           tel: this.tel,
-          password : this.password,
-          msuid : this.oldmsuid
+          password : this.password
         }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
-     // this.database = jsondata;
-
-      // alert(JSON.stringify(this.database));
       this.roter.navigateByUrl('showprofile');
     }).catch(reason => {
       alert('no');
@@ -76,17 +65,8 @@ export class EditProfilePage implements OnInit {
     this.http.get('http://acb.msuproject.net/webservice/user/' + this.datapass.uid,
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
-     // this.datapass.dataevent = jsondata;
-       this.databaseshow = jsondata;
-      this.oldname = this.databaseshow[0].name;
-      this.oldimg = this.databaseshow[0].image;
-      this.oldsurname = this.databaseshow[0].surname;
-      this.oldtel = this.databaseshow[0].tel;
-      this.oldpassword = this.databaseshow[0].password;
-      this.oldmsuid = this.databaseshow[0].msuid;
-      this.oldemail = this.databaseshow[0].email;
+      this.databaseshow = jsondata;
       console.log(JSON.stringify(jsondata));
-     // this.roter.navigateByUrl('event-list');
     }).catch(reason => {
       console.log(reason);
     });

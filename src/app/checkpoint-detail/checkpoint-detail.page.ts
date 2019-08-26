@@ -117,4 +117,8 @@ export class CheckpointDetailPage implements OnInit {
       console.log(reason);
     });
   }
+
+  edit() {
+    this.roter.navigateByUrl('edit-checkpoint');
+  }
 }

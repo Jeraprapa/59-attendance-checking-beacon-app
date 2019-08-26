@@ -77,4 +77,8 @@ export class DetailEventListPage implements OnInit {
             console.log(reason);
         });
     }
+
+    edit() {
+        this.roter.navigateByUrl('edit-event');
+    }
 }

@@ -19,9 +19,8 @@ export class NewEventPage implements OnInit {
   q1 = '';
   q2 = '';
   uid;
-  evname;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
   database;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
   ngOnInit() {
     this.uid = this.datapass.uid;
   }
@@ -38,12 +37,7 @@ export class NewEventPage implements OnInit {
           status : this.e,
           Q1 : this.q1,
           Q2 : this.q2}, {}).then(value => {
-      // let jsondata = JSON.parse(value.data);
-      // this.database = jsondata;
-      // this.datapass.event_name = this.database[0].name;
-      // this.datapass.event_id = this.database[0].eventID;
-      // // console.log(JSON.stringify(value.data));
-      //  alert(JSON.stringify(jsondata));
+      alert('complete');
       this.roter.navigateByUrl('home');
     }).catch(reason => {
       alert('no');

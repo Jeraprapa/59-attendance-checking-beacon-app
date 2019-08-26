@@ -6,17 +6,39 @@
   <br><br>
   <ion-item>
     <ion-label position="floating" class="text">Name</ion-label>
-    <ion-input [(ngModel)] ="Name"></ion-input>
+    <ion-input [(ngModel)] ="cpname"></ion-input>
   </ion-item>
   <br>
   <ion-item>
-    <ion-label position="floating" class="text">Date</ion-label>
-    <ion-input  [(ngModel)]="Date"></ion-input>
+    <ion-label position="floating" class="text">Date Stop</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="date"></ion-datetime>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Time Start</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestart"></ion-datetime>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Time Stop</ion-label>
+    <!--<ion-input  [(ngModel)]="timestop"></ion-input>-->
+    <!--<ion-input>{{timestop}}</ion-input>-->
+    <ion-input>{{timestart + duration}}</ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">duration</ion-label>
+    <ion-select interface="popover"  [(ngModel)]="duration">
+      <ion-select-option value=5 >5</ion-select-option>
+      <ion-select-option value=10 >10</ion-select-option>
+      <ion-select-option value=15 >15</ion-select-option>
+      <ion-select-option value=20 >20</ion-select-option>
+    </ion-select>
   </ion-item>
   <br>
   <ion-item>
     <ion-label position="floating" class="text">Area</ion-label>
-    <ion-input  [(ngModel)]="Area"></ion-input>
+    <ion-input  [(ngModel)]="area"></ion-input>
   </ion-item>
   <br>
   <br>
@@ -24,7 +46,7 @@
   <br><br><br><br>
   <ion-row>
     <ion-col width-5>
-      <ion-button expand="block" color="medium" >OK</ion-button>
+      <ion-button expand="block" color="medium" (click)="ok()">OK</ion-button>
     </ion-col>
   </ion-row>
 

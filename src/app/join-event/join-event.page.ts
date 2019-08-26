@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
-
 @Component({
   selector: 'app-join-event',
   templateUrl: './join-event.page.html',
@@ -15,11 +14,8 @@ export class JoinEventPage implements OnInit {
   status = '' ;
   datacode;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
-
   ngOnInit() {
   }
-
-
   join() {
     this.http.post('http://acb.msuproject.net/webservice/newJoin',
         { userID : this.datapass.uid,

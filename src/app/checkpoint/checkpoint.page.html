@@ -22,7 +22,7 @@
   <ion-item *ngFor="let n of datacplist">
     <tr align="center">
       <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Episode_name}}</td>
-      <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Date_start}}</td>
+      <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{dates}}</td>
       <td width="400" height="30" (click)="cpdetail({cpids: n.cpID})">{{n.Time_start}}</td>
     </tr>
     <!--<ion-label (click)="cpdetail({cpids: n.cpID})">{{n.Episode_name}}{{n.Date_start}}{{n.Time_start}}</ion-label>-->

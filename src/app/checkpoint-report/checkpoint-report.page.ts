@@ -27,7 +27,6 @@ export class CheckpointReportPage implements OnInit {
   ngOnInit() {
   }
  cpreport() {
-  // http://acb.msuproject.net/webservice/listSign/123ee897-e82b-1543-a237-ef66554412d3
    this.http.get('http://acb.msuproject.net/webservice/checkpoint/' + this.datapass.cpuidreport,
        { }, {}).then(value => {
      let jsondata = JSON.parse(value.data);
@@ -54,15 +53,9 @@ export class CheckpointReportPage implements OnInit {
    this.http.get('http://acb.msuproject.net/webservice/listSign/' + this.datapass.cpuidreport,
        { }, {}).then(value => {
      let jsondata = JSON.parse(value.data);
-     // this.datapass.dataevent = jsondata;
      this.datasign = jsondata;
      console.log(JSON.stringify(jsondata));
-     // alert(JSON.stringify(jsondata));
-     // alert(JSON.stringify(this.database[0].name));
-     // console.log(this.database[0].eventInof[1].name);
-     // this.roter.navigateByUrl('event-list');
    }).catch(reason => {
-     // alert('no...');
      console.log(reason);
    });
  }

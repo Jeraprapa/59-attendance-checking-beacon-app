@@ -11,39 +11,50 @@ import {Platform} from '@ionic/angular';
   styleUrls: ['./join-check.page.scss'],
 })
 export class JoinCheckPage implements OnInit {
- cpidcheck;
- jid;
- i = 0;
+    cpidcheck;
+    jid;
+    i = 0;
+    datasign;
+    uid;
   constructor(private roter: Router, private datapass: DatapassService,
               private  http: HTTP, private ibeacon: IBeacon, private platform: Platform) {
     this.cpidcheck = this.datapass.cpcheck;
     this.jid = this.datapass.join_id;
   }
-
   ngOnInit() {
   }
-
   start() {
-    this.platform.ready().then(value => {
-      // Request permission to use location on iOS
-      this.ibeacon.requestAlwaysAuthorization();
-// create a new delegate and register it with the native layer
-      let delegate = this.ibeacon.Delegate();
+      this.http.get('http://acb.msuproject.net/webservice/listSign/' + this.datapass.cpcheck,
+          { }, {}).then(value => {
+          let jsondata = JSON.parse(value.data);
+          this.datasign = jsondata;
+          this.uid = this.datasign[0].uid;
+          console.log(JSON.stringify(jsondata));
+      }).catch(reason => {
+          console.log(reason);
+      });
 
-// Subscribe to some of the delegate's event handlers
+      this.platform.ready().then(value => {
+      this.ibeacon.requestAlwaysAuthorization();
+      let delegate = this.ibeacon.Delegate();
       delegate.didRangeBeaconsInRegion()
           .subscribe(
 
               data => {
 
                 if (data.beacons.length > 0 ) {
-                  alert(JSON.stringify(data));
-                  this.i++;
-                  if (this.i === 1) {
-                    this.check();
-                    alert('check');
+                  console.log(JSON.stringify(data));
+                  if (this.uid === this.datapass.uid) {
+                      this.i++;
+                      if (this.i === 1) {
+                          this.check();
+                          alert('check');
+                      } else {
+                          this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
+                      }
                   } else {
-                    this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
+                      alert('checked');
+                      this.roter.navigateByUrl('join-list-event');
                   }
                 }
               },
@@ -78,7 +89,7 @@ export class JoinCheckPage implements OnInit {
   }
 
   stop() {
-    this.roter.navigateByUrl('login');
+    this.roter.navigateByUrl('home');
   }
   check() {
     this.http.post('http://acb.msuproject.net/webservice/newSign',

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-checkpoint',
@@ -12,6 +13,7 @@ export class CheckpointPage implements OnInit {
 
   datacplist;
   cpids;
+  dates;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.cplist();
   }
@@ -25,12 +27,8 @@ export class CheckpointPage implements OnInit {
       let jsondata = JSON.parse(value.data);
       this.datapass.dataevent = jsondata;
       this.datacplist = jsondata;
-      // this.datapass.event_name = this.database[0].name;
-      // this.datapass.cpuid = this.datacplist[0].cpID;
-      // this.datapass.event_id = this.database[0].eventID;
+      this.dates = moment(this.datacplist[0].Date_start, 'YYYY-MM-DD').format('DD-MM-YYYY');
       console.log(JSON.stringify(jsondata));
-      // alert(JSON.stringify(jsondata));
-      // this.roter.navigateByUrl('event-list');
     }).catch(reason => {
       console.log(reason);
     });
