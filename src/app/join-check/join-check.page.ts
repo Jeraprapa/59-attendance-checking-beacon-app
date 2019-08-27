@@ -44,8 +44,11 @@ export class JoinCheckPage implements OnInit {
 
                 if (data.beacons.length > 0 ) {
                   console.log(JSON.stringify(data));
+                  this.i++;
                   if (this.uid === this.datapass.uid) {
-                      this.i++;
+                      alert('checked');
+                      this.roter.navigateByUrl('join-list-event');
+                  } else {
                       if (this.i === 1) {
                           this.check();
                           alert('check');
@@ -53,9 +56,6 @@ export class JoinCheckPage implements OnInit {
                       } else {
                           this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
                       }
-                  } else {
-                      alert('checked');
-                      this.roter.navigateByUrl('join-list-event');
                   }
                 }
               },
@@ -95,11 +95,7 @@ export class JoinCheckPage implements OnInit {
     this.http.post('http://acb.msuproject.net/webservice/newSign',
         {joinID: this.jid, cpID: this.cpidcheck}, {}).then(value => {
       let jsondata = JSON.parse(value.data);
-      // this.datapass.data = jsondata;
-      // this.datapass.event_name = this.database[0].name;
-      // this.datapass.event_id = this.database[0].eventID;
        console.log(JSON.stringify(jsondata));
-      // alert(JSON.stringify(jsondata));
     }).catch(reason => {
       alert('no');
     });
