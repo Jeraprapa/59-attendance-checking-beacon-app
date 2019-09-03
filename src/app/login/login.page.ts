@@ -12,7 +12,6 @@ export class LoginPage implements OnInit {
   username;
   password;
   database;
-  // url = 'http://acb.msuproject.net/webservice/login';
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
 
   ngOnInit() {
@@ -31,7 +30,6 @@ export class LoginPage implements OnInit {
       this.datapass.tel = this.database[0].tel;
       this.datapass.msu = this.database[0].MSU_ID;
       this.datapass.img = this.database[0].image;
-      // alert(JSON.stringify(this.database));
       this.roter.navigateByUrl('home');
     }).catch(reason => {
       alert('no');

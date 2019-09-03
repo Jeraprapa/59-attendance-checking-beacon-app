@@ -25,9 +25,6 @@ export class JoinEventPage implements OnInit {
           status : this.status}, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.datacode = jsondata;
-      // alert(JSON.stringify(this.datacp));
-      // this.timestop = this.timestart + this.duration ;
-      // this.timestop = this.timestart;
       alert('success');
       this.roter.navigateByUrl('home');
     }).catch(reason => {

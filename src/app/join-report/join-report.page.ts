@@ -22,8 +22,6 @@ export class JoinReportPage implements OnInit {
   jl(parameters: { eid: number, joinIDs: number}) {
     this.joinIDs = parameters.joinIDs;
     this.eid = parameters.eid;
-    // this.datapass.eid = this.eid;
-    // this.datapass.join_id = this.joinIDs;
     this.roter.navigateByUrl('join-detail-report');
   }
 }

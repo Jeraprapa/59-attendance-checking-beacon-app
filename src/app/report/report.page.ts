@@ -34,8 +34,6 @@ export class ReportPage implements OnInit {
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.datapass.datajoinreport = jsondata;
-      // this.datab = jsondata;
-      // console.log(this.datapass.uid);
        console.log(JSON.stringify(jsondata));
       this.roter.navigateByUrl('join-report');
     }).catch(reason => {

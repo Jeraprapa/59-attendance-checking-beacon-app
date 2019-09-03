@@ -1,16 +1,11 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
-
-
 <ion-content padding >
   <br>
   <br>
   <ion-text class="one">Search Check point</ion-text>
 
   <br><br>
-  {{cpidcheck}}
-  {{jid}}
+  <!--{{cpidcheck}}-->
+  <!--{{jid}}-->
   <ion-row>
     <ion-col width-5>
       <ion-button expand="block" color="warning" (click)="start()">Start</ion-button>
@@ -19,7 +14,7 @@
   <br><br>
   <ion-row>
     <ion-col width-5>
-      <ion-button expand="block" color="warning" >QR Code</ion-button>
+      <ion-button expand="block" color="warning" (click)="qrscan()">QR Code</ion-button>
     </ion-col>
   </ion-row>
   <br><br>

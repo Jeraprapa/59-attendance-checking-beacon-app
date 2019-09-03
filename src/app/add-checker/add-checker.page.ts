@@ -9,28 +9,39 @@ import {HTTP} from '@ionic-native/http/ngx';
   styleUrls: ['./add-checker.page.scss'],
 })
 export class AddCheckerPage implements OnInit {
-  data;
-  public isToggled: boolean;
-  value;
+
+
   datamemberlist;
   memberIDs;
   i = 0;
   j = 0;
   datachecker;
-  cpid;
+  x = 0;
   joinIDs;
-  public show: boolean;
+  checkeruid;
+  datacheck;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
-    // this.myValue();
     this.checker();
-    this.isToggled = false;
-    // this.show = true;
+    this.http.get('http://acb.msuproject.net/webservice/listChecker/' + this.datapass.event_id,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.datacheck = jsondata;
+      // this.checkeruid = this.datacheck[0].joinID;
+      for (let n = 0; n < this.datacheck.length ; n++) {
+        if (this.datacheck[n].userID === this.datapass.uid) {
+          this.x = 1;
+        }
+      }
+      console.log(this.checkeruid);
+    }).catch(reason => {
+      console.log(reason);
+    });
   }
 
   ngOnInit() {
   }
   public notify() {
-    console.log(this.isToggled);
+    // console.log(this.isToggled);
   }
 
   checker () {
@@ -38,11 +49,8 @@ export class AddCheckerPage implements OnInit {
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.datamemberlist = jsondata;
-      // this.joinid = this.datapass[0].joinID;
       console.log(JSON.stringify(jsondata));
-      // this.roter.navigateByUrl('event-list');
     }).catch(reason => {
-      // alert('no...');
       console.log(reason);
     });
 
@@ -51,33 +59,29 @@ export class AddCheckerPage implements OnInit {
   checkerid(parameters: { memberIDs: number , joinIDs: number}) {
     this.memberIDs = parameters.memberIDs;
     this.joinIDs = parameters.joinIDs;
-    // alert(this.eventIDs);
-    // this.datapass.event_id = this.memberIDs;
     this.i++;
     if (this.i === 1) {
       this.j++;
       if (this.j === 1) {
-        console.log(this.joinIDs);
-        console.log(this.datapass.cpuuid);
-        this.http.post('http://acb.msuproject.net/webservice/newChecker',
-            { JoinID : this.joinIDs,
-              cpID : this.datapass.cpuuid}, {}).then(value => {
-          let jsondata = JSON.parse(value.data);
-          this.datachecker = jsondata;
-          // alert(JSON.stringify(this.datacp));
-          // this.timestop = this.timestart + this.duration ;
-          // this.timestop = this.timestart;
-          // this.roter.navigateByUrl('checkpoint');
-          // alert(JSON.stringify(this.datachecker));
-          console.log(JSON.stringify(jsondata));
-        }).catch(reason => {
-          alert('no');
-        });
-        // this.show = false;
+        if (this.x === 1 ) {
+          alert('have checker');
+        } else {
+          this.http.post('http://acb.msuproject.net/webservice/newChecker',
+              { joinID : this.joinIDs,
+                cpID : this.datapass.cpuuid}, {}).then(value => {
+            let jsondata = JSON.parse(value.data);
+            this.datachecker = jsondata;
+            console.log(JSON.stringify(jsondata));
+            alert('complete');
+          }).catch(reason => {
+            alert('no');
+          });
+        }
       }
       this.i--;
     }
   }
+
   check(parameters: { memberIDs: number , joinIDs: number}) {
     this.memberIDs = parameters.memberIDs;
     this.joinIDs = parameters.joinIDs;

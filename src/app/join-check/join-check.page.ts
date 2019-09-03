@@ -4,6 +4,7 @@ import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
 import { IBeacon } from '@ionic-native/ibeacon/ngx';
 import {Platform} from '@ionic/angular';
+import {BarcodeScannerOptions, BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-join-check',
@@ -16,24 +17,28 @@ export class JoinCheckPage implements OnInit {
     i = 0;
     datasign;
     uid;
+    x = 0;
+    scannedData;
   constructor(private roter: Router, private datapass: DatapassService,
-              private  http: HTTP, private ibeacon: IBeacon, private platform: Platform) {
+              private  http: HTTP, private ibeacon: IBeacon, private platform: Platform, private barcodeScanner: BarcodeScanner) {
     this.cpidcheck = this.datapass.cpcheck;
     this.jid = this.datapass.join_id;
-  }
-  ngOnInit() {
-  }
-  start() {
       this.http.get('http://acb.msuproject.net/webservice/listSign/' + this.datapass.cpcheck,
           { }, {}).then(value => {
           let jsondata = JSON.parse(value.data);
           this.datasign = jsondata;
-          this.uid = this.datasign[0].uid;
-          console.log(JSON.stringify(jsondata));
+          for (let n = 0; n < this.datasign.length ; n++) {
+              if (this.datasign[n].userID === this.datapass.uid) {
+                  this.x = 1;
+              }
+          }
       }).catch(reason => {
           console.log(reason);
       });
-
+  }
+  ngOnInit() {
+  }
+  start() {
       this.platform.ready().then(value => {
       this.ibeacon.requestAlwaysAuthorization();
       let delegate = this.ibeacon.Delegate();
@@ -42,22 +47,22 @@ export class JoinCheckPage implements OnInit {
 
               data => {
 
-                if (data.beacons.length > 0 ) {
-                  console.log(JSON.stringify(data));
-                  this.i++;
-                  if (this.uid === this.datapass.uid) {
-                      alert('checked');
-                      this.roter.navigateByUrl('join-list-event');
-                  } else {
+                  if (data.beacons.length > 0 ) {
+                      console.log(JSON.stringify(data));
+                      this.i++;
                       if (this.i === 1) {
-                          this.check();
-                          alert('check');
-                          this.roter.navigateByUrl('join-list-event');
+                          if (this.x === 1) {
+                              alert('checked');
+                              this.roter.navigateByUrl('join-list-event');
+                          } else {
+                              this.check();
+                              alert('check');
+                              this.roter.navigateByUrl('join-lisevent');
+                          }
                       } else {
                           this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
                       }
                   }
-                }
               },
               error => console.error()
           );
@@ -77,13 +82,13 @@ export class JoinCheckPage implements OnInit {
       let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon',
           this.cpidcheck , 0 , 0 , false);
 
-      this.ibeacon.startRangingBeaconsInRegion(beaconRegion).then(value => {
+      this.ibeacon.startRangingBeaconsInRegion(beaconRegion).then(value1 => {
         alert('Search....');
       }).catch(reason => {
-        alert(reason);
+        console.log(reason);
       });
     }).catch(reason => {
-      alert(reason);
+      console.log(reason);
 
     });
   }
@@ -100,4 +105,22 @@ export class JoinCheckPage implements OnInit {
       alert('no');
     });
   }
+
+    qrscan() {
+        this.barcodeScanner.scan().then(barcodeData => {
+            this.scannedData = barcodeData.text;
+            if (this.cpidcheck === this.scannedData) {
+                if (this.x === 1) {
+                    alert('checked');
+                    this.roter.navigateByUrl('join-list-event');
+                } else {
+                    this.check();
+                    alert('check');
+                    this.roter.navigateByUrl('join-lisevent');
+                }
+            }
+        }).catch(err => {
+                console.log('Error', err);
+            });
+    }
 }

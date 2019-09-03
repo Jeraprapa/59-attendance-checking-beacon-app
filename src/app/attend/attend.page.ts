@@ -6,7 +6,6 @@ import {
 } from '@ionic-native/barcode-scanner/ngx';
 import {DatapassService} from '../datapass.service';
 import {Router} from '@angular/router';
-import uuidv1 from 'uuid/v1';
 
 @Component({
   selector: 'app-attend',
@@ -16,18 +15,17 @@ import uuidv1 from 'uuid/v1';
 export class AttendPage implements OnInit {
     beaconRegion;
     uid;
+    qrData;
+    elementType: 'url' | 'canvas' | 'img' = 'canvas';
   constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner, private datapass: DatapassService, private roter: Router) {
-  this.uid = this.datapass.cpuuid;
+      this.uid = this.datapass.cpuuid;
+      this.qrData = this.uid;
   }
   ngOnInit() {
   }
-
     startbeacon() {
-      // Request permission to use location on iOS
       this.ibeacon.requestAlwaysAuthorization();
-// create a new delegate and register it with the native layer
       let delegate = this.ibeacon.Delegate();
-// Subscribe to some of the delegate's event handlers
       delegate.didRangeBeaconsInRegion()
           .subscribe(
               data => console.log('didRangeBeaconsInRegion: ', data),
@@ -56,12 +54,8 @@ export class AttendPage implements OnInit {
     }
 
   stopbeacon() {
-    // Request permission to use location on iOS
     this.ibeacon.requestAlwaysAuthorization();
-// create a new delegate and register it with the native layer
     let delegate1 = this.ibeacon.Delegate();
-
-// Subscribe to some of the delegate's event handlers
     delegate1.didRangeBeaconsInRegion()
         .subscribe(
             data => console.log('didRangeBeaconsInRegion: ', data),
@@ -78,7 +72,6 @@ export class AttendPage implements OnInit {
               console.log('didEnterRegion: ', data);
             }
         );
-
     let beaconRegion1 = this.ibeacon.BeaconRegion('deskBeacon',
         this.uid , 0 , 0 , false);
 
@@ -88,7 +81,6 @@ export class AttendPage implements OnInit {
             error => console.error('Native layer failed to begin monitoring: ', error)
         );
   }
-
     home() {
         this.roter.navigateByUrl('home');
     }

@@ -11,12 +11,6 @@ import {Camera} from '@ionic-native/camera/ngx';
 })
 export class EditEventPage implements OnInit {
   name;
-  datestart;
-  timestart;
-  datestop;
-  timestop;
-  des;
-  e;
   q1;
   q2;
   datae;
@@ -34,11 +28,12 @@ export class EditEventPage implements OnInit {
 
   ngOnInit() {
   }
+
+
   edetail() {
     this.http.get('http://acb.msuproject.net/webservice/event/' + this.datapass.event_id,
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
-      // this.datapass.dataevent = jsondata;
       this.datae = jsondata;
       this.detail = this.datae[0].detail;
       this.dstart = this.datae[0].Date_start;
@@ -48,8 +43,6 @@ export class EditEventPage implements OnInit {
       this.status = this.datae[0].status;
       this.ename = this.datae[0].name;
       this.codeid =  this.datapass.event_id;
-      // this.q1 = this.datapass[0].Question1;
-      // this.q2 = this.datapass[0].Question2;
       this.q1 = this.datae[0].Question1;
       this.q2 = this.datae[0].Question2;
       console.log(JSON.stringify(jsondata));
@@ -58,7 +51,6 @@ export class EditEventPage implements OnInit {
     });
   }
   ok() {
-    console.log(this.q2);
     this.http.post('http://acb.msuproject.net/webservice/editEvent/' + this.datapass.event_id,
         {
                 name : this.ename,
@@ -72,9 +64,6 @@ export class EditEventPage implements OnInit {
                 Q2 : this.q2
         }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
-      // this.database = jsondata;
-
-      // alert(JSON.stringify(this.database));
       console.log(JSON.stringify(jsondata));
       this.roter.navigateByUrl('detail-event-list');
     }).catch(reason => {

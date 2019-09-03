@@ -43,15 +43,8 @@ export class DetailEventListPage implements OnInit {
       this.status = this.datae[0].status;
       this.name = this.datae[0].name;
       this.codeid =  this.datapass.event_id;
-      // this.datapass.event_name = this.database[0].name;
-      // this.datapass.event_id = this.database[0].eventID;
       console.log(JSON.stringify(jsondata));
-      // alert(JSON.stringify(jsondata));
-      // alert(JSON.stringify(this.database[0].name));
-      // console.log(this.database[0].eventInof[1].name);
-      // this.roter.navigateByUrl('event-list');
     }).catch(reason => {
-      // alert('no...');
       console.log(reason);
     });
   }
@@ -68,12 +61,8 @@ export class DetailEventListPage implements OnInit {
         this.http.get('http://acb.msuproject.net/webservice/eventDel/' + this.datapass.event_id,
             { }, {}).then(value => {
             let jsondata = JSON.parse(value.data);
-            // this.datachecker = jsondata;
-            // console.log(JSON.stringify(jsondata));
-            // this.roter.navigateByUrl('event-list');
             alert('delete event');
         }).catch(reason => {
-            // alert('no...');
             console.log(reason);
         });
     }

@@ -10,10 +10,6 @@ import {Camera} from '@ionic-native/camera/ngx';
   styleUrls: ['./edit-checkpoint.page.scss'],
 })
 export class EditCheckpointPage implements OnInit {
-  Name;
-  Date;
-  Area;
-  uid;
   datacpdetail;
   cpid;
   ename;

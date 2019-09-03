@@ -6,27 +6,27 @@
   </ion-item>
   <ion-item>
     <ion-label>Date Start</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestart"></ion-datetime>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="dstart"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Time Start</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestart"></ion-datetime>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="tstart"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Date Stop</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestop"></ion-datetime>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="dstop"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Time Stop</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestop"></ion-datetime>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="tstop"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Description</ion-label>
-    <ion-textarea [(ngModel)]="des"></ion-textarea>
+    <ion-textarea [(ngModel)]="detail"></ion-textarea>
   </ion-item>
   <ion-item>
     <ion-label>Status</ion-label>
-    <ion-select interface="popover" placeholder="Select One" [(ngModel)]="e">
+    <ion-select interface="popover" placeholder="Select One" [(ngModel)]="status">
       <ion-select-option value="public">public</ion-select-option>
       <ion-select-option value="private">private</ion-select-option>
     </ion-select>

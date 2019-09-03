@@ -9,7 +9,7 @@ import {HTTP} from '@ionic-native/http/ngx';
   styleUrls: ['./new-event.page.scss'],
 })
 export class NewEventPage implements OnInit {
-  e;
+  status;
   des;
   datestart;
   timestart;
@@ -19,11 +19,12 @@ export class NewEventPage implements OnInit {
   q1 = '';
   q2 = '';
   uid;
-  database;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
-  ngOnInit() {
-    this.uid = this.datapass.uid;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
+      this.uid = this.datapass.uid;
   }
+  ngOnInit() {
+  }
+
 
   ok() {
     this.http.post('http://acb.msuproject.net/webservice/newEvent',
@@ -34,7 +35,7 @@ export class NewEventPage implements OnInit {
           Time_start : this.timestart,
           Time_stop: this.timestop,
           detail : this.des,
-          status : this.e,
+          status : this.status,
           Q1 : this.q1,
           Q2 : this.q2}, {}).then(value => {
       alert('complete');
