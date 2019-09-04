@@ -96,16 +96,6 @@ export class JoinCheckPage implements OnInit {
   stop() {
     this.roter.navigateByUrl('home');
   }
-  check() {
-    this.http.post('http://acb.msuproject.net/webservice/newSign',
-        {joinID: this.jid, cpID: this.cpidcheck}, {}).then(value => {
-      let jsondata = JSON.parse(value.data);
-       console.log(JSON.stringify(jsondata));
-    }).catch(reason => {
-      alert('no');
-    });
-  }
-
     qrscan() {
         this.barcodeScanner.scan().then(barcodeData => {
             this.scannedData = barcodeData.text;
@@ -122,5 +112,14 @@ export class JoinCheckPage implements OnInit {
         }).catch(err => {
                 console.log('Error', err);
             });
+    }
+    check() {
+        this.http.post('http://acb.msuproject.net/webservice/newSign',
+            {joinID: this.jid, cpID: this.cpidcheck}, {}).then(value => {
+            let jsondata = JSON.parse(value.data);
+            console.log(JSON.stringify(jsondata));
+        }).catch(reason => {
+            alert('no');
+        });
     }
 }
