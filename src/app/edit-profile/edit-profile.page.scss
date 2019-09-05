@@ -1,32 +1,20 @@
 .ion-button2{
-  margin: 50px;
   width: 220px;
   height: 50px;
   border-radius: 50%;
-  position: center;
+  margin: 0 auto;
 }
 .ion-avatar1{
-  position: center;
-  margin: 100px;
   width: 140px ;
   height : 140px ;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 0 auto;
 }
-.ion-fab-button{
-  margin: 130px;
-  width: 100px;
-  height: 100px;
-  position: center;
-  margin-top: 70px;
+ion-button{
+  width: 220px;
+  height: 50px;
+  margin: 0 auto;
 }
 .ion-title1{
-  position: center;
-  margin: 80px;
-  //width: 20px ;
-  //height : 20px ;
+  text-align:center;
   font-size: 30px;
-  margin-top: 90px;
-  margin-right: 0px;
-  margin-bottom: 20px;
 }

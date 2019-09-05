@@ -1,14 +1,17 @@
-<ion-content padding >
-  <br>
-  <ion-text class="one">Welcome To My App</ion-text>
-  <br>
-  <br>
-  <br>
-  <ion-button expand="block" class="ion-button" color="medium" (click)="login()">Login</ion-button>
-  <br>
-  <br>
-  <ion-text class="ion-text"> OR </ion-text>
+<ion-header>
+  <ion-toolbar class="Hbar" slot="start">
+    <ion-title>My App</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding="center">
   <br>
   <br>
-  <ion-button expand="block" class="ion-button" color="medium" (click)="Register()">Register</ion-button>
+  <ion-text><div>Welcome To My App</div></ion-text>
+  <br>
+  <br>
+  <ion-button expand="block" class="ion-button" color="secondary" (click)="login()">Login</ion-button>
+  <br>
+  <ion-text class="one"><div>OR</div></ion-text>
+  <br>
+  <ion-button expand="block" class="ion-button" color="" (click)="Register()">Register</ion-button>
 </ion-content>

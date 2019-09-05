@@ -1,39 +1,27 @@
 .ion-avatar{
-  position: center;
-  margin: 0px;
   width: 20px ;
   height : 20px ;
-  margin-top: 100px;
-  margin-bottom: 20px;
 
 }
 .ion-title{
-  position: center;
-  margin: 80px;
+  text-align:center;
   //width: 20px ;
   //height : 20px ;
   font-size: 30px;
-  margin-top: 90px;
-  margin-right: 0px;
-  margin-bottom: 20px;
 }
 .ion-avatar1{
-  position: center;
-  margin: 100px;
   width: 140px ;
   height : 140px ;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 0 auto;
 }
-.row{
-  margin-top: 10px;
-}
+//.row{
+//  margin-top: 10px;
+//}
 .ion-button{
-  margin: 50px;
-  width: 220px;
-  height: 50px;
-  border-radius: 50%;
-  position: center;
+  width: 150px;
+  height: 30px;
+  border-radius: 20%;
+  margin: 0 auto;
 }
 .ion-fab-button{
   margin: 130px;
@@ -41,7 +29,4 @@
   height: 100px;
   position: center;
   margin-top: 50px;
-}
-.ion-item{
-  margin-top: 10px;
 }
