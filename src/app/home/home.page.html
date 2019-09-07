@@ -1,8 +1,14 @@
-<ion-content padding>
+<ion-header>
+  <ion-toolbar class="Hbar" slot="start">
+    <ion-title>My App</ion-title>
+    <ion-icon name="log-out" (click)="logout()" slot="end" padding-end="15" ></ion-icon>
+<!--    <ion-button expand="block" class="underline" (click)="logout()">logout</ion-button>-->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
   <br>
+  <ion-text><div>Welcome</div></ion-text>
   <br>
-  <br>
-  <ion-text class="ion-text" >Welcome</ion-text>
   <ion-avatar class="ion-avatar" >
     <img src="{{myimg}}" (click)="profile()">
   </ion-avatar>
@@ -23,6 +29,12 @@
     </ion-col>
   </ion-row>
   <!--<ion-button expand="block" class="underline" (click)="welcome()">welcome</ion-button>-->
-  <ion-button expand="block" class="underline" (click)="logout()">logout</ion-button>
+<!--  <ion-button expand="block" class="underline" (click)="logout()">logout</ion-button>-->
   <!--<ion-button expand="block" class="ion-button" color="medium" (click)="test()">newevent</ion-button>-->
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>

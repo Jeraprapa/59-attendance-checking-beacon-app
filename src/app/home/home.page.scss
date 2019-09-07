@@ -1,10 +1,7 @@
 .ion-avatar{
-  position: center;
-  margin: 100px;
+  margin: 0 auto;
   width: 140px ;
   height : 140px ;
-  margin-top: 50px;
-  margin-bottom: 90px;
 }
 .ion-button1{
   //margin: 40px;
@@ -15,10 +12,9 @@
   //--background: transparent;
   //--ion-color-base: transparent !important;
 }
-.ion-text{
-  position: center;
-  margin: 80px;
-  font-size: 40px;
+ion-text{
+  text-align:center;
+  font-size: 35px;
 }
 .one{
   position: center;

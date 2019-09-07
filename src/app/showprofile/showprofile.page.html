@@ -4,38 +4,31 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title slot="start">My App</ion-title>
-    <ion-icon name="settings" [routerLink]="'/edit-profile'" slot="primary"></ion-icon>
+    <ion-icon name="settings" slot="end" padding-end="15" [routerLink]="'/edit-profile'" slot="primary"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-row>
-    <ion-col>
-      <br>
-      <ion-title class="ion-title">My Profile</ion-title>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-avatar class="ion-avatar1" >
-        <img src="{{myimg}}" >
-      </ion-avatar>
-    </ion-col>
-  </ion-row>
+  <br>
+  <ion-title class="ion-title">My Profile</ion-title>
+  <br>
+  <ion-avatar class="ion-avatar1" >
+    <img src="{{myimg}}" >
+  </ion-avatar>
   <ion-item>
-    <ion-label position="floating" >Name</ion-label>
+    <ion-label position="fixed" >Name</ion-label>
     {{myname}}
   </ion-item>
   <ion-item>
-    <ion-label position="floating" >Surname</ion-label>
+    <ion-label position="fixed" >Surname</ion-label>
     {{mysur}}
   </ion-item>
   <ion-item>
-    <ion-label position="floating" >Phone</ion-label>
+    <ion-label position="fixed" >Phone</ion-label>
     {{mytel}}
   </ion-item>
   <ion-item>
-    <ion-label position="floating" >MSU ID</ion-label>
+    <ion-label position="fixed" >MSU ID</ion-label>
     {{mymsuid}}
   </ion-item>
 </ion-content>
