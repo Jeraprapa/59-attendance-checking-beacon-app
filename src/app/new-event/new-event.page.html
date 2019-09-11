@@ -1,20 +1,20 @@
 <ion-content padding>
   <ion-title class="location">New Event</ion-title>
   <ion-item>
-  <ion-label position="floating">Name</ion-label>
-  <ion-input [(ngModel)]="name"></ion-input>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Date Start</ion-label>
-    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="datestart"></ion-datetime>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestart" [min]="datenow" (ngModelChange)="onchange($event)"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Time Start</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestart"></ion-datetime>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestart" [min]="timestart1" ></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Date Stop</ion-label>
-    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="datestop"></ion-datetime>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestop"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Time Stop</ion-label>
@@ -26,7 +26,7 @@
   </ion-item>
   <ion-item>
     <ion-label>Status</ion-label>
-    <ion-select interface="popover" placeholder="public" value="public"[(ngModel)]="status">
+    <ion-select interface="popover" placeholder="public" value="public"[(ngModel)]="e">
       <ion-select-option value="public" selected >public</ion-select-option>
       <ion-select-option value="private">private</ion-select-option>
     </ion-select>
@@ -34,15 +34,15 @@
   <br>
   <ion-label class="location">Info(Option)</ion-label>
   <ion-item>
-  <ion-input position="floating">q1</ion-input>
-  <ion-input [(ngModel)]="q1"></ion-input>
+    <ion-input position="floating">q1</ion-input>
+    <ion-input [(ngModel)]="q1"></ion-input>
   </ion-item>
   <ion-item>
-  <ion-input position="floating">q2</ion-input>
-  <ion-input [(ngModel)]="q2"></ion-input>
+    <ion-input position="floating">q2</ion-input>
+    <ion-input [(ngModel)]="q2"></ion-input>
   </ion-item>
   <!--<ion-avatar class="location">-->
-    <!--<img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/arrow-forward-512.png" >-->
+  <!--<img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/arrow-forward-512.png" >-->
   <!--</ion-avatar>-->
   <ion-button expand="block" color="medium" (click)="ok()">ok</ion-button>
 </ion-content>

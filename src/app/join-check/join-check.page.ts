@@ -5,6 +5,7 @@ import {HTTP} from '@ionic-native/http/ngx';
 import { IBeacon } from '@ionic-native/ibeacon/ngx';
 import {Platform} from '@ionic/angular';
 import {BarcodeScannerOptions, BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
+import {json} from '@angular-devkit/core';
 
 @Component({
   selector: 'app-join-check',
@@ -44,19 +45,19 @@ export class JoinCheckPage implements OnInit {
       let delegate = this.ibeacon.Delegate();
       delegate.didRangeBeaconsInRegion()
           .subscribe(
-
               data => {
-
                   if (data.beacons.length > 0 ) {
-                      console.log(JSON.stringify(data));
+                      // console.log(JSON.stringify(data));
                       this.i++;
                       if (this.i === 1) {
                           if (this.x === 1) {
                               alert('checked');
+                              console.log(data.beacons[0].proximity + ' ' + data.beacons[0].rssi);
                               this.roter.navigateByUrl('join-list-event');
                           } else {
                               this.check();
                               alert('check');
+                              console.log(data.beacons[0].proximity + ' ' + data.beacons[0].rssi);
                               this.roter.navigateByUrl('join-lisevent');
                           }
                       } else {
@@ -75,7 +76,6 @@ export class JoinCheckPage implements OnInit {
           .subscribe(
               data => {
                 console.log('didEnterRegion: ', JSON.stringify(data));
-
               }
           );
 

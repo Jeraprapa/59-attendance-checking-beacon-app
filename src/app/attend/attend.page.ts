@@ -47,7 +47,7 @@ export class AttendPage implements OnInit {
       this.datapass.cpid = this.beaconRegion.uuid;
       this.ibeacon.startAdvertising(this.beaconRegion)
           .then(
-              () => console.log(this.beaconRegion.uuid),
+              () => alert(this.beaconRegion.uuid),
               error => console.error('Native layer failed to begin monitoring: ', error)
           );
 
