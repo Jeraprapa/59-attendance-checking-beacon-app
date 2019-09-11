@@ -6,7 +6,7 @@
   </ion-item>
   <ion-item>
     <ion-label>Date Start</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestart" [min]="datenow" (ngModelChange)="onchange($event)"></ion-datetime>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestart" [min]="datenow" [max]="maxdate" (ngModelChange)="onchange($event)"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Time Start</ion-label>
@@ -14,11 +14,11 @@
   </ion-item>
   <ion-item>
     <ion-label>Date Stop</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestop"></ion-datetime>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datestop" [min]="mindate1" (ngModelChange)="onchange1($event)"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Time Stop</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestop"></ion-datetime>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestop" [min]="timestop1" ></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Description</ion-label>
