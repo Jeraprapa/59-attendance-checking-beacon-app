@@ -10,20 +10,24 @@ import {HTTP} from '@ionic-native/http/ngx';
   styleUrls: ['./msu-register.page.scss'],
 })
 export class MsuRegisterPage implements OnInit {
-img;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera) { }
+  img;
+  msuname;
+  msusername;
+  phone;
+  password;
+  email;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera) {
+    this.msuname = this.datapass.fname;
+    this.msusername = this.datapass.lname;
+  }
 
   ngOnInit() {
   }
 
-    ok() {
-      this.roter.navigateByUrl('welcome');
-    }
-
 
   photo() {
     const options: CameraOptions = {
-      quality: 80,
+      quality: 100,
       sourceType: this.camera.PictureSourceType.CAMERA,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
@@ -40,7 +44,7 @@ img;
 
   clibary() {
     const options: CameraOptions = {
-      quality: 80,
+      quality: 100,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
@@ -53,6 +57,16 @@ img;
 
     }).catch(reason => {
 
+    });
+  }
+  ok() {
+    this.http.post('http://acb.msuproject.net/webservice/register',
+        {name : this.msuname, surname : this.msusername, image : this.img, email : this.email, tel : this.phone,
+          password : this.password, msuid : this.datapass.msuid}, {}).then(value => {
+      console.log(JSON.stringify(value.data));
+      this.roter.navigateByUrl('welcome');
+    }).catch(reason => {
+      alert('no');
     });
   }
 }

@@ -31,5 +31,8 @@ export class DatapassService {
  public datajoinreport;
  public eid_report;
  public cpuidreport;
+ public fname;
+ public lname;
+ public msuid;
   constructor() { }
 }

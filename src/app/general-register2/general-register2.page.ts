@@ -35,7 +35,7 @@ export class GeneralRegister2Page implements OnInit {
 
   photo() {
     const options: CameraOptions = {
-      quality: 80,
+      quality: 100,
       sourceType: this.camera.PictureSourceType.CAMERA,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
@@ -52,7 +52,7 @@ export class GeneralRegister2Page implements OnInit {
 
   clibary() {
     const options: CameraOptions = {
-      quality: 80,
+      quality: 100,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,

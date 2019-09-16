@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {HTTP} from '@ionic-native/http/ngx';
+import {DatapassService} from '../datapass.service';
 
 @Component({
     selector: 'app-general-register',
@@ -9,12 +10,14 @@ import {HTTP} from '@ionic-native/http/ngx';
 })
 export class GeneralRegisterPage implements OnInit {
     password;
-    musid;
+    msuid;
     msuusername;
     datamsu;
     datamsudetail;
     as;
-    constructor(private roter: Router,  private  http: HTTP) { }
+    name;
+    sname;
+    constructor(private roter: Router,  private  http: HTTP, private datapass: DatapassService) { }
 
     ngOnInit() {
     }
@@ -25,24 +28,29 @@ export class GeneralRegisterPage implements OnInit {
             let jsondata = JSON.parse(value.data);
             this.datamsu = jsondata;
             this.as = this.datamsu.activeStatus;
+            this.msuid = this.datamsu.sysUsername;
+            this.datapass.msuid = this.msuid;
             console.log(this.as);
-            this.check();
+            this.checkstatus();
         }).catch(reason => {
-            // alert('no');
-            console.log(reason);
+            alert('no');
         });
-        this.http.get('http://webservices.csmsu.net/rest/api/MSUStudent/' + this.musid,
+        this.http.get('http://webservices.csmsu.net/rest/api/MSUStudent/' + this.msuusername,
             { }, {'APIKey': '1234'}).then(value1 => {
             let jsondata1 = JSON.parse(value1.data);
             this.datamsudetail = jsondata1;
+            this.name = this.datamsudetail.name;
+            this.sname = this.name.split(' ');
+            this.datapass.fname = this.sname[1];
+            this.datapass.lname = this.sname[2];
+            console.log(this.name);
             console.log(this.datamsudetail);
         }).catch(reason => {
             console.log(reason);
         });
-        // this.roter.navigateByUrl('msu-register');
     }
 
-    check() {
+    checkstatus() {
         if (this.as === true) {
             this.roter.navigateByUrl('msu-register');
         }
