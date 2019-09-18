@@ -73,6 +73,6 @@ export class LoginPage implements OnInit {
                 this.roter.navigateByUrl('facebook-register');
               });
             });
-          }).catch(reason => alert('Login Fail'));
+          }).catch(reason => console.log(reason));
     }
 }
