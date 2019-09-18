@@ -41,6 +41,7 @@ const routes: Routes = [
   { path: 'edit-event2', loadChildren: './edit-event2/edit-event2.module#EditEvent2PageModule' },
   { path: 'regist', loadChildren: './regist/regist.module#RegistPageModule' },
   { path: 'add-checker', loadChildren: './add-checker/add-checker.module#AddCheckerPageModule' },
+  { path: 'facebook-register', loadChildren: './facebook-register/facebook-register.module#FacebookRegisterPageModule' },
 ];
 
 @NgModule({

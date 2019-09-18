@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 
 @Component({
   selector: 'app-general-register2',
@@ -17,7 +18,11 @@ export class GeneralRegister2Page implements OnInit {
   img = '';
   msuid = '';
   password;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera) { }
+  database;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera, private fb: Facebook) {
+    this.name = this.datapass.datafb.first_name;
+    this.surname = this.datapass.datafb.last_name;
+  }
 
   ngOnInit() {
   }

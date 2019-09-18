@@ -34,5 +34,7 @@ export class DatapassService {
  public fname;
  public lname;
  public msuid;
+ public datafb;
+ public facebookID;
   constructor() { }
 }
