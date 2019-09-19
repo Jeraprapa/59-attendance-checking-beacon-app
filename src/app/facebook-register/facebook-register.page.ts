@@ -19,9 +19,14 @@ export class FacebookRegisterPage implements OnInit {
   msuid = '';
   password;
   database;
+  fbdata;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera, private fb: Facebook) {
-    this.name = this.datapass.datafb.first_name;
-    this.surname = this.datapass.datafb.last_name;
+      this.fbdata = this.datapass.datafb;
+      console.log(this.fbdata);
+      console.log(this.fbdata.email);
+    this.email = this.fbdata.email;
+    this.name = this.fbdata.first_name;
+    this.surname = this.fbdata.last_name;
   }
 
   ngOnInit() {
@@ -29,7 +34,7 @@ export class FacebookRegisterPage implements OnInit {
 
   fbconnect() {
     this.http.post('http://acb.msuproject.net/webservice/register',
-        {name : this.name, surname : this.surname, image : this.img, email : this.datapass.datafb.email, tel : this.phone,
+        {name : this.name, surname : this.surname, image : this.img, email : this.email, tel : this.phone,
           password : this.password, msuid : this.msuid}, {}).then(value => {
       console.log(JSON.stringify(value.data));
       alert('Register Success');
@@ -37,29 +42,6 @@ export class FacebookRegisterPage implements OnInit {
     }).catch(reason => {
       alert('no');
     });
-    // this.http.post('http://acb.msuproject.net/webservice/register',
-    //     {Name : this.name, lastName : this.surname, email : this.datapass.datafb.email,
-    //       phone : this.phone, password : this.password}, {}).then(value => {
-    //   alert('Register Success');
-    //   // this.http.post('http://parking.msuproject.net/webservice/loginFacebook',
-    //   //     {email: this.datapass.datafb.email }, {}).then(data => {
-    //   //   let jsondata = JSON.parse(data.data);
-    //   //   this.database = jsondata;
-    //   //   // this.datapasssing.userID = this.database[0].userID;
-    //   //   // this.datapasssing.email = this.database[0].email;
-    //   //   // this.datapasssing.password = this.database[0].password;
-    //   //   // this.datapasssing.Name = this.database[0].Name;
-    //   //   // this.datapasssing.lastName = this.database[0].lastName;
-    //   //   // this.datapasssing.phone = this.database[0].phone;
-    //   //   // this.datapasssing.status = this.database[0].status;
-    //   //   // this.datapasssing.identity = this.database[0].identity;
-    //   //   // this.datapasssing.facebookID = this.database[0].facebookID;
-    //   //   // this.router.navigateByUrl('parking');
-    //   //   console.log(this.database);
-    //   // });
-    // }).catch(reason => {
-    //   alert('no');
-    // });
   }
   photo() {
     const options: CameraOptions = {
