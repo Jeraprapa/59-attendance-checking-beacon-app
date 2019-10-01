@@ -80,35 +80,13 @@ export class LoginPage implements OnInit {
                       this.roter.navigateByUrl('facebook-register');
                     });
                 });
-
-            // this.fb.api('me/?fields=id,name,email,first_name,last_name,',
-            //     ['user_birthday']).then(profile => {
-            //       console.log('ccccc' + JSON.stringify(profile));
-            //
-            //   this.http.post('http://acb.msuproject.net/webservice/loginFacebook',
-            //       {email: profile.email }, {}).then(value => {
-            //     let jsondata = JSON.parse(value.data);
-            //     this.databasefb = jsondata;
-            //     this.datapass.uid = this.databasefb[0].userID;
-            //     this.datapass.uname = this.databasefb[0].username;
-            //     this.datapass.pwd = this.databasefb[0].password;
-            //     this.datapass.name = this.databasefb[0].name;
-            //     this.datapass.surname = this.databasefb[0].surname;
-            //     this.datapass.tel = this.databasefb[0].tel;
-            //     this.datapass.msu = this.databasefb[0].MSU_ID;
-            //     this.datapass.img = this.databasefb[0].image;
-            //     this.datapass.facebookID = this.databasefb[0].facebookID;
-            //     this.roter.navigateByUrl('home');
-            //   }).catch(reason => {
-            //     console.log(JSON.stringify(reason));
-            //     // this.datapasssing.facebookdata = profile;
-            //     // this.router.navigateByUrl('siginfacebook');
-            //     this.datapass.datafb = profile;
-            //     this.roter.navigateByUrl('facebook-register');
-            //   });
             }).catch(eee => {
               console.log(eee);
 
             });
     }
+
+  forgetp() {
+
+  }
 }

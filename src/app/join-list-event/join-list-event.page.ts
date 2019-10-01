@@ -9,7 +9,6 @@ import {HTTP} from '@ionic-native/http/ngx';
   styleUrls: ['./join-list-event.page.scss'],
 })
 export class JoinListEventPage implements OnInit {
-  Detail;
   joinIDs;
   cplist;
   cpid;
@@ -25,14 +24,13 @@ export class JoinListEventPage implements OnInit {
   checkerid;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.joinIDs = this.datapass.join_id;
-  this.showcplist();
-  this.showdataevent();
-  this.checker();
+    this.showcplist();
+    this.showdataevent();
+    this.checker();
   }
 
   ngOnInit() {
   }
-
 
   showcplist() {
     this.http.get('http://acb.msuproject.net/webservice/listCheckpoint/' + this.datapass.eid,
@@ -94,6 +92,7 @@ export class JoinListEventPage implements OnInit {
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       alert('delete checkpoint');
+      this.roter.navigateByUrl('join-list');
     }).catch(reason => {
       console.log(reason);
     });

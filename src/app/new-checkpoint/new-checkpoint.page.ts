@@ -35,7 +35,7 @@ export class NewCheckpointPage implements OnInit {
         this.timestop  =  moment(this.timestart, 'HH:mm').add(this.duration , 'minutes').format('HH:mm:ss');
         this.timestart  =  moment(this.timestart, 'HH:mm').format('HH:mm:ss');
         this.date  =  moment(this.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
-        console.log(this.duration );
+        console.log(this.duration);
         const test = { checkpoinID : this.uid,
             eventID : this.eid,
             Date_start : this.date,
