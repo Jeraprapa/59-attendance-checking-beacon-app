@@ -36,5 +36,10 @@ export class DatapassService {
  public msuid;
  public datafb;
  public facebookID;
+ public beaconrssi;
+ public beacontx;
+ public beacondistance;
+ public durationtime;
+ public distancecp;
   constructor() { }
 }

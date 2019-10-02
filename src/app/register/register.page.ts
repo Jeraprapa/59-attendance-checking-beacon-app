@@ -18,7 +18,7 @@ export class RegisterPage implements OnInit {
     }
 
   member() {
-    this.roter.navigateByUrl('general-register2');
+    this.roter.navigateByUrl('regist');
   }
 
   msu() {

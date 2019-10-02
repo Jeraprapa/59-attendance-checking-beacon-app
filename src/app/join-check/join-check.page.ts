@@ -20,6 +20,7 @@ export class JoinCheckPage implements OnInit {
     uid;
     x = 0;
     scannedData;
+    ratio;
   constructor(private roter: Router, private datapass: DatapassService,
               private  http: HTTP, private ibeacon: IBeacon, private platform: Platform, private barcodeScanner: BarcodeScanner) {
     this.cpidcheck = this.datapass.cpcheck;
@@ -48,16 +49,19 @@ export class JoinCheckPage implements OnInit {
               data => {
                   if (data.beacons.length > 0 ) {
                       // console.log(JSON.stringify(data));
+                      this.datapass.beaconrssi = data.beacons[0].rssi;
+                      this.datapass.beacontx = data.beacons[0].tx;
+                      console.log(data.beacons[0].proximity + ' ' + data.beacons[0].rssi + ' ' + data.beacons[0].tx);
                       this.i++;
                       if (this.i === 1) {
                           if (this.x === 1) {
+                              this.caldistance();
                               alert('checked');
-                              console.log(data.beacons[0].proximity + ' ' + data.beacons[0].rssi);
                               this.roter.navigateByUrl('join-list-event');
                           } else {
-                              this.check();
+                              // this.check();
+                              this.caldistance();
                               alert('check');
-                              console.log(data.beacons[0].proximity + ' ' + data.beacons[0].rssi);
                               this.roter.navigateByUrl('join-lisevent');
                           }
                       } else {
@@ -121,5 +125,27 @@ export class JoinCheckPage implements OnInit {
         }).catch(reason => {
             alert('no');
         });
+    }
+
+    caldistance() {
+
+        if (this.datapass.beaconrssi === 0) {
+            // if we cannot determine accuracy, return -1.
+            console.log('-1');
+        }
+        this.ratio = this.datapass.beaconrssi * 1 / this.datapass.beacontx;
+        if (this.ratio < 1.0) {
+            console.log(Math.pow(this.ratio, 10));
+            console.log(Math.round(Math.pow(this.ratio, 10)));
+            this.datapass.beacondistance = Math.round(Math.pow(this.ratio, 10));
+        } else {
+            console.log((0.89976) * Math.pow(this.ratio, 7.7095) + 0.111);
+            console.log(Math.round((0.89976) * Math.pow(this.ratio, 7.7095) + 0.111));
+            this.datapass.beacondistance = Math.round((0.89976) * Math.pow(this.ratio, 7.7095) + 0.111);
+        }
+        if (this.datapass.beacondistance <= this.datapass.distancecp) {
+            // this.check();
+            alert('jjj');
+        }
     }
 }

@@ -1,13 +1,46 @@
-<ion-content padding>
+<ion-content padding >
   <br>
   <br>
   <ion-text class="one">Register</ion-text>
   <br>
+  <ion-item>
+    <ion-label position="floating" class="text">Email</ion-label>
+    <ion-input [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">password</ion-label>
+    <ion-input [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">name</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">surname</ion-label>
+    <ion-input [(ngModel)]="surname"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="text">phone</ion-label>
+    <ion-input [(ngModel)]="phone"></ion-input>
+  </ion-item>
   <br>
   <br>
+  <ion-row>
+    <ion-col width-5>
+      <ion-label position="floating" class="two" >Photo</ion-label>
+      <ion-input [(ngModel)]="img"></ion-input>
+    </ion-col>
+    <ion-col width-5>
+      <ion-button expand="block" color="test1" (click)="photo()" >takephoto</ion-button>
+      <ion-button expand="block" color="test1" (click)="clibary()" >libary</ion-button>
+    </ion-col>
+  </ion-row>
   <br>
-  <ion-text class="ion-text"> OR </ion-text>
-  <br>
-  <br>
-  <ion-button expand="block" class="ion-button" color="vibrant" (click)="login()" )>login</ion-button>
+  <ion-fab>
+    <ion-fab-button class="ion-fab-button" color="test" (click)="register()">OK</ion-fab-button>
+  </ion-fab>
 </ion-content>
