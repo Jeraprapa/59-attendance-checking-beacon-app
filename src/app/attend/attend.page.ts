@@ -6,6 +6,7 @@ import {
 } from '@ionic-native/barcode-scanner/ngx';
 import {DatapassService} from '../datapass.service';
 import {Router} from '@angular/router';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-attend',
@@ -17,9 +18,11 @@ export class AttendPage implements OnInit {
     uid;
     qrData;
     elementType: 'url' | 'canvas' | 'img' = 'canvas';
-  constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner, private datapass: DatapassService, private roter: Router) {
+  constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner,
+              private datapass: DatapassService, private roter: Router, private geolocation: Geolocation) {
       this.uid = this.datapass.cpuuid;
       this.qrData = this.uid;
+      this.geo();
   }
   ngOnInit() {
   }
@@ -83,5 +86,20 @@ export class AttendPage implements OnInit {
   }
     home() {
         this.roter.navigateByUrl('home');
+    }
+    geo() {
+        this.geolocation.getCurrentPosition().then((resp) => {
+            console.log('resp latitude:' + resp.coords.latitude);
+            console.log('resp longitude:' + resp.coords.longitude);
+        }).catch((error) => {
+            console.log('Error getting location', error);
+        });
+
+        // let watch = this.geolocation.watchPosition();
+        // watch.subscribe((data) => {
+        //     // data can be a set of coordinates, or an error (if an error occurred).
+        //     console.log('data longitude:' + data.coords.longitude);
+        //     console.log('data latitude:' + data.coords.latitude);
+        // });
     }
 }

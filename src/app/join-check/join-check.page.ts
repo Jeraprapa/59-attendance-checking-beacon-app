@@ -6,6 +6,7 @@ import { IBeacon } from '@ionic-native/ibeacon/ngx';
 import {Platform} from '@ionic/angular';
 import {BarcodeScannerOptions, BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 import {json} from '@angular-devkit/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-join-check',
@@ -22,7 +23,8 @@ export class JoinCheckPage implements OnInit {
     scannedData;
     ratio;
   constructor(private roter: Router, private datapass: DatapassService,
-              private  http: HTTP, private ibeacon: IBeacon, private platform: Platform, private barcodeScanner: BarcodeScanner) {
+              private  http: HTTP, private ibeacon: IBeacon, private platform: Platform,
+              private barcodeScanner: BarcodeScanner, private geolocation: Geolocation) {
     this.cpidcheck = this.datapass.cpcheck;
     this.jid = this.datapass.join_id;
       this.http.get('http://acb.msuproject.net/webservice/listSign/' + this.datapass.cpcheck,
@@ -105,10 +107,12 @@ export class JoinCheckPage implements OnInit {
             this.scannedData = barcodeData.text;
             if (this.cpidcheck === this.scannedData) {
                 if (this.x === 1) {
+                    this.geo();
                     alert('checked');
                     this.roter.navigateByUrl('join-list-event');
                 } else {
-                    this.check();
+                    // this.check();
+                    this.geo();
                     alert('check');
                     this.roter.navigateByUrl('join-lisevent');
                 }
@@ -147,5 +151,23 @@ export class JoinCheckPage implements OnInit {
             // this.check();
             alert('jjj');
         }
+    }
+
+    geo() {
+        this.geolocation.getCurrentPosition().then((resp) => {
+            // 1 time
+            console.log('resp latitude:' + resp.coords.latitude);
+            console.log('resp longitude:' + resp.coords.longitude);
+        }).catch((error) => {
+            console.log('Error getting location', error);
+        });
+
+        // let watch = this.geolocation.watchPosition();
+        // watch.subscribe((data) => {
+        //     // data can be a set of coordinates, or an error (if an error occurred).
+        //     // all time
+        //     console.log('data longitude:' + data.coords.longitude);
+        //     console.log('data latitude:' + data.coords.latitude);
+        // });
     }
 }

@@ -42,6 +42,7 @@ const routes: Routes = [
   { path: 'regist', loadChildren: './regist/regist.module#RegistPageModule' },
   { path: 'add-checker', loadChildren: './add-checker/add-checker.module#AddCheckerPageModule' },
   { path: 'facebook-register', loadChildren: './facebook-register/facebook-register.module#FacebookRegisterPageModule' },
+  { path: 'reset-password', loadChildren: './reset-password/reset-password.module#ResetPasswordPageModule' },
 ];
 
 @NgModule({

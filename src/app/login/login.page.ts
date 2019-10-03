@@ -87,6 +87,6 @@ export class LoginPage implements OnInit {
     }
 
   forgetp() {
-
+    this.roter.navigateByUrl('reset-password');
   }
 }

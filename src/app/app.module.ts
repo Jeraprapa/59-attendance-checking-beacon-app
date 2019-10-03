@@ -13,6 +13,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { Facebook} from '@ionic-native/facebook/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,7 @@ import { Facebook} from '@ionic-native/facebook/ngx';
     SplashScreen,
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, IBeacon, HTTP,
-      DatapassService, Camera, Facebook
+      DatapassService, Camera, Facebook, Geolocation
   ],
   bootstrap: [AppComponent]
 })
