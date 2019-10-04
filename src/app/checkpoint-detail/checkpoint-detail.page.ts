@@ -49,6 +49,7 @@ export class CheckpointDetailPage implements OnInit {
       this.cpname = this.datacpdetail[0].Episode_name;
       this.datapass.cpuuid = this.cpid;
       console.log(JSON.stringify(jsondata));
+      console.log(this.datapass.distancecp);
     }).catch(reason => {
       console.log(reason);
     });

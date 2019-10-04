@@ -18,9 +18,10 @@ export class ResetPasswordPage implements OnInit {
 
   sendmail() {
     this.http.get('http://acb.msuproject.net/webservice/forgot/' + this.email,
-        { newpassword: this.newpassword}, {}).then(value => {
+        { password: this.newpassword}, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       console.log(JSON.stringify(jsondata));
+      alert('please check email');
     }).catch(reason => {
       console.log(reason);
     });

@@ -21,7 +21,18 @@ export class JoinCheckPage implements OnInit {
     uid;
     x = 0;
     scannedData;
+    scannedData1;
+    scannedData2;
     ratio;
+    lat;
+    long;
+    R;
+    dLon;
+    dLat;
+    a;
+    c;
+    d;
+    // this.datapass.distancecp
   constructor(private roter: Router, private datapass: DatapassService,
               private  http: HTTP, private ibeacon: IBeacon, private platform: Platform,
               private barcodeScanner: BarcodeScanner, private geolocation: Geolocation) {
@@ -39,6 +50,9 @@ export class JoinCheckPage implements OnInit {
       }).catch(reason => {
           console.log(reason);
       });
+      this.lat = this.datapass.attendlat;
+      this.long = this.datapass.attendlong;
+      this.geo();
   }
   ngOnInit() {
   }
@@ -104,19 +118,24 @@ export class JoinCheckPage implements OnInit {
   }
     qrscan() {
         this.barcodeScanner.scan().then(barcodeData => {
-            this.scannedData = barcodeData.text;
+            this.scannedData = barcodeData.text.substring(0, 36);
+            this.scannedData1 = barcodeData.text.substring(36, 46); // lat
+            this.scannedData2 = barcodeData.text.substring(46); // long
             if (this.cpidcheck === this.scannedData) {
                 if (this.x === 1) {
-                    this.geo();
+                    // this.geo();
+                    this.distance();
                     alert('checked');
                     this.roter.navigateByUrl('join-list-event');
                 } else {
                     // this.check();
-                    this.geo();
+                    // this.geo();
+                    this.distance();
                     alert('check');
                     this.roter.navigateByUrl('join-lisevent');
                 }
             }
+            console.log(this.scannedData + ' ' + this.scannedData1 + ' ' + this.scannedData2 );
         }).catch(err => {
                 console.log('Error', err);
             });
@@ -158,10 +177,12 @@ export class JoinCheckPage implements OnInit {
             // 1 time
             console.log('resp latitude:' + resp.coords.latitude);
             console.log('resp longitude:' + resp.coords.longitude);
+            this.datapass.attendlat = resp.coords.latitude;
+            this.datapass.attendlong = resp.coords.longitude;
         }).catch((error) => {
             console.log('Error getting location', error);
         });
-
+        // all time
         // let watch = this.geolocation.watchPosition();
         // watch.subscribe((data) => {
         //     // data can be a set of coordinates, or an error (if an error occurred).
@@ -169,5 +190,20 @@ export class JoinCheckPage implements OnInit {
         //     console.log('data longitude:' + data.coords.longitude);
         //     console.log('data latitude:' + data.coords.latitude);
         // });
+    }
+    distance() {
+        this.R = 6371; // km (change this constant to get miles)
+        this.dLat = (this.datapass.attendlat - this.scannedData1) * Math.PI / 180;
+        this.dLon = (this.datapass.attendlong - this.scannedData2) * Math.PI / 180;
+        this.a = Math.sin(this.dLat / 2) * Math.sin(this.dLat / 2) +
+            Math.cos(this.scannedData1 * Math.PI / 180 ) * Math.cos(this.datapass.attendlat * Math.PI / 180 ) *
+            Math.sin(this.dLon / 2) * Math.sin(this.dLon / 2);
+        this.c = 2 * Math.atan2(Math.sqrt(this.a), Math.sqrt(1 - this.a));
+        this.d = this.R * this.c; // km
+        console.log(this.d * 1000);
+        console.log(this.d);
+        if (this.d <= this.datapass.distancecp) {
+            console.log('kkk');
+        }
     }
 }

@@ -17,11 +17,14 @@ export class AttendPage implements OnInit {
     beaconRegion;
     uid;
     qrData;
-    elementType: 'url' | 'canvas' | 'img' = 'canvas';
+    elementType: 'url' | 'canvas' | 'img' = 'url';
+    attendlat;
+    attendlong;
   constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner,
               private datapass: DatapassService, private roter: Router, private geolocation: Geolocation) {
       this.uid = this.datapass.cpuuid;
       this.qrData = this.uid;
+      // this.i = this.u[1];
       this.geo();
   }
   ngOnInit() {
@@ -91,6 +94,8 @@ export class AttendPage implements OnInit {
         this.geolocation.getCurrentPosition().then((resp) => {
             console.log('resp latitude:' + resp.coords.latitude);
             console.log('resp longitude:' + resp.coords.longitude);
+            this.attendlat = resp.coords.latitude;
+            this.attendlong = resp.coords.longitude;
         }).catch((error) => {
             console.log('Error getting location', error);
         });

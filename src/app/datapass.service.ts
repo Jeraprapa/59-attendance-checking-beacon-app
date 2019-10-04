@@ -34,6 +34,8 @@ export class DatapassService {
  public fname;
  public lname;
  public msuid;
+ public attendlat;
+ public attendlong;
  public datafb;
  public facebookID;
  public beaconrssi;
