@@ -203,7 +203,8 @@ export class JoinCheckPage implements OnInit {
         console.log(this.d * 1000);
         console.log(this.d);
         if (this.d <= this.datapass.distancecp) {
-            console.log('kkk');
+            // this.check();
+            console.log('check');
         }
     }
 }
