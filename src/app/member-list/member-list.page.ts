@@ -22,7 +22,8 @@ export class MemberListPage implements OnInit {
   public show: boolean;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     // this.myValue();
-    this.checker();
+    // this.checker();
+    this.member();
     this.isToggled = false;
     // this.show = true;
   }
@@ -44,6 +45,15 @@ export class MemberListPage implements OnInit {
       // alert('no...');
       console.log(reason);
     });
-
+  }
+  member () {
+    this.http.get('http://acb.msuproject.net/webservice/join/' + this.datapass.event_id + '=approved',
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.datamemberlist = jsondata;
+      console.log(JSON.stringify(jsondata));
+    }).catch(reason => {
+      console.log(reason);
+    });
   }
 }

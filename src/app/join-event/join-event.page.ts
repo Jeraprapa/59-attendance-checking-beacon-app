@@ -11,24 +11,78 @@ export class JoinEventPage implements OnInit {
   ecode;
   a1 = '';
   a2 = '';
-  status = '' ;
+  status = 'approved' ;
   datacode;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) { }
+  datae;
+  estatus;
+  c = 0;
+  c2 = 0;
+  q1;
+  q2;
+  i = 0;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
+  }
   ngOnInit() {
   }
-  join() {
+   join() {
+    // if (this.i === 0) {
+      this.ae();
+    // }
+    // this.i++;
+    // if (this.i === 2) {
+    //   this.newjoin();
+    //   this.i = 0;
+    // }
+  }
+
+  Qrcode() {
+  }
+  newjoin() {
     this.http.post('http://acb.msuproject.net/webservice/newJoin',
-        { userID : this.datapass.uid,
+        {
+          userID : this.datapass.uid,
           eventID : this.ecode,
-          A1 : this.a1,
-          A2 : this.a2,
+          A1 : this.q1,
+          A2 : this.q2,
           status : this.status}, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.datacode = jsondata;
       alert('success');
+      console.log(this.datacode);
       this.roter.navigateByUrl('home');
     }).catch(reason => {
       alert('no');
     });
   }
+
+  ae () {
+    this.http.get('http://acb.msuproject.net/webservice/event/' + this.ecode,
+        { }, {}).then(async value => {
+      let jsondata = JSON.parse(value.data);
+      this.datae = jsondata;
+      this.estatus = this.datae[0].status;
+      this.datapass.eq1 = this.datae[0].Question1;
+      this.datapass.eq2 = this.datae[0].Question2;
+      console.log(JSON.stringify(jsondata));
+      console.log('test ' + this.datapass.eq2.length);
+      // if (this.datapass.eq1.length > 0 && this.datapass.eq2.length > 0) {
+      //   // console.log('ว่างนะ');
+      //   // this.c = 1;
+      //   // this.status = 'unapproved';
+      //   this.roter.navigateByUrl('q-event');
+      // }
+      if (this.datapass.eq2.length > 0 || this.datapass.eq1.length > 0) {
+        // console.log('ว่างนะ');
+        // this.c2 = 1;
+        // this.status = 'unapproved';
+        this.datapass.ecode = this.ecode;
+        this.roter.navigateByUrl('q-event');
+      } else {
+        this.newjoin();
+      }
+    }).catch(reason => {
+      console.log(reason);
+    });
+  }
+
 }

@@ -43,5 +43,9 @@ export class DatapassService {
  public beacondistance;
  public durationtime;
  public distancecp;
+ public eq1;
+ public eq2;
+ public ecode;
+ public tsp;
   constructor() { }
 }

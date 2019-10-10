@@ -4,8 +4,12 @@
   <ion-text class="one">Join </ion-text>
   <br><br>
   <br><br>
-  <ion-label></ion-label>
-  <ion-input></ion-input>
+  <ion-item>
+    <ion-label>Date Start</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="datestart"></ion-datetime>
+  </ion-item>
+  <br>
+  <ion-button (click)="ok({eventname: eventname, datestart: datestart})">ok</ion-button>
   <br><br>
   <form>
     <table border="1">

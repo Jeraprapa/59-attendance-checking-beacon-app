@@ -1,7 +1,14 @@
 <ion-content padding>
-  <ion-label></ion-label>
-  <ion-input></ion-input>
+  <ion-item>
+    <ion-label position="floating">Event name</ion-label>
+    <ion-input [(ngModel)]="eventname"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Date Start</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="datestart"></ion-datetime>
+  </ion-item>
   <br>
+  <ion-button (click)="ok({eventname: eventname, datestart: datestart})">ok</ion-button>
   <br>
   <br>
   <form>
@@ -15,8 +22,8 @@
   </form>
   <ion-item *ngFor="let n of data">
     <tr align="center">
-      <td width="400" height="30" (click)="eventlist({eventIDs : n.eventInfo.eventID})">{{n.eventInfo.name}}</td>
-      <td width="400" height="30" (click)="eventlist({eventIDs : n.eventInfo.eventID})">{{n.eventInfo.status}}</td>
+      <td width="400" height="30" (click)="eventlist({eventIDs : n.eventID})">{{n.name}}</td>
+      <td width="400" height="30" (click)="eventlist({eventIDs : n.eventID})">{{n.Date_start}}</td>
     </tr>
     <!--<ion-label (click)="cp({eventIDs : n.eventInfo.eventID})" >{{n.eventInfo.name}}{{n.eventInfo.status}}</ion-label>-->
   </ion-item>

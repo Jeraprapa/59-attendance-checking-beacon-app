@@ -11,9 +11,18 @@ import {HTTP} from '@ionic-native/http/ngx';
 export class ApprovePage implements OnInit {
   public isToggled: boolean;
   value;
+  data;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     // this.myValue();
     this.isToggled = false;
+    this.http.get('http://acb.msuproject.net/webservice/join/' + this.datapass.event_id + '=unapproved',
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.data = jsondata;
+      console.log(JSON.stringify(jsondata));
+    }).catch(reason => {
+      console.log(reason);
+    });
   }
 
   ngOnInit() {
@@ -22,8 +31,19 @@ export class ApprovePage implements OnInit {
     console.log(this.isToggled);
   }
 
-  checker () {
 
-
+  ok(parameters: { userIDs: number }) {
+    // update unapproved to approved
+    this.http.post('http://acb.msuproject.net/webservice/join/' + this.datapass.event_id + '/' + parameters.userIDs,
+        {
+          'status' : 'approved'
+        }, {}).then(value => {
+      // let jsondata = JSON.parse(value.data);
+      // this.data = jsondata;
+      // console.log(JSON.stringify(jsondata));
+      alert('complete');
+    }).catch(reason => {
+      console.log(reason);
+    });
   }
 }

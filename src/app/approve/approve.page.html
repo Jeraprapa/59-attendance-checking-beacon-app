@@ -14,6 +14,17 @@
       </tr>
     </table>
   </form>
+  <ion-item *ngFor="let n of data">
+    <tr align="center">
+      <td width="400" height="30">{{n.name}}</td>
+      <td width="400" height="30">{{n.Answer1}}</td>
+      <td width="400" height="30">{{n.Answer2}}</td>
+      <td width="400" height="30">
+        <ion-button (click)="ok({userIDs : n.userID})" >ok</ion-button>
+      </td>
+    </tr>
+    <!--<ion-label (click)="cp({eventIDs : n.eventInfo.eventID})" >{{n.eventInfo.name}}{{n.eventInfo.status}}</ion-label>-->
+  </ion-item>
   <!--<ion-item>-->
     <!--<ion-label>Blackberry</ion-label>-->
     <!--&lt;!&ndash;<ion-toggle slot="start" name="blackberry" color="dark" [(ngModel)]="pepperoni"></ion-toggle>&ndash;&gt;-->

@@ -16,6 +16,10 @@ export class NewCheckpointPage implements OnInit {
     area;
     timestart;
     timestop;
+    timenow = moment().format('HH:mm');
+    datenow = moment().format('YYYY-MM-DD');
+    timestart1;
+    datestartc;
     duration;
     eid;
     cpid;
@@ -26,15 +30,19 @@ export class NewCheckpointPage implements OnInit {
       this.cpid = this.datapass.cpid;
       this.uid = uuidv1();
       // this.timestop = this.timestart + this.duration ;
+      this.datapass.tsp = this.timestop;
+      // this.timestop  =  moment(this.timestart, 'HH:mm').add(this.duration , 'minutes').format('HH:mm:ss');
+      this.timestart  =  moment(this.timestart, 'HH:mm').format('HH:mm:ss');
+      this.date  =  moment(this.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
   }
   ngOnInit() {
   }
 
     newcp() {
         // this.timestop = new Date(this.timestart.getTime() + (1000 * this.duration * 60 ));
-        this.timestop  =  moment(this.timestart, 'HH:mm').add(this.duration , 'minutes').format('HH:mm:ss');
-        this.timestart  =  moment(this.timestart, 'HH:mm').format('HH:mm:ss');
-        this.date  =  moment(this.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
+        // this.timestop  =  moment(this.timestart, 'HH:mm').add(this.duration , 'minutes').format('HH:mm:ss');
+        // this.timestart  =  moment(this.timestart, 'HH:mm').format('HH:mm:ss');
+        // this.date  =  moment(this.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
         console.log(this.duration);
         const test = { checkpoinID : this.uid,
             eventID : this.eid,
@@ -44,7 +52,7 @@ export class NewCheckpointPage implements OnInit {
             distance : this.area,
             duration : this.duration ,
             Episode_name : this.name};
-                 console.log(JSON.stringify(test));
+            console.log(JSON.stringify(test));
         this.http.post('http://acb.msuproject.net/webservice/newCheckPoint',
             { checkpoinID : this.uid,
                     eventID : this.eid,
@@ -63,5 +71,19 @@ export class NewCheckpointPage implements OnInit {
         }).catch(reason => {
             alert('no');
         });
+    }
+    onchange($event) {
+        this.datestartc = $event;
+        if ($event === this.datenow) {
+            this.timestart1 = this.timenow;
+        } else {
+            this.timestart1 = '00:00' ;
+        }
+        // this.mindate1 = $event;
+    }
+
+    onchange1($event) {
+        this.timestop  =  moment(this.timestart, 'HH:mm').add($event , 'minutes').format('HH:mm:ss');
+        this.datapass.tsp = this.timestop;
     }
 }

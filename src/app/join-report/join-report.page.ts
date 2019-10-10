@@ -12,8 +12,10 @@ export class JoinReportPage implements OnInit {
   datas;
   joinIDs;
   eid;
+  eventname = '';
+  datestart = '';
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
-    this.datas = this.datapass.datajoinreport;
+    // this.datas = this.datapass.datajoinreport;
     console.log(this.datas);
   }
 
@@ -23,5 +25,21 @@ export class JoinReportPage implements OnInit {
     this.joinIDs = parameters.joinIDs;
     this.eid = parameters.eid;
     this.roter.navigateByUrl('join-detail-report');
+  }
+
+  ok(param: { datestart; eventname}) {
+    // http://acb.msuproject.net/webservice/joinsearch/32
+    this.http.post('http://acb.msuproject.net/webservice/joinsearch/' + this.datapass.uid,
+        {
+          name : this.eventname,
+          Date: this.datestart
+        }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.datas = jsondata;
+      // alert('complete');
+      this.roter.navigateByUrl('home');
+    }).catch(reason => {
+      alert('no');
+    });
   }
 }

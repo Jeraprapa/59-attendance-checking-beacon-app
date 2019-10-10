@@ -10,25 +10,25 @@
   </ion-item>
   <br>
   <ion-item>
-    <ion-label position="floating" class="text">Date Stop</ion-label>
-    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="date"></ion-datetime>
+    <ion-label position="floating" class="text">Date date</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="date" [min]="datenow" [max]="maxdate" (ngModelChange)="onchange($event)"></ion-datetime>
   </ion-item>
   <br>
   <ion-item>
     <ion-label position="floating" class="text">Time Start</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestart"></ion-datetime>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="timestart" [min]="timestart1" [max]="maxtime"></ion-datetime>
   </ion-item>
   <br>
   <ion-item>
-    <ion-label class="text">Time Stop</ion-label>
+    <ion-label position="floating" class="text">Time Stop</ion-label>
     <!--<ion-input  [(ngModel)]="timestop"></ion-input>-->
     <!--<ion-input>{{timestop}}</ion-input>-->
-    <ion-input>{{timestart + duration}}</ion-input>
+    <ion-input [(ngModel)]="datapass.tsp"></ion-input>
   </ion-item>
   <br>
     <ion-item>
       <ion-label position="floating" class="text">duration</ion-label>
-      <ion-select interface="popover"  [(ngModel)]="duration">
+      <ion-select interface="popover"  [(ngModel)]="duration" (ngModelChange)="onchange1($event)">
         <ion-select-option value=5 >5</ion-select-option>
         <ion-select-option value=10 >10</ion-select-option>
         <ion-select-option value=15 >15</ion-select-option>

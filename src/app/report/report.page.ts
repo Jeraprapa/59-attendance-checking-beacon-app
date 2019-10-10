@@ -17,27 +17,27 @@ export class ReportPage implements OnInit {
   }
 
   myeventlist() {
-    this.http.get('http://acb.msuproject.net/webservice/listEvent/' + this.datapass.uid,
-        { }, {}).then(value => {
-      let jsondata = JSON.parse(value.data);
-      this.datapass.dataeventreport = jsondata;
-      this.database = jsondata;
-      console.log(JSON.stringify(jsondata));
+    // this.http.get('http://acb.msuproject.net/webservice/listEvent/' + this.datapass.uid,
+    //     { }, {}).then(value => {
+    //   let jsondata = JSON.parse(value.data);
+    //   this.datapass.dataeventreport = jsondata;
+    //   this.database = jsondata;
+    //   console.log(JSON.stringify(jsondata));
       this.roter.navigateByUrl('event-report');
-    }).catch(reason => {
-      console.log(reason);
-    });
+    // }).catch(reason => {
+    //   console.log(reason);
+    // });
   }
 
   myjoinlist() {
-    this.http.get('http://acb.msuproject.net/webservice/listJoin/' + this.datapass.uid,
-        { }, {}).then(value => {
-      let jsondata = JSON.parse(value.data);
-      this.datapass.datajoinreport = jsondata;
-       console.log(JSON.stringify(jsondata));
+    // this.http.get('http://acb.msuproject.net/webservice/listJoin/' + this.datapass.uid,
+    //     { }, {}).then(value => {
+    //   let jsondata = JSON.parse(value.data);
+    //   this.datapass.datajoinreport = jsondata;
+    //    console.log(JSON.stringify(jsondata));
       this.roter.navigateByUrl('join-report');
-    }).catch(reason => {
-      console.log(reason);
-    });
+    // }).catch(reason => {
+    //   console.log(reason);
+    // });
   }
 }
