@@ -26,6 +26,11 @@ export class AttendPage implements OnInit {
       this.qrData = this.uid;
       // this.i = this.u[1];
       this.geo();
+      this.ibeacon.isBluetoothEnabled().then((isEnable) => {
+          if (!isEnable) {
+              this.ibeacon.enableBluetooth();
+          }
+      });
   }
   ngOnInit() {
   }
@@ -79,7 +84,7 @@ export class AttendPage implements OnInit {
             }
         );
     let beaconRegion1 = this.ibeacon.BeaconRegion('deskBeacon',
-        this.uid , 0 , 0 , false);
+        this.uid , 0 , 0 , true);
 
     this.ibeacon.stopAdvertising(beaconRegion1)
         .then(

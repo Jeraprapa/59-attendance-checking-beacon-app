@@ -53,6 +53,11 @@ export class JoinCheckPage implements OnInit {
       this.lat = this.datapass.attendlat;
       this.long = this.datapass.attendlong;
       this.geo();
+      this.ibeacon.isBluetoothEnabled().then((isEnable) => {
+          if (!isEnable) {
+              this.ibeacon.enableBluetooth();
+          }
+      });
   }
   ngOnInit() {
   }
@@ -100,7 +105,7 @@ export class JoinCheckPage implements OnInit {
           );
 
       let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon',
-          this.cpidcheck , 0 , 0 , false);
+          this.cpidcheck , 0 , 0 , true);
 
       this.ibeacon.startRangingBeaconsInRegion(beaconRegion).then(value1 => {
         alert('Search....');
