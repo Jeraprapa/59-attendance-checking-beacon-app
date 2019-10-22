@@ -14,11 +14,13 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { Facebook} from '@ionic-native/facebook/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgxQRCodeModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgxQRCodeModule , FormsModule,
+    ReactiveFormsModule],
   providers: [
     StatusBar,
     SplashScreen,

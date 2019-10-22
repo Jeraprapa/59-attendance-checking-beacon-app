@@ -4,12 +4,14 @@
   <ion-text class="one">Register</ion-text>
   <br>
   <br>
-  <ion-button  class="ion-button"(click)="fbconnect()" expand="block" >facebook connect</ion-button>
+  <ion-button  class="ion-button" (click)="fbconnect()" expand="block" >facebook connect</ion-button>
   <br>
+  <form [formGroup]="g">
   <ion-item>
     <ion-label position="floating" class="text">Email</ion-label>
-    <ion-input [(ngModel)]="email"></ion-input>
+    <ion-input type="email" formControlName="email" [(ngModel)]="email"></ion-input>
   </ion-item>
+  </form>
   <br>
   <ion-item>
     <ion-label position="floating" class="text">password</ion-label>
@@ -44,6 +46,6 @@
   </ion-row>
   <br>
   <ion-fab>
-    <ion-fab-button class="ion-fab-button" color="test" (click)="register()">OK</ion-fab-button>
+    <ion-fab-button class="ion-fab-button" color="test" (click)="register()" [disabled]="g.invalid">OK</ion-fab-button>
   </ion-fab>
 </ion-content>
