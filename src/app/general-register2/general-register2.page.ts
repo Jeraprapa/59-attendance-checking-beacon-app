@@ -23,29 +23,34 @@ export class GeneralRegister2Page implements OnInit {
   g: FormGroup;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera,
               private fb: Facebook, private formBuilder: FormBuilder) {
-    // this.group = new FormGroup({
-    //   email: new FormControl('', Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')),
-    //   // name: new FormControl('', Validators.required),
-    //   // surname: new FormControl('', Validators.required)
-    // });
     this.g = this.formBuilder.group({
-      email: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])]
+      email: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9_.-]+@["hotmail"|"gmail"]+.["com"|"ac.th"]+$'),
+        Validators.required])],
+      password: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9_.-]+$'),
+        Validators.required])],
+      name: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9]+$'),
+        Validators.required])],
+      surname: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9]+$'),
+        Validators.required])]
     });
+
   }
 
   ngOnInit() {
   }
 
   register() {
-    // this.http.post('http://acb.msuproject.net/webservice/register',
-    //     {name : this.name, surname : this.surname, image : this.img, email : this.email, tel : this.phone,
-    //       password : this.password, msuid : this.msuid}, {}).then(value => {
-    //         console.log(JSON.stringify(value.data));
-    //    this.roter.navigateByUrl('login');
-    // }).catch(reason => {
-    //     alert('no');
-    // });
-    console.log(this.email);
+    // if (this.g.invalid) {
+    //   console.log(this.email);
+    // }
+    this.http.post('http://acb.msuproject.net/webservice/register',
+        {name : this.name, surname : this.surname, image : this.img, email : this.email, tel : this.phone,
+          password : this.password, msuid : this.msuid}, {}).then(value => {
+            console.log(JSON.stringify(value.data));
+       this.roter.navigateByUrl('login');
+    }).catch(reason => {
+        alert('no');
+    });
   }
 
   photo() {
