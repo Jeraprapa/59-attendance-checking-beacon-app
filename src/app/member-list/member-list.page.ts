@@ -35,19 +35,30 @@ export class MemberListPage implements OnInit {
   }
 
   checker () {
-    this.http.get('http://acb.msuproject.net/webservice/joinmember/' + this.datapass.event_id,
+    // this.http.get('http://acb.msuproject.net/webservice/joinmember/' + this.datapass.event_id,
+    //     { }, {}).then(value => {
+    //   let jsondata = JSON.parse(value.data);
+    //   this.datamemberlist = jsondata;
+    //   console.log(JSON.stringify(jsondata));
+    //   // this.roter.navigateByUrl('event-list');
+    // }).catch(reason => {
+    //   // alert('no...');
+    //   console.log(reason);
+    // });
+  }
+  member () {
+    this.http.get('http://acb.msuproject.net/webservice/join/' + this.datapass.event_id + '=approved',
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.datamemberlist = jsondata;
       console.log(JSON.stringify(jsondata));
-      // this.roter.navigateByUrl('event-list');
     }).catch(reason => {
-      // alert('no...');
       console.log(reason);
     });
   }
-  member () {
-    this.http.get('http://acb.msuproject.net/webservice/join/' + this.datapass.event_id + '=approved',
+
+  check() {
+    this.http.get('http://acb.msuproject.net/webservice/checkuser/' + this.datapass.event_id + '=cpid' ,
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.datamemberlist = jsondata;
