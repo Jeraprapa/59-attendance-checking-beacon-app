@@ -1,9 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>member-check</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
-
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="circles"
+            refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div>
+  <ion-item *ngFor="let n of datamembercheck">
+    <tr align="center">
+      <td width="400" height="30" >{{n.name}}&nbsp;{{n.surname}}</td>
+      <td width="400" height="30" >
+        <ion-button (click)="cm({join_id : n.joinID})">check</ion-button>
+      </td>
+    </tr>
+  </ion-item>
+  </div>
 </ion-content>

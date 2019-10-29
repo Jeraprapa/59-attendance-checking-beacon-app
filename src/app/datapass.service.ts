@@ -47,5 +47,9 @@ export class DatapassService {
  public eq2;
  public ecode;
  public tsp;
+ public dataallmember;
+ public datauserchecked;
+ public a: number[];
+ public b: number[];
   constructor() { }
 }

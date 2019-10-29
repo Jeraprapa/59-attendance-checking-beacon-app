@@ -57,14 +57,14 @@ export class MemberListPage implements OnInit {
     });
   }
 
-  check() {
-    this.http.get('http://acb.msuproject.net/webservice/checkuser/' + this.datapass.event_id + '=cpid' ,
-        { }, {}).then(value => {
-      let jsondata = JSON.parse(value.data);
-      this.datamemberlist = jsondata;
-      console.log(JSON.stringify(jsondata));
-    }).catch(reason => {
-      console.log(reason);
-    });
-  }
+  // check() {
+  //   this.http.get('http://acb.msuproject.net/webservice/checkuser/' + this.datapass.event_id + '=cpid' ,
+  //       { }, {}).then(value => {
+  //     let jsondata = JSON.parse(value.data);
+  //     this.datamemberlist = jsondata;
+  //     console.log(JSON.stringify(jsondata));
+  //   }).catch(reason => {
+  //     console.log(reason);
+  //   });
+  // }
 }
