@@ -1,9 +1,21 @@
 <ion-content padding >
-  <br>
-  <br>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="circles"
+            refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--<br>-->
+  <!--<br>-->
   <ion-text class="one">Join </ion-text>
-  <br><br>
-  <br><br>
+  <!--<br><br>-->
+  <!--<br><br>-->
+  <ion-item>
+    <ion-label position="floating">Event name</ion-label>
+    <ion-input [(ngModel)]="eventname"></ion-input>
+  </ion-item>
   <ion-item>
     <ion-label>Date Start</ion-label>
     <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="datestart"></ion-datetime>

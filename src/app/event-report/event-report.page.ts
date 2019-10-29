@@ -14,7 +14,7 @@ export class EventReportPage implements OnInit {
   eventname = '';
   datestart = '';
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
-    // this.data = this.datapass.dataeventreport ;
+     this.data = this.datapass.dataeventreport ;
   }
 
   ngOnInit() {
@@ -38,9 +38,19 @@ export class EventReportPage implements OnInit {
       let jsondata = JSON.parse(value.data);
       this.data = jsondata;
       // alert('complete');
-      this.roter.navigateByUrl('home');
+      // this.roter.navigateByUrl('home');
     }).catch(reason => {
       alert('no');
     });
+  }
+  doRefresh(event) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      this.data = this.datapass.dataeventreport ;
+      this.eventname = '';
+      this.datestart = '';
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
   }
 }

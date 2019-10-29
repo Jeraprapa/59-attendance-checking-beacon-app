@@ -46,6 +46,7 @@ export class MemberCheckPage implements OnInit {
 
     setTimeout(() => {
       console.log('Async operation has ended');
+      this.check();
       event.target.complete();
     }, 2000);
   }

@@ -60,8 +60,6 @@ export class CheckpointDetailPage implements OnInit {
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.datachecker = jsondata;
-      // this.checkeruid = this.datachecker[0].userID;
-      // this.c_ID = this.datachecker[0].c_ID;
       console.log(JSON.stringify(jsondata));
     }).catch(reason => {
       console.log(reason);
@@ -92,16 +90,6 @@ export class CheckpointDetailPage implements OnInit {
   edit() {
     this.roter.navigateByUrl('edit-checkpoint');
   }
-  // check() {
-  //   this.http.get('http://acb.msuproject.net/webservice/checkuser/' + this.datapass.event_id + '=' + this.datapass.cpuid,
-  //       { }, {}).then(value => {
-  //     let jsondata = JSON.parse(value.data);
-  //     this.datamembercheck = jsondata;
-  //     console.log(JSON.stringify(jsondata));
-  //   }).catch(reason => {
-  //     console.log(reason);
-  //   });
-  // }
 
   showmember() {
     this.roter.navigateByUrl('member-check');

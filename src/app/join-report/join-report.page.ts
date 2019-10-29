@@ -15,7 +15,7 @@ export class JoinReportPage implements OnInit {
   eventname = '';
   datestart = '';
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
-    // this.datas = this.datapass.datajoinreport;
+    this.datas = this.datapass.datajoinreport;
     console.log(this.datas);
   }
 
@@ -37,9 +37,19 @@ export class JoinReportPage implements OnInit {
       let jsondata = JSON.parse(value.data);
       this.datas = jsondata;
       // alert('complete');
-      this.roter.navigateByUrl('home');
+      // this.roter.navigateByUrl('home');
     }).catch(reason => {
       alert('no');
     });
+  }
+  doRefresh(event) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      this.datas = this.datapass.datajoinreport;
+      this.eventname = '';
+      this.datestart = '';
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
   }
 }
