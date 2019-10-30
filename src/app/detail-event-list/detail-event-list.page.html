@@ -36,6 +36,10 @@
   <br>
   <br>
   <ion-text class="one">codeID : {{codeid}}</ion-text>
+  <ngx-qrcode
+          [qrc-element-type]="elementType"
+          [qrc-value]="codeid">
+  </ngx-qrcode>
   <br>
   <br>
   <ion-row>

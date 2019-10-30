@@ -26,18 +26,18 @@
   </ion-item>
   <ion-item>
     <ion-label>Status</ion-label>
-    <ion-select interface="popover" placeholder="public" value="public"[(ngModel)]="e">
+    <ion-select interface="popover" placeholder="public" value="public"[(ngModel)]="status" (ngModelChange)="onchange3($event)">
       <ion-select-option value="public" selected >public</ion-select-option>
       <ion-select-option value="private">private</ion-select-option>
     </ion-select>
   </ion-item>
   <br>
-  <ion-label class="location">Info(Option)</ion-label>
-  <ion-item>
+  <ion-label class="location" *ngIf="c == '1' ">Info(Option)</ion-label>
+  <ion-item *ngIf="c == '1' ">
     <ion-input position="floating">q1</ion-input>
     <ion-input [(ngModel)]="q1"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item *ngIf="c == '1' ">
     <ion-input position="floating">q2</ion-input>
     <ion-input [(ngModel)]="q2"></ion-input>
   </ion-item>

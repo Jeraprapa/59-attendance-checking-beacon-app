@@ -20,6 +20,7 @@ export class MemberCheckPage implements OnInit {
 
   ngOnInit() {
   }
+
   check() {
     this.http.get('http://acb.msuproject.net/webservice/checkuser/' + this.datapass.event_id + '=' + this.datapass.cpuid,
         { }, {}).then(value => {

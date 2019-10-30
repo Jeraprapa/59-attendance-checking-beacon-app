@@ -33,6 +33,7 @@ export class NewEventPage implements OnInit {
     maxdate;
     datestartc;
     maxtime;
+    c;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
       this.uid = this.datapass.uid;
       this.mindate2 = this.datenow + 'T' + this.timenow;
@@ -42,6 +43,7 @@ export class NewEventPage implements OnInit {
       console.log(this.timenow);
       this.mintime = Math.random().toString(36).toUpperCase().substring(2, 3) + Math.random().toString(36).substring(2, 6);
       console.log(this.mintime);
+
   }
   ngOnInit() {
   }
@@ -88,5 +90,15 @@ export class NewEventPage implements OnInit {
 
     onchange2($event) {
         this.maxtime = $event;
+    }
+
+    onchange3($event) {
+        if ($event === 'private') {
+            this.c = 1;
+            console.log(this.status);
+        } else {
+            this.c = 0;
+            console.log(this.status);
+        }
     }
 }

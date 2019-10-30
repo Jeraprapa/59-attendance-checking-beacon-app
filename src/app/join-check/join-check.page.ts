@@ -133,8 +133,8 @@ export class JoinCheckPage implements OnInit {
                     alert('checked');
                     this.roter.navigateByUrl('join-list-event');
                 } else {
-                    // this.check();
-                    // this.geo();
+                    this.check();
+                    this.geo();
                     this.distance();
                     alert('check');
                     this.roter.navigateByUrl('join-lisevent');

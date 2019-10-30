@@ -61,6 +61,13 @@ export class CheckpointReportPage implements OnInit {
  }
 
   send() {
-
+    this.http.get('http://acb.msuproject.net/webservice/reportcsv/' + this.datapass.eid_report + '/' + this.datapass.cpuidreport,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      // this.datasign = jsondata;
+      // console.log(JSON.stringify(jsondata));
+    }).catch(reason => {
+      console.log(reason);
+    });
   }
 }

@@ -12,6 +12,7 @@ export class ApprovePage implements OnInit {
   public isToggled: boolean;
   value;
   data;
+  jid;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     // this.myValue();
     this.isToggled = false;
@@ -19,6 +20,7 @@ export class ApprovePage implements OnInit {
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.data = jsondata;
+      this.jid = this.data[0].joinID;
       console.log(JSON.stringify(jsondata));
     }).catch(reason => {
       console.log(reason);
@@ -42,6 +44,18 @@ export class ApprovePage implements OnInit {
       // this.data = jsondata;
       // console.log(JSON.stringify(jsondata));
       alert('complete');
+    }).catch(reason => {
+      console.log(reason);
+    });
+  }
+
+  del(parameters: { JoinIDs: number }) {
+    // console.log(parameters.JoinIDs);
+    this.http.get('http://acb.msuproject.net/webservice/joinDel/' + parameters.JoinIDs,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      // this.data = jsondata;
+      // console.log(JSON.stringify(jsondata));
     }).catch(reason => {
       console.log(reason);
     });

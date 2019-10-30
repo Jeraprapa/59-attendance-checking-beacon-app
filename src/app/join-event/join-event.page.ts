@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
+import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 @Component({
   selector: 'app-join-event',
   templateUrl: './join-event.page.html',
@@ -20,7 +21,7 @@ export class JoinEventPage implements OnInit {
   q1;
   q2;
   i = 0;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private barcodeScanner: BarcodeScanner) {
   }
   ngOnInit() {
   }
@@ -36,6 +37,28 @@ export class JoinEventPage implements OnInit {
   }
 
   Qrcode() {
+      this.barcodeScanner.scan().then(barcodeData => {
+        this.http.get('http://acb.msuproject.net/webservice/event/' + barcodeData,
+            { }, {}).then(async value => {
+          let jsondata = JSON.parse(value.data);
+          this.datae = jsondata;
+          this.estatus = this.datae[0].status;
+          this.datapass.eq1 = this.datae[0].Question1;
+          this.datapass.eq2 = this.datae[0].Question2;
+          console.log(JSON.stringify(jsondata));
+          console.log('test ' + this.datapass.eq2.length);
+          if (this.datapass.eq2.length > 0 || this.datapass.eq1.length > 0) {
+            this.datapass.ecode = this.ecode;
+            this.roter.navigateByUrl('q-event');
+          } else {
+            this.newjoin();
+          }
+        }).catch(reason => {
+          console.log(reason);
+        });
+      }).catch(err => {
+        console.log('Error', err);
+      });
   }
   newjoin() {
     this.http.post('http://acb.msuproject.net/webservice/newJoin',

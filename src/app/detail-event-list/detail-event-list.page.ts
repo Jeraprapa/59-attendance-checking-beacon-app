@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
+import {IBeacon} from '@ionic-native/ibeacon/ngx';
+import {
+    BarcodeScannerOptions,
+    BarcodeScanner
+} from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-detail-event-list',
@@ -18,8 +23,9 @@ export class DetailEventListPage implements OnInit {
     tstop;
     status;
     codeid;
+    elementType: 'url' | 'canvas' | 'img' = 'url';
 
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private barcodeScanner: BarcodeScanner) {
     this.edetail();
   }
 

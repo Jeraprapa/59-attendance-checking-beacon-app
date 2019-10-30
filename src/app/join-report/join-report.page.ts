@@ -28,7 +28,6 @@ export class JoinReportPage implements OnInit {
   }
 
   ok(param: { datestart; eventname}) {
-    // http://acb.msuproject.net/webservice/joinsearch/32
     this.http.post('http://acb.msuproject.net/webservice/joinsearch/' + this.datapass.uid,
         {
           name : this.eventname,
