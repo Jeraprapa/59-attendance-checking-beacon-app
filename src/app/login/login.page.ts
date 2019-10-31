@@ -19,6 +19,10 @@ export class LoginPage implements OnInit {
   emailfb;
   c = 1;
   a = 1;
+  b = 1;
+  d = 1;
+  as;
+  datamsu;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private fb: Facebook) { }
 
   ngOnInit() {
@@ -26,7 +30,7 @@ export class LoginPage implements OnInit {
 
   login() {
     this.http.post('http://acb.msuproject.net/webservice/login',
-        {  email : this.username, msuid : this.msuid , password : this.password}, {}).then(value => {
+        {  email : this.username, password : this.password}, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.database = jsondata;
       this.datapass.uid = this.database[0].userID;
@@ -94,18 +98,55 @@ export class LoginPage implements OnInit {
   }
 
   onchange3($event) {
-    if ($event > 0) {
-      this.a = 1;
-    } else {
+    // console.log(this.username.length);
+    if ($event.length > 0) {
       this.a = 0;
+      this.b = 0;
+      this.c = 1;
+      this.d = 1;
     }
   }
 
   onchange2($event) {
-    if ($event > 0) {
-      this.c = 1;
-    } else {
+    // console.log($event.length);
+    if ($event.length > 0) {
       this.c = 0;
+      this.b = 0;
+      this.a = 1;
+      this.d = 2;
     }
+  }
+
+  login2 ( ) {
+    this.http.post('http://webservices.csmsu.net/rest/api/Authentication',
+        {username: this.msuid, password: this.password}, {'APIKey': '1234'}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.datamsu = jsondata;
+      this.as = this.datamsu.activeStatus;
+      this.msuid = this.datamsu.sysUsername;
+      this.datapass.msuid = this.msuid;
+      console.log(this.as);
+      this.checkstatus();
+    }).catch(reason => {
+      alert('no');
+    });
+  }
+  checkstatus() {
+    if (this.as === true) {
+      this.roter.navigateByUrl('home');
+    }
+  }
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.c = 1;
+      this.a = 1;
+      this.b = 1;
+      this.d = 1;
+
+      event.target.complete();
+    }, 2000);
   }
 }

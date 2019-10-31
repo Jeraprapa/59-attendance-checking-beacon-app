@@ -65,9 +65,10 @@ export class JoinListEventPage implements OnInit {
     });
   }
 
-  cpuuid(parameters: {cpid: number}) {
+  cpuuid(parameters: {cpid: number , distance: number}) {
     this.cpid = parameters.cpid;
     this.datapass.cpcheck = this.cpid;
+    this.datapass.distancecp = parameters.distance;
     if (this.checkerid === this.datapass.uid) {
       this.roter.navigateByUrl('attend');
     } else {

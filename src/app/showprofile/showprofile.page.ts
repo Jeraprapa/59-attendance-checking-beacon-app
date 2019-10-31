@@ -31,7 +31,7 @@ export class ShowprofilePage implements OnInit {
 
   login() {
     this.http.post('http://acb.msuproject.net/webservice/login',
-        {  email : this.datapass.uname, msuid : this.datapass.msu , password : this.datapass.pwd}, {}).then(value => {
+        {  email : this.datapass.uname, password : this.datapass.pwd}, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.database = jsondata;
       this.myid = this.database[0].userID;

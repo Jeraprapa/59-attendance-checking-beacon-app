@@ -38,6 +38,7 @@ export class JoinCheckPage implements OnInit {
               private barcodeScanner: BarcodeScanner, private geolocation: Geolocation) {
     this.cpidcheck = this.datapass.cpcheck;
     this.jid = this.datapass.join_id;
+    console.log(this.datapass.distancecp);
       this.http.get('http://acb.msuproject.net/webservice/listSign/' + this.datapass.cpcheck,
           { }, {}).then(value => {
           let jsondata = JSON.parse(value.data);
@@ -76,14 +77,14 @@ export class JoinCheckPage implements OnInit {
                       this.i++;
                       if (this.i === 1) {
                           if (this.x === 1) {
-                              this.caldistance();
+                              // this.caldistance();
                               alert('checked');
                               this.roter.navigateByUrl('join-list-event');
                           } else {
                               // this.check();
                               this.caldistance();
                               // alert('check');
-                              this.roter.navigateByUrl('join-lisevent');
+                              this.roter.navigateByUrl('join-list-event');
                           }
                       } else {
                           this.ibeacon.stopRangingBeaconsInRegion(beaconRegion);
@@ -208,7 +209,7 @@ export class JoinCheckPage implements OnInit {
         console.log(this.d * 1000);
         console.log(this.d);
         if (this.d <= this.datapass.distancecp) {
-            // this.check();
+            this.check();
             console.log('check');
         }
     }

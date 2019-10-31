@@ -18,8 +18,8 @@ export class JoinEventPage implements OnInit {
   estatus;
   c = 0;
   c2 = 0;
-  q1;
-  q2;
+  q1 = '';
+  q2 = '';
   i = 0;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private barcodeScanner: BarcodeScanner) {
   }
@@ -61,6 +61,11 @@ export class JoinEventPage implements OnInit {
       });
   }
   newjoin() {
+    console.log(this.datapass.uid);
+    console.log(this.ecode);
+    console.log(this.q1);
+    console.log(this.q2);
+    console.log(this.status);
     this.http.post('http://acb.msuproject.net/webservice/newJoin',
         {
           userID : this.datapass.uid,
@@ -88,16 +93,7 @@ export class JoinEventPage implements OnInit {
       this.datapass.eq2 = this.datae[0].Question2;
       console.log(JSON.stringify(jsondata));
       console.log('test ' + this.datapass.eq2.length);
-      // if (this.datapass.eq1.length > 0 && this.datapass.eq2.length > 0) {
-      //   // console.log('ว่างนะ');
-      //   // this.c = 1;
-      //   // this.status = 'unapproved';
-      //   this.roter.navigateByUrl('q-event');
-      // }
       if (this.datapass.eq2.length > 0 || this.datapass.eq1.length > 0) {
-        // console.log('ว่างนะ');
-        // this.c2 = 1;
-        // this.status = 'unapproved';
         this.datapass.ecode = this.ecode;
         this.roter.navigateByUrl('q-event');
       } else {

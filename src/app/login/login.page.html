@@ -1,4 +1,12 @@
 <ion-header>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="circles"
+            refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-toolbar class="Hbar" slot="start">
     <ion-title>My App</ion-title>
   </ion-toolbar>
@@ -10,13 +18,13 @@
   <br>
   <br>
   <ion-item *ngIf="c == '1' ">
-    <ion-label position="floating" class="text" (ngModelChange)="onchange3($event)">Username</ion-label>
-    <ion-input [(ngModel)]="username"></ion-input>
+    <ion-label position="floating" class="text">Username</ion-label>
+    <ion-input [(ngModel)]="username" (ngModelChange)="onchange3($event)"></ion-input>
   </ion-item>
-  <ion-text class="two"><div>OR</div></ion-text>
+  <ion-text class="two" *ngIf="b == '1' "><div>OR</div></ion-text>
   <ion-item *ngIf="a == '1' ">
-    <ion-label position="floating" class="text" (ngModelChange)="onchange2($event)">MSU ID</ion-label>
-    <ion-input [(ngModel)]="msuid"></ion-input>
+    <ion-label position="floating" class="text" >MSU ID</ion-label>
+    <ion-input [(ngModel)]="msuid" (ngModelChange)="onchange2($event)"></ion-input>
   </ion-item>
   <br>
   <ion-item>
@@ -28,7 +36,8 @@
   <br>
   <ion-row>
       <ion-col width-5>
-        <ion-button expand="block" color="medium" (click)="login()">Login</ion-button>
+        <ion-button expand="block" color="medium" (click)="login()" *ngIf="d == '1' ">Login</ion-button>
+        <ion-button expand="block" color="medium" (click)="login2()" *ngIf="d == '2' ">Login</ion-button>
       </ion-col>
       <ion-col width-5>
         <ion-button expand="block" color="warning" (click)="Register()">Register</ion-button>
