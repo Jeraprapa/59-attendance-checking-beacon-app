@@ -1,6 +1,12 @@
-<br>
 <ion-content padding >
-  <br>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="circles"
+            refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <form>
     <table align="right" border="0" >
       <tr align="left">
@@ -37,15 +43,15 @@
   <br>
   <br>
   <ion-item *ngFor="let n of cplist">
-    <ion-label (click)="cpuuid({cpid: n.cpID})">{{n.name}} {{n.Time_start}}</ion-label>
+    <ion-label (click)="cpuuid({cpid: n.cpID})" >{{n.name}} {{n.Time_start}}</ion-label>
   </ion-item>
   <!--{{joinIDs}}-->
-  <br>
-  <ion-row>
-    <ion-col>
-      <ion-button expand="block" color="warning" (click)="check()">Check point</ion-button>
-    </ion-col>
-  </ion-row>
+  <!--<br>-->
+  <!--<ion-row>-->
+    <!--<ion-col>-->
+      <!--<ion-button expand="block" color="warning" (click)="check()">Check point</ion-button>-->
+    <!--</ion-col>-->
+  <!--</ion-row>-->
 
 
 </ion-content>

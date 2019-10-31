@@ -38,7 +38,7 @@ export class JoinEventPage implements OnInit {
 
   Qrcode() {
       this.barcodeScanner.scan().then(barcodeData => {
-        this.http.get('http://acb.msuproject.net/webservice/event/' + barcodeData,
+        this.http.get('http://acb.msuproject.net/webservice/event/' + barcodeData.text,
             { }, {}).then(async value => {
           let jsondata = JSON.parse(value.data);
           this.datae = jsondata;

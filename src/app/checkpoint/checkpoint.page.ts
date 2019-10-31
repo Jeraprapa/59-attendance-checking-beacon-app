@@ -14,8 +14,31 @@ export class CheckpointPage implements OnInit {
   datacplist;
   cpids;
   dates;
+  timenow = moment().format('HH:mm:ss');
+  datenow = moment().format('YYYY-MM-DD');
+  c = 0;
+  dt;
+  dtn;
+  dts;
+  dtse;
+  datecp;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.cplist();
+    // this.datapass.edate
+    // this.datapass.etime this.mindate2 = this.datenow + 'T' + this.timenow;
+    this.dt = this.datenow + 'T' + this.timenow;
+    this.dtn = Date.parse(this.dt);
+    this.dtse = this.datapass.edate + 'T' + this.datapass.etime;
+    this.dts = Date.parse(this.dtse);
+    console.log(this.dtn);
+    console.log(this.dts);
+    if (this.dtn === this.dts || this.dtn < this.dts) {
+      this.c = 1;
+      console.log(this.c);
+    } else {
+      this.c = 0;
+      console.log(this.c);
+    }
   }
 
   ngOnInit() {
@@ -27,7 +50,9 @@ export class CheckpointPage implements OnInit {
       let jsondata = JSON.parse(value.data);
       this.datapass.dataevent = jsondata;
       this.datacplist = jsondata;
-      this.dates = moment(this.datacplist[0].Date_start, 'YYYY-MM-DD').format('DD-MM-YYYY');
+      this.datecp = this.datacplist[0].Date_start;
+      console.log(this.datecp);
+      this.dates = moment(this.datecp, 'YYYY-MM-DD').format('DD-MM-YYYY');
       console.log(JSON.stringify(jsondata));
     }).catch(reason => {
       console.log(reason);

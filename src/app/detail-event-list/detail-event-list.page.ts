@@ -43,9 +43,9 @@ export class DetailEventListPage implements OnInit {
       this.datae = jsondata;
       this.detail = this.datae[0].detail;
       this.dstart = this.datae[0].Date_start;
-      this.dstop = this.datae[0].Date_stop;
+      this.datapass.edate = this.datae[0].Date_stop;
       this.tstart = this.datae[0].Time_start;
-      this.tstop = this.datae[0].Time_stop;
+      this.datapass.etime = this.datae[0].Time_stop;
       this.status = this.datae[0].status;
       this.name = this.datae[0].name;
       this.codeid =  this.datapass.event_id;
@@ -75,5 +75,15 @@ export class DetailEventListPage implements OnInit {
 
     edit() {
         this.roter.navigateByUrl('edit-event');
+    }
+
+    doRefresh(event) {
+        console.log('Begin async operation');
+
+        setTimeout(() => {
+            console.log('Async operation has ended');
+            this.edetail();
+            event.target.complete();
+        }, 2000);
     }
 }

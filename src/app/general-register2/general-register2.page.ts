@@ -28,9 +28,9 @@ export class GeneralRegister2Page implements OnInit {
         Validators.required])],
       password: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9_.-]+$'),
         Validators.required])],
-      name: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9]+$'),
+      name: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9ก-๙]+$'),
         Validators.required])],
-      surname: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9]+$'),
+      surname: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9ก-๙]+$'),
         Validators.required])]
     });
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-join-list-event',
@@ -22,11 +23,31 @@ export class JoinListEventPage implements OnInit {
   detail;
   datachecker;
   checkerid;
+  timenow = moment().format('HH:mm:ss');
+  datenow = moment().format('YYYY-MM-DD');
+  c = 0;
+  dt;
+  dtn;
+  dts;
+  dtse;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.joinIDs = this.datapass.join_id;
     this.showcplist();
     this.showdataevent();
     this.checker();
+    this.dt = this.datenow + 'T' + this.timenow;
+    this.dtn = Date.parse(this.dt);
+    this.dtse = this.dstart + 'T' + this.tstop;
+    this.dts = Date.parse(this.dtse);
+    console.log(this.dtn);
+    console.log(this.dts);
+    if (this.dtn === this.dts || this.dtn < this.dts) {
+      this.c = 1;
+      console.log(this.c);
+    } else {
+      this.c = 0;
+      console.log(this.c);
+    }
   }
 
   ngOnInit() {
@@ -84,8 +105,6 @@ export class JoinListEventPage implements OnInit {
     });
 
   }
-  check() {
-  }
 
   delete() {
     this.http.get('http://acb.msuproject.net/webservice/joinDel/' + this.joinIDs,
@@ -96,5 +115,16 @@ export class JoinListEventPage implements OnInit {
     }).catch(reason => {
       console.log(reason);
     });
+  }
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.showcplist();
+      this.showdataevent();
+      this.checker();
+      event.target.complete();
+    }, 2000);
   }
 }

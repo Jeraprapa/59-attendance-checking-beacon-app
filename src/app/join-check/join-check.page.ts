@@ -82,7 +82,7 @@ export class JoinCheckPage implements OnInit {
                           } else {
                               // this.check();
                               this.caldistance();
-                              alert('check');
+                              // alert('check');
                               this.roter.navigateByUrl('join-lisevent');
                           }
                       } else {
@@ -172,8 +172,8 @@ export class JoinCheckPage implements OnInit {
             this.datapass.beacondistance = Math.round((0.89976) * Math.pow(this.ratio, 7.7095) + 0.111);
         }
         if (this.datapass.beacondistance <= this.datapass.distancecp) {
-            // this.check();
-            alert('jjj');
+            this.check();
+            alert('check');
         }
     }
 

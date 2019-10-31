@@ -15,7 +15,16 @@ export class ApprovePage implements OnInit {
   jid;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     // this.myValue();
+    this.join();
     this.isToggled = false;
+  }
+
+  ngOnInit() {
+  }
+  public notify() {
+    console.log(this.isToggled);
+  }
+  join () {
     this.http.get('http://acb.msuproject.net/webservice/join/' + this.datapass.event_id + '=unapproved',
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
@@ -26,13 +35,6 @@ export class ApprovePage implements OnInit {
       console.log(reason);
     });
   }
-
-  ngOnInit() {
-  }
-  public notify() {
-    console.log(this.isToggled);
-  }
-
 
   ok(parameters: { userIDs: number }) {
     // update unapproved to approved
@@ -59,5 +61,14 @@ export class ApprovePage implements OnInit {
     }).catch(reason => {
       console.log(reason);
     });
+  }
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.join();
+      event.target.complete();
+    }, 2000);
   }
 }

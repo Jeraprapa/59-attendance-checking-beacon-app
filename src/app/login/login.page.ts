@@ -11,11 +11,14 @@ import {json} from '@angular-devkit/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  username;
+  username = '';
   password;
+  msuid = '';
   database;
   databasefb;
   emailfb;
+  c = 1;
+  a = 1;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private fb: Facebook) { }
 
   ngOnInit() {
@@ -23,7 +26,7 @@ export class LoginPage implements OnInit {
 
   login() {
     this.http.post('http://acb.msuproject.net/webservice/login',
-        {  email : this.username, password : this.password}, {}).then(value => {
+        {  email : this.username, msuid : this.msuid , password : this.password}, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.database = jsondata;
       this.datapass.uid = this.database[0].userID;
@@ -88,5 +91,21 @@ export class LoginPage implements OnInit {
 
   forgetp() {
     this.roter.navigateByUrl('reset-password');
+  }
+
+  onchange3($event) {
+    if ($event > 0) {
+      this.a = 1;
+    } else {
+      this.a = 0;
+    }
+  }
+
+  onchange2($event) {
+    if ($event > 0) {
+      this.c = 1;
+    } else {
+      this.c = 0;
+    }
   }
 }
