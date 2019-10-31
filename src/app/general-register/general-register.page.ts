@@ -30,6 +30,7 @@ export class GeneralRegisterPage implements OnInit {
             this.as = this.datamsu.activeStatus;
             this.msuid = this.datamsu.sysUsername;
             this.datapass.msuid = this.msuid;
+            this.datapass.pass_msuid = this.password;
             console.log(this.as);
             this.checkstatus();
         }).catch(reason => {

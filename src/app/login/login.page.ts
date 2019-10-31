@@ -125,6 +125,7 @@ export class LoginPage implements OnInit {
       this.as = this.datamsu.activeStatus;
       this.msuid = this.datamsu.sysUsername;
       this.datapass.msuid = this.msuid;
+      // this.datapass.pass_msuid = this.password;
       console.log(this.as);
       this.checkstatus();
     }).catch(reason => {
@@ -133,7 +134,22 @@ export class LoginPage implements OnInit {
   }
   checkstatus() {
     if (this.as === true) {
-      this.roter.navigateByUrl('home');
+      this.http.post('http://acb.msuproject.net/webservice/loginmsu',
+          {  MSU_ID : this.msuid, password : this.password}, {}).then(value => {
+        let jsondata = JSON.parse(value.data);
+        this.database = jsondata;
+        this.datapass.uid = this.database[0].userID;
+        this.datapass.uname = this.username;
+        this.datapass.pwd = this.password;
+        this.datapass.name = this.database[0].name;
+        this.datapass.surname = this.database[0].surname;
+        this.datapass.tel = this.database[0].tel;
+        this.datapass.msu = this.database[0].MSU_ID;
+        this.datapass.img = this.database[0].image;
+        this.roter.navigateByUrl('home');
+      }).catch(reason => {
+        alert('no');
+      });
     }
   }
   doRefresh(event) {

@@ -51,5 +51,6 @@ export class DatapassService {
  public edate;
  public a: number[];
  public b: number[];
+ public pass_msuid;
   constructor() { }
 }
