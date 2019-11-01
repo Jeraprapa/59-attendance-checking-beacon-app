@@ -26,8 +26,8 @@
   </ion-item>
   <ion-item>
     <ion-label>Status</ion-label>
-    <ion-select interface="popover" placeholder="public" value="public"[(ngModel)]="status" (ngModelChange)="onchange3($event)">
-      <ion-select-option value="public" selected >public</ion-select-option>
+    <ion-select interface="popover" placeholder="please select" [(ngModel)]="status" (ngModelChange)="onchange3($event)">
+      <ion-select-option value="public" >public</ion-select-option>
       <ion-select-option value="private">private</ion-select-option>
     </ion-select>
   </ion-item>

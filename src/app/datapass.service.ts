@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DatapassService {
- public myData;
   public uname;
   public pwd;
   public uid;
@@ -14,12 +13,8 @@ export class DatapassService {
   public tel;
   public msu;
   public dataevent;
-  public event_name;
  public event_id;
  public cpid;
- public cpname;
- public cpdate;
- public cptime;
  public cpuid;
  public datajoin;
  public join_id;
@@ -52,5 +47,7 @@ export class DatapassService {
  public a: number[];
  public b: number[];
  public pass_msuid;
+ public cp_dstart;
+ public cp_tstop;
   constructor() { }
 }

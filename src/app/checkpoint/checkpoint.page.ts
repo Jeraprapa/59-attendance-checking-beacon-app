@@ -16,7 +16,7 @@ export class CheckpointPage implements OnInit {
   dates;
   timenow = moment().format('HH:mm:ss');
   datenow = moment().format('YYYY-MM-DD');
-  c = 0;
+  c = 1;
   dt;
   dtn;
   dts;
@@ -24,26 +24,23 @@ export class CheckpointPage implements OnInit {
   datecp;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.cplist();
-    // this.datapass.edate
-    // this.datapass.etime this.mindate2 = this.datenow + 'T' + this.timenow;
     this.dt = this.datenow + 'T' + this.timenow;
     this.dtn = Date.parse(this.dt);
     this.dtse = this.datapass.edate + 'T' + this.datapass.etime;
     this.dts = Date.parse(this.dtse);
-    console.log(this.dtn);
-    console.log(this.dts);
-    if (this.dtn === this.dts || this.dtn < this.dts) {
-      this.c = 1;
-      console.log(this.c);
-    } else {
+    console.log('datetimenow: ' + this.dtn);
+    console.log('datetimestopevent: ' + this.dts);
+    if (this.dtn > this.dts) {
       this.c = 0;
-      console.log(this.c);
+      console.log('c ' + this.c);
+    } else {
+      this.c = 1;
+      console.log('c ' + this.c);
     }
   }
 
   ngOnInit() {
   }
-
   cplist() {
     this.http.get('http://acb.msuproject.net/webservice/listCheckpoint/' + this.datapass.event_id,
         { }, {}).then(value => {

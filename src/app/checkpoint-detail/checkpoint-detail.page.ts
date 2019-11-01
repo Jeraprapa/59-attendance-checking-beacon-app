@@ -28,7 +28,7 @@ export class CheckpointDetailPage implements OnInit {
   datamembercheck;
   timenow = moment().format('HH:mm:ss');
   datenow = moment().format('YYYY-MM-DD');
-  c = 0;
+  c: boolean;
   dt;
   dtn;
   dts;
@@ -37,19 +37,8 @@ export class CheckpointDetailPage implements OnInit {
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.cpdetail();
     this.checker();
-    this.dt = this.datenow + 'T' + this.timenow;
-    this.dtn = Date.parse(this.dt);
-    this.dtse = this.dstart + 'T' + this.tstop;
-    this.dts = Date.parse(this.dtse);
-    console.log(this.dtn);
-    console.log(this.dts);
-    // if (this.dtn === this.dts || this.dtn < this.dts) {
-    //   this.c = 1;
-    //   console.log(this.c);
-    // } else {
-    //   this.c = 0;
-    //   console.log(this.c);
-    // }
+    this.c = false;
+
   }
 
   ngOnInit() {
@@ -64,15 +53,30 @@ export class CheckpointDetailPage implements OnInit {
       this.datacpdetail = jsondata;
       this.cpid = this.datacpdetail[0].cpID;
       this.ename = this.datacpdetail[0].name;
-      this.dstart = this.datacpdetail[0].Date_start;
+      this.datapass.cp_dstart = this.datacpdetail[0].Date_start;
       this.datapass.durationtime = this.datacpdetail[0].duration;
       this.tstart = this.datacpdetail[0].Time_start;
-      this.tstop = this.datacpdetail[0].Time_stop;
+      this.datapass.cp_tstop = this.datacpdetail[0].Time_stop;
       this.datapass.distancecp = this.datacpdetail[0].distance;
       this.cpname = this.datacpdetail[0].Episode_name;
       this.datapass.cpuuid = this.cpid;
       console.log(JSON.stringify(jsondata));
-      console.log(this.datapass.distancecp);
+      console.log(this.datapass.cp_dstart);
+      console.log(this.datapass.cp_tstop);
+      this.dt = this.datenow + 'T' + this.timenow;
+      this.dtn = Date.parse(this.dt);
+      this.dtse = this.datapass.cp_dstart + 'T' + this.datapass.cp_tstop;
+      this.dts = Date.parse(this.dtse);
+      console.log(this.datapass.cp_dstart);
+      console.log('datetimenow: ' + this.dtn);
+      console.log('datetimestopevent: ' + this.dts);
+      if (this.dtn > this.dts) {
+        this.c = true;
+        console.log('c ' + this.c);
+      } else {
+        this.c = false;
+        console.log('c ' + this.c);
+      }
     }).catch(reason => {
       console.log(reason);
     });
@@ -116,7 +120,7 @@ export class CheckpointDetailPage implements OnInit {
   showmember() {
     this.roter.navigateByUrl('member-check');
   }
-    doRefresh(event) {
+  doRefresh(event) {
         console.log('Begin async operation');
 
         setTimeout(() => {
@@ -125,5 +129,5 @@ export class CheckpointDetailPage implements OnInit {
             this.checker();
             event.target.complete();
         }, 2000);
-    }
+  }
 }

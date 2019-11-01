@@ -10,10 +10,10 @@
   <form>
     <table align="right" border="0" >
       <tr align="left">
-        <td ></td><td width="60" height="30">Date </td><td>{{dstart}}</td>
+        <td ></td><td width="60" height="30">Date </td><td>{{datapass.cp_dstart}}</td>
       </tr>
       <tr align="left">
-        <td ></td><td width="60" height="30">Time </td><td>{{tstart}}</td><td>|</td><td>{{tstop}}</td>
+        <td ></td><td width="60" height="30">Time </td><td>{{tstart}}</td><td>|</td><td>{{datapass.cp_tstop}}</td>
       </tr>
       <tr align="left">
         <td ><td width="60" height="30">area </td><td>{{datapass.distancecp}}</td>
@@ -69,7 +69,7 @@
   <br>
   <ion-row>
     <ion-col>
-      <ion-button expand="block" color="warning" (click)="st()" >Start Check </ion-button>
+      <ion-button expand="block" color="warning" (click)="st()" disabled = "{{c}}">Start Check </ion-button>
     </ion-col>
   </ion-row>
   <ion-button expand="block" color="warning" (click)="showmember()">member</ion-button>

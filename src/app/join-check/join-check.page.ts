@@ -32,6 +32,7 @@ export class JoinCheckPage implements OnInit {
     a;
     c;
     d;
+    qrdata;
     // this.datapass.distancecp
   constructor(private roter: Router, private datapass: DatapassService,
               private  http: HTTP, private ibeacon: IBeacon, private platform: Platform,
@@ -124,24 +125,25 @@ export class JoinCheckPage implements OnInit {
   }
     qrscan() {
         this.barcodeScanner.scan().then(barcodeData => {
-            this.scannedData = barcodeData.text.substring(0, 36);
-            this.scannedData1 = barcodeData.text.substring(36, 46); // lat
-            this.scannedData2 = barcodeData.text.substring(46); // long
+            this.qrdata = barcodeData.text.split(':');
+            this.scannedData = this.qrdata[0];
+            this.scannedData1 = this.qrdata[1]; // lat
+            this.scannedData2 = this.qrdata[2]; // long
             if (this.cpidcheck === this.scannedData) {
                 if (this.x === 1) {
                     // this.geo();
-                    this.distance();
+                    // this.distance();
                     alert('checked');
                     this.roter.navigateByUrl('join-list-event');
                 } else {
-                    this.check();
+                    // this.check();
                     this.geo();
                     this.distance();
                     alert('check');
-                    this.roter.navigateByUrl('join-lisevent');
+                    this.roter.navigateByUrl('join-list-event');
                 }
             }
-            console.log(this.scannedData + ' ' + this.scannedData1 + ' ' + this.scannedData2 );
+            console.log(barcodeData.text);
         }).catch(err => {
                 console.log('Error', err);
             });

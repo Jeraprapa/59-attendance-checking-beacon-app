@@ -23,7 +23,6 @@ export class AttendPage implements OnInit {
   constructor(private ibeacon: IBeacon, private barcodeScanner: BarcodeScanner,
               private datapass: DatapassService, private roter: Router, private geolocation: Geolocation) {
       this.uid = this.datapass.cpuuid;
-      this.qrData = this.uid;
       // this.i = this.u[1];
       this.geo();
       this.ibeacon.isBluetoothEnabled().then((isEnable) => {
@@ -101,6 +100,8 @@ export class AttendPage implements OnInit {
             console.log('resp longitude:' + resp.coords.longitude);
             this.attendlat = resp.coords.latitude;
             this.attendlong = resp.coords.longitude;
+            this.qrData = this.uid + ':' + this.attendlat + ':' + this.attendlong;
+            console.log(this.attendlat);
         }).catch((error) => {
             console.log('Error getting location', error);
         });
