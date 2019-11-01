@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-join-list',
@@ -13,6 +14,13 @@ export class JoinListPage implements OnInit {
   joinIDs;
   eid;
   datab;
+  c = 1;
+  dt;
+  dt2;
+  timenow = moment().format('HH:mm');
+  datenow = moment().format('YYYY-MM-DD');
+  dtn;
+  dts;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
     this.data = this.datapass.datajoin;
     console.log(this.data);

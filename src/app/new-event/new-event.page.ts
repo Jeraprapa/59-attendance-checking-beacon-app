@@ -34,13 +34,17 @@ export class NewEventPage implements OnInit {
     datestartc;
     maxtime;
     c;
+    ti;
+    t;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
       this.uid = this.datapass.uid;
       this.mindate2 = this.datenow + 'T' + this.timenow;
       this.mindate1 = this.datenow;
       this.timestop1 = this.timenow;
+      this.ti = this.timenow.split(':');
       console.log(this.mindate2);
       console.log(this.timenow);
+      console.log(this.ti);
       this.mintime = Math.random().toString(36).toUpperCase().substring(2, 3) + Math.random().toString(36).substring(2, 6);
       console.log(this.mintime);
 
@@ -71,10 +75,14 @@ export class NewEventPage implements OnInit {
   }
     onchange($event) {
         this.datestartc = $event;
+        console.log($event);
         if ($event === this.datenow) {
-            this.timestart1 = this.timenow;
+            console.log('datenow: ' + this.datenow);
+            this.timestart1 = moment(this.timenow, 'HH:mm').add(1 , 'minutes').format('HH:mm');
+            console.log('time: ' + this.timestart1);
         } else {
             this.timestart1 = '00:00' ;
+            console.log('time: ' + this.timestart1);
         }
         this.mindate1 = $event;
     }

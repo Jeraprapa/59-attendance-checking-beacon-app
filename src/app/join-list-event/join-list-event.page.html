@@ -42,9 +42,13 @@
   </p>
   <br>
   <br>
-  <ion-item *ngFor="let n of cplist">
-    <ion-label (click)="cpuuid({cpid: n.cpID , distance: n.distance})" >{{n.name}} {{n.Time_start}}</ion-label>
-  </ion-item>
+  <ion-label>checkpoint</ion-label>
+  <ion-card *ngFor="let n of cplist">
+    <ion-text (click)="cpuuid({cpid: n.cpID , distance: n.distance , date: n.Date_start})" *ngIf="c == '1' ">
+      <!--<ion-label (click)="cpuuid({cpid: n.cpID , distance: n.distance , date: n.Date_start})" *ngIf="c == '1' ">{{n.name}} {{n.Time_start}}</ion-label>-->
+      {{n.name}} {{n.Time_start}}</ion-text>
+
+  </ion-card>
   <!--{{joinIDs}}-->
   <!--<br>-->
   <!--<ion-row>-->

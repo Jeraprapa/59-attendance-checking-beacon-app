@@ -13,13 +13,13 @@
       </tr>
     </table>
   </form>
-  <ion-item *ngFor="let n of data">
+  <ion-item *ngFor="let n of datab">
     <tr align="center">
       <td width="400" height="30" (click)="jl({eid : n.eventID,joinIDs : n.joinID})">{{n.name}}</td>
       <td width="400" height="30" (click)="jl({eid : n.eventID,joinIDs : n.joinID})">{{n.Date_start}}</td>
       <td width="400" height="30" (click)="jl({eid : n.eventID,joinIDs : n.joinID})">{{n.Time_start}}</td>
     </tr>
-    <!--<ion-label (click)="jl({eid : n.eventID,joinIDs : n.joinID})" >{{n.name}} {{n.Date_start}} {{n.eventID}}</ion-label>-->
+    <!--<ion-label (click)="jl({eid : n.eventID,joinIDs : n.joinID})" *ngIf="c == '1' ">{{n.name}} {{n.Date_start}} {{n.eventID}}</ion-label>-->
   </ion-item>
 
   <ion-button (click)="ok()">ok</ion-button>

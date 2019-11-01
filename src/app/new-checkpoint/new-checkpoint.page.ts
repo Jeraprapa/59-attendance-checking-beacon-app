@@ -84,7 +84,7 @@ export class NewCheckpointPage implements OnInit {
     }
 
     onchange1($event) {
-        this.timestop  =  moment(this.timestart, 'HH:mm').add($event , 'minutes').format('HH:mm:ss');
+        this.timestop  =  moment(this.timestart, 'HH:mm').add($event , 'minutes').format('HH:mm');
         this.datapass.tsp = this.timestop;
     }
 }

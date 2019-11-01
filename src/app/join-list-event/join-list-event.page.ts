@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {DatapassService} from '../datapass.service';
 import {HTTP} from '@ionic-native/http/ngx';
 import * as moment from 'moment';
+import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-join-list-event',
@@ -23,10 +24,11 @@ export class JoinListEventPage implements OnInit {
   detail;
   datachecker;
   checkerid;
-  timenow = moment().format('HH:mm:ss');
-  datenow = moment().format('YYYY-MM-DD');
-  c = 0;
+  c = 1;
   dt;
+  dt2;
+  timenow = moment().format('HH:mm');
+  datenow = moment().format('YYYY-MM-DD');
   dtn;
   dts;
   dtse;
@@ -35,19 +37,6 @@ export class JoinListEventPage implements OnInit {
     this.showcplist();
     this.showdataevent();
     this.checker();
-    this.dt = this.datenow + 'T' + this.timenow;
-    this.dtn = Date.parse(this.dt);
-    this.dtse = this.dstart + 'T' + this.tstop;
-    this.dts = Date.parse(this.dtse);
-    console.log(this.dtn);
-    console.log(this.dts);
-    if (this.dtn === this.dts || this.dtn < this.dts) {
-      this.c = 1;
-      console.log(this.c);
-    } else {
-      this.c = 0;
-      console.log(this.c);
-    }
   }
 
   ngOnInit() {
@@ -59,6 +48,19 @@ export class JoinListEventPage implements OnInit {
       let jsondata = JSON.parse(value.data);
        this.cplist = jsondata;
        this.datapass.cplistid = this.cplist[0].cpID;
+      this.dt = this.datenow + 'T' + this.timenow;
+      this.dtn = Date.parse(this.dt);
+      this.dts = this.cplist[0].Date_start + 'T' + this.cplist[0].Time_start;
+      this.dt2 = Date.parse(this.dts);
+      console.log('nowd ' + this.dt);
+      console.log(this.dts);
+      if (this.dt2 < this.dtn) {
+        console.log('now' + this.dtn);
+        console.log(this.dt2);
+        this.c = 0;
+      } else {
+        this.c = 1;
+      }
       console.log(JSON.stringify(jsondata));
     }).catch(reason => {
       console.log(reason);
@@ -126,6 +128,6 @@ export class JoinListEventPage implements OnInit {
       this.showdataevent();
       this.checker();
       event.target.complete();
-    }, 2000);
+    }, 1000);
   }
 }
