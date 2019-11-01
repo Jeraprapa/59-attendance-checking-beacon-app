@@ -98,6 +98,8 @@ export class NewEventPage implements OnInit {
             console.log(this.status);
         } else {
             this.c = 0;
+            this.q1 = '';
+            this.q2 = '';
             console.log(this.status);
         }
     }

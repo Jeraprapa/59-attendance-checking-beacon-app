@@ -3,6 +3,7 @@ import {DatapassService} from '../datapass.service';
 import {Router} from '@angular/router';
 import {HTTP} from '@ionic-native/http/ngx';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-profile',
@@ -15,7 +16,6 @@ export class EditProfilePage implements OnInit {
   surname;
   tel;
   password;
-  databaseshow;
   myname;
   mytel;
   myimg;
@@ -24,21 +24,62 @@ export class EditProfilePage implements OnInit {
   myid;
   mypass;
   database;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera) {
-    // this.img = this.datapass.img;
-    // this.name = this.datapass.name;
-    // this.surname = this.datapass.surname;
-    // this.tel = this.datapass.tel;
-    // this.password = this.datapass.pwd;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera,
+              private alertCtrl: AlertController) {
     console.log(this.datapass.uid);
-    // this.show();
     this.login();
   }
 
   ngOnInit() {
 
   }
+  async selectPhoto() {
+    const alert = await this.alertCtrl.create({
+      header: 'Select',
+      buttons: [
+        {
+          text: 'Camera',
+          handler: (blah) => {
+            const options: CameraOptions = {
+              quality: 80,
+              sourceType: this.camera.PictureSourceType.CAMERA,
+              destinationType: this.camera.DestinationType.DATA_URL,
+              encodingType: this.camera.EncodingType.JPEG,
+              targetWidth: 80,
+              targetHeight: 80,
+              mediaType: this.camera.MediaType.PICTURE
+            };
+            this.camera.getPicture(options).then(value => {
+              this.myimg = 'data:image/jpeg;base64,' + value;
 
+            }).catch(reason => {
+
+            });
+          }
+        }, {
+          text: 'Libary',
+          handler: () => {
+            const options: CameraOptions = {
+              quality: 80,
+              sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+              destinationType: this.camera.DestinationType.DATA_URL,
+              encodingType: this.camera.EncodingType.JPEG,
+              targetWidth: 80,
+              targetHeight: 80,
+              mediaType: this.camera.MediaType.PICTURE
+            };
+            this.camera.getPicture(options).then(value => {
+              this.myimg = 'data:image/jpeg;base64,' + value;
+
+            }).catch(reason => {
+
+            });
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
   change() {
     const options: CameraOptions = {
       quality: 100,
@@ -70,16 +111,6 @@ export class EditProfilePage implements OnInit {
       this.roter.navigateByUrl('showprofile');
     }).catch(reason => {
       alert('no');
-    });
-  }
-  show() {
-    this.http.get('http://acb.msuproject.net/webservice/user/' + this.datapass.uid,
-        { }, {}).then(value => {
-      let jsondata = JSON.parse(value.data);
-      this.databaseshow = jsondata;
-      console.log(JSON.stringify(jsondata));
-    }).catch(reason => {
-      console.log(reason);
     });
   }
   login() {

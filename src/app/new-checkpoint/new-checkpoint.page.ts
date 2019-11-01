@@ -25,6 +25,7 @@ export class NewCheckpointPage implements OnInit {
     cpid;
     datacp;
     uid;
+    isDisbled = false;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP) {
       this.eid = this.datapass.event_id;
       this.cpid = this.datapass.cpid;

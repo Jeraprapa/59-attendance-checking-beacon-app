@@ -5,6 +5,7 @@ import {HTTP} from '@ionic-native/http/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { FormBuilder, FormGroup, Validators, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-general-register2',
@@ -22,7 +23,7 @@ export class GeneralRegister2Page implements OnInit {
   database;
   g: FormGroup;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera,
-              private fb: Facebook, private formBuilder: FormBuilder) {
+              private fb: Facebook, private formBuilder: FormBuilder, private alertCtrl: AlertController) {
     this.g = this.formBuilder.group({
       email: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9_.-]+@["hotmail"|"gmail"]+.["com"|"ac.th"]+$'),
         Validators.required])],
@@ -51,41 +52,51 @@ export class GeneralRegister2Page implements OnInit {
         alert('no');
     });
   }
+  async selectPhoto() {
+    const alert = await this.alertCtrl.create({
+      header: 'Select',
+      buttons: [
+        {
+          text: 'Camera',
+          handler: (blah) => {
+            const options: CameraOptions = {
+              quality: 80,
+              sourceType: this.camera.PictureSourceType.CAMERA,
+              destinationType: this.camera.DestinationType.DATA_URL,
+              encodingType: this.camera.EncodingType.JPEG,
+              targetWidth: 80,
+              targetHeight: 80,
+              mediaType: this.camera.MediaType.PICTURE
+            };
+            this.camera.getPicture(options).then(value => {
+              this.img = 'data:image/jpeg;base64,' + value;
 
-  photo() {
-    const options: CameraOptions = {
-      quality: 100,
-      sourceType: this.camera.PictureSourceType.CAMERA,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      targetWidth: 80,
-      targetHeight: 80,
-      mediaType: this.camera.MediaType.PICTURE
-    };
-    this.camera.getPicture(options).then(value => {
-      this.img = 'data:image/jpeg;base64,' + value;
-      console.log(this.img);
-    }).catch(reason => {
+            }).catch(reason => {
 
+            });
+          }
+        }, {
+          text: 'Libary',
+          handler: () => {
+            const options: CameraOptions = {
+              quality: 80,
+              sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+              destinationType: this.camera.DestinationType.DATA_URL,
+              encodingType: this.camera.EncodingType.JPEG,
+              targetWidth: 80,
+              targetHeight: 80,
+              mediaType: this.camera.MediaType.PICTURE
+            };
+            this.camera.getPicture(options).then(value => {
+              this.img = 'data:image/jpeg;base64,' + value;
+
+            }).catch(reason => {
+
+            });
+          }
+        }
+      ]
     });
-  }
-
-  clibary() {
-    const options: CameraOptions = {
-      quality: 100,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      targetWidth: 80,
-      targetHeight: 80,
-      mediaType: this.camera.MediaType.PICTURE
-    };
-    this.camera.getPicture(options).then(value => {
-      this.img = 'data:image/jpeg;base64,' + value;
-      console.log(this.img);
-
-    }).catch(reason => {
-
-    });
+    await alert.present();
   }
 }

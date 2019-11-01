@@ -48,7 +48,7 @@ export class JoinEventPage implements OnInit {
           console.log(JSON.stringify(jsondata));
           console.log('test ' + this.datapass.eq2.length);
           if (this.datapass.eq2.length > 0 || this.datapass.eq1.length > 0) {
-            this.datapass.ecode = this.ecode;
+            this.datapass.ecode = barcodeData.text;
             this.roter.navigateByUrl('q-event');
           } else {
             this.newjoin();
@@ -61,11 +61,6 @@ export class JoinEventPage implements OnInit {
       });
   }
   newjoin() {
-    console.log(this.datapass.uid);
-    console.log(this.ecode);
-    console.log(this.q1);
-    console.log(this.q2);
-    console.log(this.status);
     this.http.post('http://acb.msuproject.net/webservice/newJoin',
         {
           userID : this.datapass.uid,

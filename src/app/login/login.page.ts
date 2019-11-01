@@ -23,7 +23,10 @@ export class LoginPage implements OnInit {
   d = 1;
   as;
   datamsu;
-  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private fb: Facebook) { }
+  da;
+  da2;
+  constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private fb: Facebook) {
+  }
 
   ngOnInit() {
   }

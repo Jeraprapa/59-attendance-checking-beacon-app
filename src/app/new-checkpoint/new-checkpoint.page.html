@@ -20,15 +20,15 @@
   </ion-item>
   <br>
   <ion-item>
-    <ion-label position="floating" class="text">Time Stop</ion-label>
+    <ion-label  position="stacked" class="text">Time Stop</ion-label>
     <!--<ion-input  [(ngModel)]="timestop"></ion-input>-->
     <!--<ion-input>{{timestop}}</ion-input>-->
-    <ion-input [(ngModel)]="datapass.tsp"></ion-input>
+    <ion-input [(ngModel)]="datapass.tsp" readonly></ion-input>
   </ion-item>
   <br>
     <ion-item>
       <ion-label position="floating" class="text">duration</ion-label>
-      <ion-select interface="popover"  [(ngModel)]="duration" (ngModelChange)="onchange1($event)">
+      <ion-select interface="popover"  [(ngModel)]="duration" (ngModelChange)="onchange1($event)" placeholder="please select">
         <ion-select-option value=5 >5</ion-select-option>
         <ion-select-option value=10 >10</ion-select-option>
         <ion-select-option value=15 >15</ion-select-option>
