@@ -22,8 +22,11 @@ export class GeneralRegister2Page implements OnInit {
   password;
   database;
   g: FormGroup;
+  i;
+  emailmember;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera,
               private fb: Facebook, private formBuilder: FormBuilder, private alertCtrl: AlertController) {
+    this.checkemail();
     this.g = this.formBuilder.group({
       email: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9_.-]+@["hotmail"|"gmail"]+.["com"|"ac.th"]+$'),
         Validators.required])],
@@ -43,13 +46,33 @@ export class GeneralRegister2Page implements OnInit {
   }
 
   register() {
-    this.http.post('http://acb.msuproject.net/webservice/register',
-        {name : this.name, surname : this.surname, image : this.img, email : this.email, tel : this.phone,
-          password : this.password, msuid : this.msuid}, {}).then(value => {
-            console.log(JSON.stringify(value.data));
-       this.roter.navigateByUrl('login');
-    }).catch(reason => {
+    if (this.i === 1) {
+      alert('มีผู้ใช้งานอีเมลนี้แล้ว');
+    } else {
+      this.http.post('http://acb.msuproject.net/webservice/register',
+          {name : this.name, surname : this.surname, image : this.img, email : this.email, tel : this.phone,
+            password : this.password, msuid : this.msuid}, {}).then(value => {
+        console.log(JSON.stringify(value.data));
+        this.roter.navigateByUrl('login');
+      }).catch(reason => {
         alert('no');
+      });
+    }
+
+  }
+  checkemail () {
+    this.http.get('http://acb.msuproject.net/webservice/emailuser',
+        {}, {}).then(value => {
+      console.log(JSON.stringify(value.data));
+      let jsondata = JSON.parse(value.data);
+      this.emailmember = jsondata;
+      for (let n = 0; n < this.emailmember.length ; n++) {
+        if (this.emailmember[n].userID === this.datapass.uid) {
+          this.i = 1;
+        }
+      }
+    }).catch(reason => {
+      alert('no');
     });
   }
   async selectPhoto() {
