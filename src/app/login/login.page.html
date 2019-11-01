@@ -1,4 +1,10 @@
 <ion-header>
+  <ion-toolbar class="Hbar" slot="start">
+    <ion-title>My App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
             pullingIcon="arrow-dropdown"
@@ -7,11 +13,6 @@
             refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-toolbar class="Hbar" slot="start">
-    <ion-title>My App</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content padding >
   <br>
   <br>
   <ion-text class="one">Login</ion-text>

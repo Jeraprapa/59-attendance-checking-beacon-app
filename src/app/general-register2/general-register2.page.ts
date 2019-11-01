@@ -31,7 +31,9 @@ export class GeneralRegister2Page implements OnInit {
       name: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9ก-๙]+$'),
         Validators.required])],
       surname: [null, Validators.compose([Validators.pattern('^[a-zA-Z0-9ก-๙]+$'),
-        Validators.required])]
+        Validators.required])],
+      // phone: [null, Validators.compose([Validators.pattern('^[0-9]+$'),
+      //   Validators.required])]
     });
 
   }
@@ -40,9 +42,6 @@ export class GeneralRegister2Page implements OnInit {
   }
 
   register() {
-    // if (this.g.invalid) {
-    //   console.log(this.email);
-    // }
     this.http.post('http://acb.msuproject.net/webservice/register',
         {name : this.name, surname : this.surname, image : this.img, email : this.email, tel : this.phone,
           password : this.password, msuid : this.msuid}, {}).then(value => {
@@ -65,6 +64,7 @@ export class GeneralRegister2Page implements OnInit {
     };
     this.camera.getPicture(options).then(value => {
       this.img = 'data:image/jpeg;base64,' + value;
+      console.log(this.img);
     }).catch(reason => {
 
     });
@@ -82,6 +82,7 @@ export class GeneralRegister2Page implements OnInit {
     };
     this.camera.getPicture(options).then(value => {
       this.img = 'data:image/jpeg;base64,' + value;
+      console.log(this.img);
 
     }).catch(reason => {
 

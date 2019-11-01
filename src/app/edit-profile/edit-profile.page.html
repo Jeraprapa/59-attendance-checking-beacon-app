@@ -12,23 +12,23 @@
   <ion-title class="ion-title1">Edit Profile</ion-title>
   <br>
   <ion-avatar class="ion-avatar1" (click)="change()">
-    <img src="{{img}}" >
+    <img src="{{myimg}}" >
   </ion-avatar>
   <ion-item>
     <ion-label position="fixed">Password</ion-label>
-    <ion-input [(ngModel)]="password"></ion-input>
+    <ion-input [(ngModel)]="mypass"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="fixed" >Name</ion-label>
-    <ion-input [(ngModel)]="name"></ion-input>
+    <ion-input [(ngModel)]="myname"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="fixed" >Surname</ion-label>
-    <ion-input [(ngModel)]="surname"></ion-input>
+    <ion-input [(ngModel)]="mysur"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="fixed" >Phone</ion-label>
-    <ion-input [(ngModel)]="tel"></ion-input>
+    <ion-input [(ngModel)]="mytel"></ion-input>
   </ion-item>
   <br>
   <ion-button expand="block" class="ion-button" color="secondary" (click)="editprofile()">OK</ion-button>

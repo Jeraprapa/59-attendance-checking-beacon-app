@@ -161,8 +161,10 @@ export class LoginPage implements OnInit {
       this.a = 1;
       this.b = 1;
       this.d = 1;
-
+      this.password = '';
+      this.username = '';
+      this.msuid = '';
       event.target.complete();
-    }, 2000);
+    }, 1000);
   }
 }

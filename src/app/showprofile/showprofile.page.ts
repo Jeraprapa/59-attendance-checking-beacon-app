@@ -15,14 +15,12 @@ export class ShowprofilePage implements OnInit {
   mysur;
   mymsuid;
   myid;
+  myemail;
+  mypass;
   database;
   constructor(private roter: Router , private datapass: DatapassService, private  http: HTTP) {
-    this.myname = this.datapass.name;
-    this.mysur = this.datapass.surname;
-    this.mytel = this.datapass.tel;
-    this.myimg = this.datapass.img;
-    this.mymsuid = this.datapass.msu;
-    this.myid = this.datapass.uid;
+    this.login();
+    console.log(this.datapass.uid);
   }
 
   ngOnInit() {
@@ -30,21 +28,21 @@ export class ShowprofilePage implements OnInit {
   }
 
   login() {
-    this.http.post('http://acb.msuproject.net/webservice/login',
-        {  email : this.datapass.uname, password : this.datapass.pwd}, {}).then(value => {
+    this.http.get('http://acb.msuproject.net/webservice/user/' + this.datapass.uid,
+        { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.database = jsondata;
       this.myid = this.database[0].userID;
-      // this.datapass.uname = this.datapass.uname;
-      // this.datapass.pwd = this.datapass.pwd;
       this.myname = this.database[0].name;
       this.mysur = this.database[0].surname;
       this.mytel = this.database[0].tel;
       this.mymsuid = this.database[0].MSU_ID;
       this.myimg = this.database[0].image;
-      // this.roter.navigateByUrl('showprofile');
+      this.myemail = this.database[0].email;
+      this.mypass  = this.database[0].password;
+      console.log(JSON.stringify(jsondata));
     }).catch(reason => {
-      alert('no');
+      console.log(reason);
     });
   }
     myprofile() {

@@ -10,9 +10,11 @@ import {DatapassService} from '../datapass.service';
 export class HomePage implements OnInit {
     myimg;
 
-    constructor(private roter: Router, private datapass: DatapassService) { }
-    ngOnInit() {
+    constructor(private roter: Router, private datapass: DatapassService) {
         this.myimg = this.datapass.img;
+    }
+    ngOnInit() {
+
     }
     profile() {
          this.roter.navigateByUrl('showprofile');

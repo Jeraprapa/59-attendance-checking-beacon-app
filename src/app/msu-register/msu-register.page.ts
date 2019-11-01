@@ -19,6 +19,7 @@ export class MsuRegisterPage implements OnInit {
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera) {
     this.msuname = this.datapass.fname;
     this.msusername = this.datapass.lname;
+    this.password = this.datapass.pass_msuid;
   }
 
   ngOnInit() {
@@ -62,7 +63,7 @@ export class MsuRegisterPage implements OnInit {
   ok() {
     this.http.post('http://acb.msuproject.net/webservice/register',
         {name : this.msuname, surname : this.msusername, image : this.img, email : this.email, tel : this.phone,
-          password : this.datapass.pass_msuid, msuid : this.datapass.msuid}, {}).then(value => {
+          password : this.password, msuid : this.datapass.msuid}, {}).then(value => {
       console.log(JSON.stringify(value.data));
       this.roter.navigateByUrl('welcome');
     }).catch(reason => {

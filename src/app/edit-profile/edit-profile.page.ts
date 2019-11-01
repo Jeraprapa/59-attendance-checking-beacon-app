@@ -16,16 +16,27 @@ export class EditProfilePage implements OnInit {
   tel;
   password;
   databaseshow;
+  myname;
+  mytel;
+  myimg;
+  mysur;
+  mymsuid;
+  myid;
+  mypass;
+  database;
   constructor(private roter: Router, private datapass: DatapassService, private  http: HTTP, private camera: Camera) {
-    this.show();
+    // this.img = this.datapass.img;
+    // this.name = this.datapass.name;
+    // this.surname = this.datapass.surname;
+    // this.tel = this.datapass.tel;
+    // this.password = this.datapass.pwd;
+    console.log(this.datapass.uid);
+    // this.show();
+    this.login();
   }
 
   ngOnInit() {
-    this.img = this.datapass.img;
-    this.name = this.datapass.name;
-    this.surname = this.datapass.surname;
-    this.tel = this.datapass.tel;
-    this.password = this.datapass.pwd;
+
   }
 
   change() {
@@ -39,7 +50,7 @@ export class EditProfilePage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     };
     this.camera.getPicture(options).then(value => {
-      this.img = 'data:image/jpeg;base64,' + value;
+      this.myimg = 'data:image/jpeg;base64,' + value;
 
     }).catch(reason => {
 
@@ -49,11 +60,11 @@ export class EditProfilePage implements OnInit {
   editprofile() {
     this.http.post('http://acb.msuproject.net/webservice/editMember/' + this.datapass.uid,
         {
-          name: this.name,
-          surname : this.surname,
-          image : this.img,
-          tel: this.tel,
-          password : this.password
+          name: this.myname,
+          surname : this.mysur,
+          image : this.myimg,
+          tel: this.mytel,
+          password : this.mypass
         }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.roter.navigateByUrl('showprofile');
@@ -66,6 +77,23 @@ export class EditProfilePage implements OnInit {
         { }, {}).then(value => {
       let jsondata = JSON.parse(value.data);
       this.databaseshow = jsondata;
+      console.log(JSON.stringify(jsondata));
+    }).catch(reason => {
+      console.log(reason);
+    });
+  }
+  login() {
+    this.http.get('http://acb.msuproject.net/webservice/user/' + this.datapass.uid,
+        { }, {}).then(value => {
+      let jsondata = JSON.parse(value.data);
+      this.database = jsondata;
+      this.myid = this.database[0].userID;
+      this.myname = this.database[0].name;
+      this.mysur = this.database[0].surname;
+      this.mytel = this.database[0].tel;
+      this.mymsuid = this.database[0].MSU_ID;
+      this.myimg = this.database[0].image;
+      this.mypass = this.database[0].password;
       console.log(JSON.stringify(jsondata));
     }).catch(reason => {
       console.log(reason);
