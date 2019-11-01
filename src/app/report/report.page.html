@@ -1,5 +1,35 @@
+<ion-header>
+  <ion-toolbar  class="Hbar" slot="start">
+    <ion-buttons>
+      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-title>Report</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content padding>
-  <ion-button (click)="myeventlist()">Event report</ion-button>
+  <ion-text><div>Report</div></ion-text>
   <br>
-  <ion-button (click)="myjoinlist()">Join report</ion-button>
+  <ion-button expand="block" class="ion-button" (click)="myeventlist()">Event</ion-button>
+  <br>
+  <br>
+  <ion-button expand="block" class="ion-button" (click)="myjoinlist()">Join</ion-button>
 </ion-content>
+<ion-footer >
+  <ion-toolbar class="Hbar">
+    <ion-tab-button no-padding="" slot="start">
+      <ion-icon name="home" [routerLink]="'/home'"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button no-padding="">
+      <ion-icon name="calendar" [routerLink]="'/myevent'"></ion-icon>
+      <ion-label>อีเว้น</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button no-padding=""slot="end">
+      <ion-icon name="paper" [routerLink]="'/report'"></ion-icon>
+      <ion-label>รายงาน</ion-label>
+    </ion-tab-button>
+
+  </ion-toolbar>
+</ion-footer>

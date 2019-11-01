@@ -15,7 +15,7 @@
   </ion-refresher>
   <br>
   <br>
-  <ion-text class="one">Login</ion-text>
+  <ion-text><div>Login</div></ion-text>
   <br>
   <br>
   <ion-item *ngIf="c == '1' ">
@@ -32,7 +32,7 @@
     <ion-label position="floating" class="text">Password</ion-label>
     <ion-input type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
-  <br>
+  <br><ion-label class="two" (click)="forgetp()">forget password?</ion-label>
   <br>
   <br>
   <ion-row>
@@ -46,5 +46,5 @@
   </ion-row>
   <br>
   <ion-button expand="block" color="medium" (click)="fblogin()">facebook</ion-button>
-  <ion-label class="two" (click)="forgetp()">forget password?</ion-label>
+
 </ion-content>

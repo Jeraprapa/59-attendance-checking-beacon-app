@@ -1,15 +1,22 @@
+<ion-header>
+  <ion-toolbar class="Hbar" slot="start">
+    <ion-buttons>
+      <ion-back-button defaultHref="welcome"></ion-back-button>
+      <ion-title>CheckCheck!</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content padding>
   <br>
   <br>
-  <ion-text class="one">Register</ion-text>
+  <ion-text><div>Register</div></ion-text>
   <br>
   <br>
   <ion-button expand="block" class="ion-button" color="secondary tint" (click)="member()">New member</ion-button>
+  <br>
   <ion-button expand="block" class="ion-button" color="light" (click)="msu()">MSU member</ion-button>
   <br>
-  <br>
-  <ion-text class="ion-text"> OR </ion-text>
-  <br>
+  <ion-text><div>or</div></ion-text>
   <br>
   <ion-button expand="block" class="ion-button" color="vibrant" (click)="login()">login</ion-button>
 </ion-content>
